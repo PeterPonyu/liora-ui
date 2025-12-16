@@ -1,26 +1,477 @@
+/* app/globals.css */
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+    /* ============================================
+       CORE DESIGN TOKENS (RGB format: r g b)
+       ============================================ */
+    
+    /* Base colors */
+    --background: 255 255 255;
+    --foreground: 31 41 55;
+    
+    /* Primary & Secondary */
+    --primary: 37 99 235;
+    --primary-hover: 29 78 216;
+    --primary-foreground: 255 255 255;
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+    --theme-icon-sun: 234 179 8;
+
+    --secondary: 243 244 246;
+    --secondary-foreground: 17 24 39;
+    
+    /* Muted & Borders */
+    --muted: 249 250 251;
+    --muted-foreground: 75 85 99;
+    --border: 209 213 219;
+    --border-light: 229 231 235;
+    --card-hover-border: 147 197 253;
+
+    /* Text hierarchy */
+    --text-primary: 17 24 39;
+    --text-secondary: 55 65 81;
+    --text-tertiary: 75 85 99;
+    --text-muted: 156 163 175;
+    
+    /* Card & Surface */
+    --card: 255 255 255;
+    --card-foreground: 31 41 55;
+    
+    /* Info/Legend specific */
+    --info-bg: 239 246 255;
+    --info-border: 191 219 254;
+    --info-text: 30 64 175;
+    --info-text-strong: 30 58 138;
+
+    /* Stat icon colors */
+    --stat-blue: 37 99 235;
+    --stat-green: 22 163 74;
+    --stat-purple: 147 51 234;
+    --stat-orange: 234 88 12;
+
+    /* Stat text colors */
+    --stat-value: 17 24 39;
+    --stat-label: 75 85 99;
+
+    /* Metadata label color */
+    --meta-label: 107 114 128;
+
+    /* ============================================
+       CATEGORY BADGE COLORS
+       ============================================ */
+    --category-tiny-bg: 243 244 246;        /* gray-100 */
+    --category-tiny-text: 55 65 81;         /* gray-700 */
+    --category-tiny-border: 209 213 219;    /* gray-300 */
+
+    --category-small-bg: 219 234 254;       /* blue-100 */
+    --category-small-text: 29 78 216;       /* blue-700 */
+    --category-small-border: 147 197 253;   /* blue-300 */
+
+    --category-medium-bg: 254 243 199;      /* yellow-100 */
+    --category-medium-text: 161 98 7;       /* yellow-700 */
+    --category-medium-border: 253 224 71;   /* yellow-300 */
+
+    --category-large-bg: 220 252 231;       /* green-100 */
+    --category-large-text: 21 128 61;       /* green-700 */
+    --category-large-border: 134 239 172;   /* green-300 */
+
+    --category-error-bg: 254 226 226;       /* red-100 */
+    --category-error-text: 185 28 28;       /* red-700 */
+    --category-error-border: 252 165 165;   /* red-300 */
+
+    /* Stat background colors for badges */
+    --stat-bg-blue: 219 234 254;      /* blue-100 */
+    --stat-bg-indigo: 224 231 255;    /* indigo-100 */
+    --stat-bg-green: 220 252 231;     /* green-100 */
+    --stat-bg-purple: 243 232 255;    /* purple-100 */
+    --stat-bg-orange: 254 215 170;    /* orange-100 */
+
+    /* ============================================
+       OMICS-SPECIFIC COLORS (scATAC - Cyan theme)
+       ============================================ */
+    --atac-primary: 8 145 178;        /* cyan-600 */
+    --atac-primary-hover: 14 116 144; /* cyan-700 */
+    --atac-bg: 207 250 254;           /* cyan-100 */
+    --atac-bg-subtle: 236 254 255;    /* cyan-50 */
+    --atac-border: 165 243 252;       /* cyan-200 */
+    --atac-text: 21 94 117;           /* cyan-900 */
+    --atac-text-bright: 14 116 144;   /* cyan-700 */
+    --atac-icon-bg: 207 250 254;      /* cyan-100 */
+    --atac-icon: 8 145 178;           /* cyan-600 */
+
+    /* ============================================
+       OMICS-SPECIFIC COLORS (scRNA - Purple theme)
+       ============================================ */
+    --rna-primary: 147 51 234;        /* purple-600 */
+    --rna-primary-hover: 126 34 206;  /* purple-700 */
+    --rna-bg: 243 232 255;            /* purple-100 */
+    --rna-bg-subtle: 250 245 255;     /* purple-50 */
+    --rna-border: 233 213 255;        /* purple-200 */
+    --rna-text: 88 28 135;            /* purple-900 */
+    --rna-text-bright: 126 34 206;    /* purple-700 */
+    --rna-icon-bg: 243 232 255;       /* purple-100 */
+    --rna-icon: 147 51 234;           /* purple-600 */
+  }
+
+  /* Dark mode */
+  .dark {
+    --background: 15 23 42;
+    --foreground: 241 245 249;
+    
+    --primary: 59 130 246;
+    --primary-hover: 147 197 253;
+    --primary-foreground: 255 255 255;
+
+    --theme-icon-sun: 250 204 21;
+
+    --secondary: 30 41 59;
+    --secondary-foreground: 226 232 240;
+    
+    --muted: 30 41 59;
+    --muted-foreground: 148 163 184;
+    --border: 51 65 85;
+    --border-light: 55 65 81;
+    --card-hover-border: 37 99 235;
+
+    --text-primary: 243 244 246;
+    --text-secondary: 209 213 219;
+    --text-tertiary: 156 163 175;
+    --text-muted: 107 114 128;
+    
+    --card: 30 41 59;
+    --card-foreground: 241 245 249;
+    
+    --info-bg: 23 37 84;
+    --info-border: 30 64 175;
+    --info-text: 147 197 253;
+    --info-text-strong: 191 219 254;
+
+    /* Stat icon colors - dark mode */
+    --stat-blue: 96 165 250;
+    --stat-green: 74 222 128;
+    --stat-purple: 192 132 252;
+    --stat-orange: 251 146 60;
+
+    /* Stat text colors - dark mode */
+    --stat-value: 243 244 246;
+    --stat-label: 156 163 175;
+
+    /* Metadata label color - dark mode */
+    --meta-label: 156 163 175;
+    
+    /* ============================================
+       CATEGORY BADGE COLORS - DARK MODE
+       ============================================ */
+    --category-tiny-bg: 31 41 55;           /* gray-800 */
+    --category-tiny-text: 209 213 219;      /* gray-300 */
+    --category-tiny-border: 75 85 99;       /* gray-600 */
+
+    --category-small-bg: 30 58 138 / 0.3;   /* blue-900/30 */
+    --category-small-text: 147 197 253;     /* blue-300 */
+    --category-small-border: 37 99 235;     /* blue-600 */
+
+    --category-medium-bg: 120 53 15 / 0.3;  /* yellow-900/30 */
+    --category-medium-text: 253 224 71;     /* yellow-300 */
+    --category-medium-border: 161 98 7;     /* yellow-700 */
+
+    --category-large-bg: 20 83 45 / 0.3;    /* green-900/30 */
+    --category-large-text: 134 239 172;     /* green-300 */
+    --category-large-border: 22 101 52;     /* green-700 */
+
+    --category-error-bg: 127 29 29 / 0.3;   /* red-900/30 */
+    --category-error-text: 252 165 165;     /* red-400 */
+    --category-error-border: 185 28 28;     /* red-700 */
+
+    /* Stat background colors for badges - dark mode */
+    --stat-bg-blue: 30 58 138 / 0.3;   /* blue-900/30 */
+    --stat-bg-indigo: 49 46 129 / 0.3; /* indigo-900/30 */
+    --stat-bg-green: 20 83 45 / 0.3;   /* green-900/30 */
+    --stat-bg-purple: 88 28 135 / 0.3; /* purple-900/30 */
+    --stat-bg-orange: 124 45 18 / 0.3; /* orange-900/30 */
+
+    /* ============================================
+       OMICS-SPECIFIC COLORS - DARK MODE
+       ============================================ */
+    /* scATAC - Cyan (dark mode) */
+    --atac-primary: 34 211 238;        /* cyan-400 */
+    --atac-primary-hover: 103 232 249; /* cyan-300 */
+    --atac-bg: 21 94 117 / 0.3;        /* cyan-900/30 */
+    --atac-bg-subtle: 21 94 117 / 0.15;/* cyan-900/15 */
+    --atac-border: 14 116 144;         /* cyan-700 */
+    --atac-text: 165 243 252;          /* cyan-200 */
+    --atac-text-bright: 103 232 249;   /* cyan-300 */
+    --atac-icon-bg: 21 94 117 / 0.3;   /* cyan-900/30 */
+    --atac-icon: 34 211 238;           /* cyan-400 */
+
+    /* scRNA - Purple (dark mode) */
+    --rna-primary: 192 132 252;        /* purple-400 */
+    --rna-primary-hover: 216 180 254;  /* purple-300 */
+    --rna-bg: 88 28 135 / 0.3;         /* purple-900/30 */
+    --rna-bg-subtle: 88 28 135 / 0.15; /* purple-900/15 */
+    --rna-border: 126 34 206;          /* purple-700 */
+    --rna-text: 233 213 255;           /* purple-200 */
+    --rna-text-bright: 216 180 254;    /* purple-300 */
+    --rna-icon-bg: 88 28 135 / 0.3;    /* purple-900/30 */
+    --rna-icon: 192 132 252;           /* purple-400 */
+  }
+
+  html {
+    scroll-behavior: smooth;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    
+    /* ============================================
+       TYPOGRAPHY & FONT SIZES
+       ============================================ */
+    --fs-xs: 0.75rem;      /* 12px */
+    --fs-sm: 0.875rem;     /* 14px */
+    --fs-base: 1rem;       /* 16px */
+    --fs-lg: 1.125rem;     /* 18px */
+    --fs-xl: 1.25rem;      /* 20px */
+    --fs-2xl: 1.5rem;      /* 24px */
+    --fs-3xl: 1.875rem;    /* 30px */
+    --fs-4xl: 2.25rem;     /* 36px */
+    --fs-5xl: 3rem;        /* 48px */
+    --fs-6xl: 3.75rem;     /* 60px */
+    
+    --fw-normal: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+    
+    --lh-tight: 1.25;
+    --lh-normal: 1.5;
+    --lh-relaxed: 1.75;
+  }
+
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    font-size: var(--fs-base);
+    font-weight: var(--fw-normal);
+    line-height: var(--lh-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+  
+  h1 {
+    font-size: var(--fs-5xl);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+  }
+  
+  h2 {
+    font-size: var(--fs-4xl);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+  }
+  
+  h3 {
+    font-size: var(--fs-3xl);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-tight);
+  }
+  
+  h4 {
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-tight);
+  }
+  
+  h5 {
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-semibold);
+  }
+  
+  h6 {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-semibold);
+  }
+  
+  p {
+    font-size: var(--fs-base);
+    line-height: var(--lh-relaxed);
+  }
+  
+  small {
+    font-size: var(--fs-sm);
+  }
+
+@layer components {
+  /* ============================================
+     BUTTON COMPONENTS
+     ============================================ */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    background-color: rgb(var(--primary));
+    color: rgb(var(--primary-foreground));
+    transition: all 0.2s;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .btn-primary:active {
+    transform: translateY(1px);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    background-color: rgb(var(--secondary));
+    color: rgb(var(--secondary-foreground));
+    border: 1px solid rgb(var(--border));
+    transition: all 0.2s;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  .btn-secondary:hover {
+    background-color: rgb(var(--muted));
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .btn-secondary:active {
+    transform: translateY(1px);
+  }
+
+  /* ============================================
+     OMICS-SPECIFIC BUTTON VARIANTS
+     ============================================ */
+  .btn-atac {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    background-color: rgb(var(--atac-primary));
+    color: white;
+    transition: all 0.2s;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  .btn-atac:hover {
+    background-color: rgb(var(--atac-primary-hover));
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .btn-rna {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    background-color: rgb(var(--rna-primary));
+    color: white;
+    transition: all 0.2s;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  .btn-rna:hover {
+    background-color: rgb(var(--rna-primary-hover));
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+
+  /* ============================================
+     CARD & SURFACE COMPONENTS
+     ============================================ */
+  .card {
+    background-color: rgb(var(--card));
+    color: rgb(var(--card-foreground));
+    border: 1px solid rgb(var(--border));
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px 0 rgb(0 0 0 / 0.06);
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  .dark .card {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -1px rgb(0 0 0 / 0.2);
+  }
+
+  /* ============================================
+     OMICS-SPECIFIC CARD VARIANTS
+     ============================================ */
+  .card-atac {
+    background-color: rgb(var(--card));
+    color: rgb(var(--card-foreground));
+    border: 1px solid rgb(var(--atac-border));
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .card-atac:hover {
+    box-shadow: 0 4px 12px 0 rgb(var(--atac-primary) / 0.15);
+  }
+
+  .card-rna {
+    background-color: rgb(var(--card));
+    color: rgb(var(--card-foreground));
+    border: 1px solid rgb(var(--rna-border));
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .card-rna:hover {
+    box-shadow: 0 4px 12px 0 rgb(var(--rna-primary) / 0.15);
+  }
+
+  /* ============================================
+     FORM COMPONENTS
+     ============================================ */
+  .input {
+    width: 100%;
+    padding: 0.625rem 1rem;
+    border: 1.5px solid rgb(var(--border));
+    border-radius: 0.5rem;
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    outline: none;
+    transition: all 0.2s;
+    font-size: 0.875rem;
+  }
+
+  .input:focus {
+    border-color: rgb(var(--primary));
+    box-shadow: 0 0 0 3px rgb(var(--primary) / 0.15);
+  }
+
+  .dark .input:focus {
+    box-shadow: 0 0 0 3px rgb(var(--primary) / 0.25);
+  }
+
+  .input::placeholder {
+    color: rgb(var(--muted-foreground));
+    opacity: 0.7;
+  }
+
+  .label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgb(var(--foreground));
+  }
+}}
