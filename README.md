@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Liora Benchmarking Dashboard
 
-## Getting Started
+A comprehensive interactive dashboard for exploring single-cell analysis models, datasets, and benchmarking results from the Liora project.
 
-First, run the development server:
+## 🎯 What You Can Do Here
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 📊 **Explore Datasets**
+Browse and analyze **80+ single-cell RNA-seq and ATAC-seq datasets** from NCBI GEO with detailed metadata, preprocessing information, and statistics.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 🧬 **Discover Models**
+Learn about **21 state-of-the-art models** organized by category:
+- **Predictive Models** (8): scVI, scGNN, SCALEX, CellBLAST, scGCC, CLEAR, scDAC, scDeepCluster
+- **Generative Models** (2): scDiffusion, siVAE
+- **scATAC-Specific** (2): PeakVI, scTour
+- **Geometric Models** (3): GMVAE variants (PGM, Poincaré, Hyperbolic-Wrapped)
+- **Disentanglement Models** (4): β-VAE, InfoVAE, TCVAE, DIPVAE
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Each model includes:
+- **Main Idea**: Core concept and approach
+- **Architecture**: Technical details and components
+- **Mathematical Formulation**: Key equations and loss functions
+- **Data Flow**: How data moves through the model
+- **Publications**: Links to original papers
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 📈 **View Benchmarking Results**
+Analyze how models perform across datasets using multiple metrics:
+- **Clustering Metrics**: NMI, ARI, ASW, Calinski-Harabasz Index, Davies-Bouldin Index
+- **Dimensionality Reduction**: Q_local, Q_global, trustworthiness
+- **Intrinsic Latent Space**: Manifold dimensionality, intrinsic dimension
+- **Runtime & Efficiency**: Training time, memory usage
 
-## Learn More
+### 🔍 **Understand Metrics**
+Interactive reference library explaining all 50+ evaluation metrics with:
+- Clear definitions and interpretations
+- Range and direction (higher/lower is better)
+- Mathematical formulas
+- Use cases and limitations
 
-To learn more about Next.js, take a look at the following resources:
+## 🌓 **User Experience**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Dark/Light Theme Toggle**: Seamlessly switch between themes with persistent storage
+- **Responsive Design**: Works perfectly on desktop, tablet, and mobile
+- **Fast Navigation**: Quick links between related models, datasets, and metrics
+- **Advanced Filtering**: Search and filter by model category, modality, complexity, and more
+- **Consistent Styling**: Professional design inspired by modern data platforms
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 **Live Demo**
 
-## Deploy on Vercel
+Access the dashboard at: **https://PeterPonyu.github.io/liora-ui**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📚 **Key Features**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+✨ **Unified Model Catalog** - All Liora unified models in one place  
+✨ **Cross-Model Comparison** - Compare performance across datasets  
+✨ **Interactive Visualizations** - Heatmaps, charts, and tables  
+✨ **Educational Content** - Learn model architectures and methods  
+✨ **Fast & Responsive** - Optimized for modern browsers  
+
+## 🛠 **Technology Stack**
+
+- **Frontend Framework**: Next.js 15+ with React 19
+- **Styling**: Tailwind CSS v4 with custom CSS variables
+- **Visualizations**: Recharts for interactive charts
+- **Icons**: Lucide React
+- **TypeScript**: Full type safety
+- **Deployment**: GitHub Pages with GitHub Actions
+
+## 🔗 **Related Projects**
+
+- **Liora**: Main benchmarking framework - https://github.com/PeterPonyu/Liora
+- **UI**: Web pages - https://github.com/PeterPonyu/liora-ui
+
+## 📖 **Learn More**
+
+For detailed information about Liora models and benchmarking methodology, visit the main Liora repository.
+
+---
+
+**Created with ❤️ for the single-cell analysis community**

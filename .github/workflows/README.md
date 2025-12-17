@@ -1,29 +1,39 @@
-# GitHub Actions Workflows
+# Deployment Pipeline
 
-## Deploy to GitHub Pages (`deploy.yml`)
+## Automated GitHub Pages Deployment
 
-Automatically builds and deploys the Liora UI to GitHub Pages.
+This project uses GitHub Actions to automatically build and deploy to GitHub Pages on every push to `main` or `master` branch.
 
-### Trigger
-- **Push to** `main` or `master` branch
-- **Pull requests** to `main` or `master` (preview builds)
+### How It Works
 
-### Steps
-1. Checkout code
-2. Setup Node.js 18
-3. Install dependencies with `--legacy-peer-deps`
-4. Build Next.js project
-5. Upload build artifact to GitHub Pages
-6. Deploy to GitHub Pages
+**Every push triggers:**
+1. ✅ Code checkout
+2. 📦 Node.js 20.x environment setup
+3. 📥 Dependency installation
+4. 🔨 Next.js production build
+5. 📤 Deployment to GitHub Pages
+
+### Live Site
+
+Your site is automatically deployed and available at:  
+**https://PeterPonyu.github.io/liora-ui**
+
+### Monitor Deployments
+
+Check build status and logs in your repository's **Actions** tab.
 
 ### Configuration
-- **Node Version:** 18.x
-- **Build Command:** `npm run build`
-- **Deploy:** `.next/standalone` → GitHub Pages
 
-### Monitoring
-View deployment status in the **Actions** tab of your GitHub repository.
+- **Trigger**: Push or pull request to `main`/`master`
+- **Node Version**: 20.x (required for Next.js)
+- **Build Command**: `npm run build`
+- **Deploy Target**: `.next/standalone` → GitHub Pages
+- **Cache**: npm dependencies cached for faster builds
 
-### Deployment URL
-After successful deployment, your site will be available at:
-`https://YOUR_USERNAME.github.io/Liora`
+### Workflow File
+
+Configuration: `.github/workflows/deploy.yml`s
+
+---
+
+Deployments typically complete in 1-3 minutes. ⚡
