@@ -1,0 +1,371 @@
+/* components/MetricDetailView.module.css - SPACE-OPTIMIZED */
+
+/* ==================== BACK LINK ==================== */
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
+  color: rgb(var(--text-secondary));
+  text-decoration: none;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
+  transition: color 0.2s;
+}
+
+.backLink:hover {
+  color: rgb(var(--text-primary));
+}
+
+/* ==================== HEADER ==================== */
+.header {
+  padding-bottom: 1.25rem;         /* ✅ Reduced from 1.5rem */
+  border-bottom: 1px solid rgb(var(--border-primary));
+}
+
+.title {
+  font-size: 2rem;                 /* ✅ Reduced from 2.5rem */
+  font-weight: 800;
+  color: rgb(var(--text-primary));
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 1.125rem;             /* ✅ Reduced from 1.25rem */
+  font-weight: 500;
+  color: rgb(var(--text-secondary));
+  line-height: 1.4;
+}
+
+.categoryBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
+  padding: 0.3125rem 0.75rem;      /* ✅ Reduced from 0.375rem 0.875rem */
+  border-radius: 9999px;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
+  font-weight: 600;
+  color: white;
+}
+
+/* ==================== CATEGORY COLORS ==================== */
+.categoryBadge.clustering {
+  background-color: #3b82f6;
+}
+
+.categoryBadge.embedding {
+  background-color: #8b5cf6;
+}
+
+.categoryBadge.intrinsic {
+  background-color: #14b8a6;
+}
+
+.categoryBadge.runtime {
+  background-color: #f59e0b;
+}
+
+/* ==================== OVERVIEW GRID ==================== */
+.overviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));  /* ✅ Reduced from 200px */
+  gap: 1.25rem;                    /* ✅ Reduced from 1.5rem */
+}
+
+.infoBox {
+  padding: 1rem;                   /* ✅ Reduced from 1.25rem */
+  border-left: 4px solid;
+  border-radius: 0.5rem;
+  background-color: rgb(var(--card-bg));
+  transition: all 0.2s;
+}
+
+.infoBox:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Category-specific borders */
+.infoBox.clustering {
+  border-left-color: #3b82f6;
+}
+
+.infoBox.embedding {
+  border-left-color: #8b5cf6;
+}
+
+.infoBox.intrinsic {
+  border-left-color: #14b8a6;
+}
+
+.infoBox.runtime {
+  border-left-color: #f59e0b;
+}
+
+.infoLabel {
+  font-size: 0.6875rem;            /* ✅ Reduced from 0.75rem */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgb(var(--text-secondary));
+  margin-bottom: 0.375rem;         /* ✅ Reduced from 0.5rem */
+}
+
+.infoValue {
+  font-size: 1.0625rem;            /* ✅ Reduced from 1.125rem */
+  font-weight: 700;
+  color: rgb(var(--text-primary));
+  margin-bottom: 0.1875rem;        /* ✅ Reduced from 0.25rem */
+}
+
+.infoHint {
+  font-size: 0.6875rem;            /* ✅ Reduced from 0.75rem */
+  color: rgb(var(--text-secondary));
+  margin-top: 0.1875rem;           /* ✅ Reduced from 0.25rem */
+  line-height: 1.4;
+}
+
+.directionValue {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;                   /* ✅ Reduced from 0.75rem */
+  font-size: 0.9375rem;            /* ✅ Reduced from 1rem */
+  font-weight: 700;
+}
+
+/* Direction colors */
+.directionValue.clustering {
+  color: #3b82f6;
+}
+
+.directionValue.embedding {
+  color: #8b5cf6;
+}
+
+.directionValue.intrinsic {
+  color: #14b8a6;
+}
+
+.directionValue.runtime {
+  color: #f59e0b;
+}
+
+/* ==================== SECTIONS ==================== */
+.section {
+  padding-top: 1.25rem;            /* ✅ Reduced from 1.5rem */
+  border-top: 1px solid rgb(var(--border-primary));
+}
+
+.sectionTitle {
+  font-size: 1.375rem;             /* ✅ Reduced from 1.5rem */
+  font-weight: 700;
+  color: rgb(var(--text-primary));
+  margin-bottom: 0.625rem;         /* ✅ Reduced from 0.75rem */
+}
+
+.sectionSubtitle {
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
+  color: rgb(var(--text-secondary));
+  margin-bottom: 0.875rem;         /* ✅ Reduced from 1rem */
+}
+
+.description {
+  font-size: 0.9375rem;            /* ✅ Reduced from 1rem */
+  line-height: 1.6;                /* ✅ Reduced from 1.75 */
+  color: rgb(var(--text-secondary));
+}
+
+/* ==================== FORMULA ==================== */
+.formulaBox {
+  padding: 1.25rem;                /* ✅ Reduced from 1.5rem */
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+
+.formula {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9375rem;            /* ✅ Reduced from 1rem */
+  color: rgb(var(--text-primary));
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Category backgrounds for formula */
+.formulaBox.clustering {
+  background-color: #dbeafe;
+}
+
+.formulaBox.embedding {
+  background-color: #ede9fe;
+}
+
+.formulaBox.intrinsic {
+  background-color: #ccfbf1;
+}
+
+.formulaBox.runtime {
+  background-color: #fef3c7;
+}
+
+/* ==================== INTERPRETATION ==================== */
+.interpretationBox {
+  padding: 1.25rem;                /* ✅ Reduced from 1.5rem */
+  border-left: 4px solid;
+  border-radius: 0.5rem;
+}
+
+.interpretation {
+  font-size: 0.9375rem;            /* ✅ Reduced from 1rem */
+  line-height: 1.6;                /* ✅ Reduced from 1.75 */
+  color: rgb(var(--text-primary));
+}
+
+/* Category backgrounds for interpretation */
+.interpretationBox.clustering {
+  background-color: #dbeafe;
+  border-left-color: #3b82f6;
+}
+
+.interpretationBox.embedding {
+  background-color: #ede9fe;
+  border-left-color: #8b5cf6;
+}
+
+.interpretationBox.intrinsic {
+  background-color: #ccfbf1;
+  border-left-color: #14b8a6;
+}
+
+.interpretationBox.runtime {
+  background-color: #fef3c7;
+  border-left-color: #f59e0b;
+}
+
+/* ==================== RELATED METRICS ==================== */
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));  /* ✅ Reduced from 250px */
+  gap: 0.875rem;                   /* ✅ Reduced from 1rem */
+  margin-top: 0.875rem;            /* ✅ Reduced from 1rem */
+}
+
+.relatedCard {
+  padding: 1rem;                   /* ✅ Reduced from 1.25rem */
+  border: 2px solid;
+  border-radius: 0.5rem;
+  background-color: rgb(var(--card-bg));
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.relatedCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Related card borders */
+.relatedCard.clustering {
+  border-color: #3b82f6;
+}
+
+.relatedCard.embedding {
+  border-color: #8b5cf6;
+}
+
+.relatedCard.intrinsic {
+  border-color: #14b8a6;
+}
+
+.relatedCard.runtime {
+  border-color: #f59e0b;
+}
+
+.relatedHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.375rem;         /* ✅ Reduced from 0.5rem */
+}
+
+.relatedName {
+  font-size: 1.0625rem;            /* ✅ Reduced from 1.125rem */
+  font-weight: 700;
+  color: rgb(var(--text-primary));
+}
+
+.relatedIcon {
+  font-size: 1.125rem;             /* ✅ Reduced from 1.25rem */
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Related card icon colors */
+.relatedIcon.clustering {
+  color: #3b82f6;
+}
+
+.relatedIcon.embedding {
+  color: #8b5cf6;
+}
+
+.relatedIcon.intrinsic {
+  color: #14b8a6;
+}
+
+.relatedIcon.runtime {
+  color: #f59e0b;
+}
+
+.relatedDescription {
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
+  line-height: 1.5;
+  color: rgb(var(--text-secondary));
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ==================== DARK MODE ==================== */
+@media (prefers-color-scheme: dark) {
+  .formulaBox.clustering,
+  .interpretationBox.clustering {
+    background-color: rgb(30 58 138 / 0.2);
+  }
+
+  .formulaBox.embedding,
+  .interpretationBox.embedding {
+    background-color: rgb(88 28 135 / 0.2);
+  }
+
+  .formulaBox.intrinsic,
+  .interpretationBox.intrinsic {
+    background-color: rgb(19 78 74 / 0.2);
+  }
+
+  .formulaBox.runtime,
+  .interpretationBox.runtime {
+    background-color: rgb(146 64 14 / 0.2);
+  }
+
+  .infoBox:hover,
+  .relatedCard:hover {
+    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.75rem;            /* ✅ Reduced from 2rem */
+  }
+
+  .subtitle {
+    font-size: 0.9375rem;          /* ✅ Reduced from 1rem */
+  }
+
+  .overviewGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .relatedGrid {
+    grid-template-columns: 1fr;
+  }
+}

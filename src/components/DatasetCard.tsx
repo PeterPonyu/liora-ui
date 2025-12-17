@@ -1,112 +1,50 @@
 import { Dataset } from '@/types/models';
-import { getDataTypeLabel, getSpeciesLabel, getDatasetStatsDescription } from '@/lib/utils';
+import { getSpeciesLabel, getDatasetStatsDescription } from '@/lib/utils';
 import Link from 'next/link';
+import styles from './DatasetCard.module.css';
 
 export function DatasetCard({ dataset }: { dataset: Dataset }) {
-  const { label: typeLabel, color: typeColor } = getDataTypeLabel(dataset.dataType || 'RNA');
+  const dataType = dataset.dataType || 'RNA';
+  const typeLabel = dataType === 'RNA' ? 'scRNA-seq' : dataType === 'ATAC' ? 'scATAC-seq' : dataType;
+  const typeLower = dataType.toLowerCase();
 
   return (
-    <Link href={`/datasets/${dataset.dataType?.toLowerCase()}-${dataset.id}`}>
-      <div
-        className="h-full p-6 rounded-lg border transition-all hover:shadow-lg cursor-pointer"
-        style={{
-          borderColor: 'rgb(var(--border))',
-          backgroundColor: 'rgb(var(--card))',
-          wordBreak: 'break-word',
-          overflowWrap: 'break-word',
-        }}
-      >
+    <Link href={`/datasets/${typeLower}-${dataset.id}`}>
+      <div className={styles.card}>
         {/* Header */}
-        <div className="mb-3 flex items-start justify-between gap-3">
-          <div className="flex-1 min-w-0">
-            <h3 
-              className="text-lg font-bold transition-colors line-clamp-2" 
-              style={{ 
-                color: 'rgb(var(--text-primary))',
-                wordBreak: 'break-word',
-                overflowWrap: 'break-word',
-              }}
-            >
-              {dataset.title}
-            </h3>
-            <p 
-              className="text-xs mt-1 transition-colors" 
-              style={{ 
-                color: 'rgb(var(--text-secondary))',
-                wordBreak: 'break-word',
-              }}
-            >
-              {dataset.accession}
-            </p>
+        <div className={styles.header}>
+          <div className={styles.headerContent}>
+            <h3 className={styles.title}>{dataset.title}</h3>
+            <p className={styles.accession}>{dataset.accession}</p>
           </div>
-          <span
-            className="px-3 py-1 rounded text-xs font-semibold text-white whitespace-nowrap flex-shrink-0"
-            style={{ backgroundColor: typeColor }}
-          >
+          <span className={`${styles.typeBadge} ${styles[typeLower]}`}>
             {typeLabel}
           </span>
         </div>
 
         {/* Description */}
-        <p 
-          className="text-sm mb-4 line-clamp-3 transition-colors" 
-          style={{ 
-            color: 'rgb(var(--text-secondary))',
-            wordBreak: 'break-word',
-            overflowWrap: 'break-word',
-          }}
-        >
-          {dataset.description}
-        </p>
+        <p className={styles.description}>{dataset.description}</p>
 
         {/* Platform & Source */}
-        <div
-          className="mb-4 p-3 rounded transition-colors"
-          style={{
-            backgroundColor: 'rgb(var(--secondary))',
-          }}
-        >
-          <p 
-            className="text-sm transition-colors" 
-            style={{ 
-              color: 'rgb(var(--text-secondary))',
-              wordBreak: 'break-word',
-            }}
-          >
+        <div className={styles.platformBox}>
+          <p className={styles.platformText}>
             {getDatasetStatsDescription(dataset)}
           </p>
         </div>
 
         {/* Source/Tissue */}
-        <div className="flex flex-wrap gap-1 mb-3">
-          <span
-            className="text-xs px-2 py-1 rounded-full transition-colors"
-            style={{
-              backgroundColor: 'rgba(59, 130, 246, 0.1)',
-              color: 'rgb(37, 99, 235)',
-              wordBreak: 'break-word',
-            }}
-          >
+        <div className={styles.sourceBadges}>
+          <span className={`${styles.sourceBadge} ${styles[typeLower]}`}>
             {dataset.source}
           </span>
         </div>
 
         {/* Species & Author */}
-        <div className="flex flex-col gap-2 text-xs">
-          <span
-            className="px-2 py-1 rounded transition-colors inline-block"
-            style={{
-              backgroundColor: 'rgb(var(--secondary))',
-              color: 'rgb(var(--text-secondary))',
-            }}
-          >
+        <div className={styles.footer}>
+          <span className={styles.speciesBadge}>
             {getSpeciesLabel(dataset.species)}
           </span>
-          <p
-            className="text-xs italic transition-colors truncate"
-            style={{ color: 'rgb(var(--text-secondary))' }}
-            title={dataset.author}
-          >
+          <p className={styles.author} title={dataset.author}>
             {dataset.author}
           </p>
         </div>

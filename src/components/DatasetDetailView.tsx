@@ -1,26 +1,24 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { Dataset } from '@/types/models';
 import { getDatasetById } from '@/lib/dataLoader';
 import { getDataTypeLabel, getSpeciesLabel } from '@/lib/utils';
-import { ExternalLink } from 'lucide-react';
-import Link from 'next/link';
-import styles from './page.module.css';
+import { ArrowLeft, ExternalLink } from 'lucide-react';
+import styles from './DatasetDetailView.module.css';
 
-interface DatasetDetailClientProps {
+interface DatasetDetailViewProps {
   id: string;
 }
 
-export default function DatasetDetailClient({ id }: DatasetDetailClientProps) {
+export function DatasetDetailView({ id }: DatasetDetailViewProps) {
   const [dataset, setDataset] = useState<Dataset | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadDataset() {
-      // Parse ID from format: "rna-1" or "atac-2"
       const numericId = parseInt(id.split('-')[1]);
-      
       const data = await getDatasetById(numericId);
       setDataset(data || null);
       setLoading(false);
@@ -42,7 +40,8 @@ export default function DatasetDetailClient({ id }: DatasetDetailClientProps) {
       <div className={styles.errorState}>
         <div className={styles.errorTitle}>Dataset not found</div>
         <Link href="/datasets" className={styles.errorLink}>
-          ← Back to datasets
+          <ArrowLeft className="w-4 h-4" />
+          Back to datasets
         </Link>
       </div>
     );
@@ -52,14 +51,15 @@ export default function DatasetDetailClient({ id }: DatasetDetailClientProps) {
   const gseUrl = `https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=${dataset.accession}`;
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
+    <div className="max-w-4xl mx-auto space-y-5">
       {/* Back Button */}
       <Link href="/datasets" className={styles.backLink}>
-        ← Back to datasets
+        <ArrowLeft className="w-4 h-4" />
+        Back to datasets
       </Link>
 
       {/* Header */}
-      <div className="space-y-4">
+      <div className="space-y-3">
         <div className={styles.header}>
           <h1 className={styles.title}>
             {dataset.title}
@@ -86,7 +86,6 @@ export default function DatasetDetailClient({ id }: DatasetDetailClientProps) {
 
       {/* Info Grid */}
       <div className={styles.infoGrid}>
-        {/* Species */}
         <div className={styles.infoBox}>
           <h3 className={styles.infoLabel}>Species</h3>
           <p className={`${styles.infoValue} ${styles.infoValueItalic}`}>
@@ -94,7 +93,6 @@ export default function DatasetDetailClient({ id }: DatasetDetailClientProps) {
           </p>
         </div>
 
-        {/* Platform */}
         <div className={styles.infoBox}>
           <h3 className={styles.infoLabel}>Platform</h3>
           <p className={styles.infoValue}>
@@ -102,7 +100,6 @@ export default function DatasetDetailClient({ id }: DatasetDetailClientProps) {
           </p>
         </div>
 
-        {/* Source */}
         <div className={styles.infoBox}>
           <h3 className={styles.infoLabel}>Source</h3>
           <p className={styles.infoValue}>
@@ -110,7 +107,6 @@ export default function DatasetDetailClient({ id }: DatasetDetailClientProps) {
           </p>
         </div>
 
-        {/* Author */}
         <div className={styles.infoBox}>
           <h3 className={styles.infoLabel}>Author(s)</h3>
           <p className={styles.infoValue}>

@@ -1,0 +1,500 @@
+/* ==================== LAYOUT ==================== */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgb(var(--text-tertiary));
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.backLink:hover {
+  color: rgb(var(--text-primary));
+}
+
+/* ==================== SECTIONS ==================== */
+.section {
+  background-color: rgb(var(--card));
+  border: 1px solid rgb(var(--border));
+  border-radius: 0.75rem;
+  padding: 2rem;
+  transition: all 0.2s;
+}
+
+.sectionNoBorder {
+  background-color: rgb(var(--card));
+  border-radius: 0.75rem;
+  padding: 2rem;
+}
+
+/* ==================== HEADER ==================== */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.headerContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: rgb(var(--text-primary));
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: rgb(var(--text-secondary));
+}
+
+/* Category Badge */
+.categoryBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+}
+
+.categoryBadge.predictive {
+  background-color: rgb(var(--category-predictive));
+}
+
+.categoryBadge.generative {
+  background-color: rgb(var(--category-generative));
+}
+
+.categoryBadge.trajectory {
+  background-color: rgb(var(--category-trajectory));
+}
+
+.categoryBadge.atacSpecific {
+  background-color: rgb(var(--category-atac-specific));
+}
+
+.categoryBadge.gaussianGeometric {
+  background-color: rgb(var(--category-gaussian-geometric));
+}
+
+.categoryBadge.disentanglement {
+  background-color: rgb(var(--category-disentanglement));
+}
+
+/* Modality Badges */
+.modalityBadges {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.modalityBadge {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 2px solid;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modalityBadge.rna {
+  background-color: rgb(var(--rna-bg) / 0.3);
+  border-color: rgb(var(--rna-primary));
+  color: rgb(var(--rna-text-bright));
+}
+
+.modalityBadge.atac {
+  background-color: rgb(var(--atac-bg) / 0.3);
+  border-color: rgb(var(--atac-primary));
+  color: rgb(var(--atac-text-bright));
+}
+
+/* Description */
+.description {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: rgb(var(--text-secondary));
+  margin-bottom: 1.5rem;
+}
+
+/* ==================== INFO BOX ==================== */
+.infoBox {
+  padding: 1.5rem;
+  border: 1px solid rgb(var(--border));
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.infoBoxTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgb(var(--text-secondary));
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.publicationItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgb(var(--border));
+}
+
+.publicationItem:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.publicationHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.publicationTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: rgb(var(--text-primary));
+  flex: 1;
+}
+
+.externalLink {
+  color: rgb(var(--primary));
+  transition: color 0.2s;
+}
+
+.externalLink:hover {
+  color: rgb(var(--primary-hover));
+}
+
+.publicationMeta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: rgb(var(--text-secondary));
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+/* ==================== METRICS GRID ==================== */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .metricsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.metricCard {
+  padding: 1rem;
+  border: 1px solid rgb(var(--border));
+  border-radius: 0.75rem;
+  transition: all 0.2s;
+}
+
+.metricCard:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.metricLabel {
+  font-size: 0.875rem;
+  color: rgb(var(--text-secondary));
+  margin-bottom: 0.5rem;
+}
+
+.metricValue {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stars {
+  display: flex;
+  gap: 0.25rem;
+  color: #facc15;
+  font-size: 1.25rem;
+}
+
+.metricText {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(var(--text-primary));
+}
+
+.metricValueText {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgb(var(--text-primary));
+}
+
+/* ==================== SUCCESS BADGE ==================== */
+.successBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgb(var(--icon-green));
+  border-radius: 0.5rem;
+  font-weight: 600;
+  background-color: rgb(var(--icon-green) / 0.1);
+  color: rgb(var(--icon-green));
+}
+
+/* ==================== SECTION HEADERS ==================== */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgb(var(--text-primary));
+}
+
+.iconBlue {
+  color: rgb(var(--icon-blue));
+}
+
+.iconPurple {
+  color: rgb(var(--icon-purple));
+}
+
+.iconGreen {
+  color: rgb(var(--icon-green));
+}
+
+/* ==================== CONTENT BOXES ==================== */
+.highlightBox {
+  padding: 1rem;
+  border-left: 4px solid rgb(var(--primary));
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: rgb(var(--primary) / 0.05);
+  margin-bottom: 1.5rem;
+}
+
+.highlightTitle {
+  font-weight: 600;
+  color: rgb(var(--text-primary));
+  margin-bottom: 0.5rem;
+}
+
+.highlightText {
+  color: rgb(var(--text-secondary));
+}
+
+/* Components Grid */
+.componentsGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .componentsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.componentBox {
+  padding: 1rem;
+  border: 1px solid rgb(var(--border));
+  border-radius: 0.5rem;
+  background-color: rgb(var(--card));
+  transition: all 0.2s;
+}
+
+.componentBox:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.componentTitle {
+  font-weight: 600;
+  color: rgb(var(--text-primary));
+  margin-bottom: 0.5rem;
+}
+
+.componentDescription {
+  font-size: 0.875rem;
+  color: rgb(var(--text-secondary));
+}
+
+/* Code Block */
+.codeBlock {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: rgb(var(--muted));
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+  overflow-x: auto;
+  color: rgb(var(--text-primary));
+  margin-top: 0.75rem;
+}
+
+/* Loss Functions */
+.lossItem {
+  margin-bottom: 0.75rem;
+}
+
+.lossItem:last-child {
+  margin-bottom: 0;
+}
+
+.lossName {
+  font-weight: 600;
+  color: rgb(var(--text-primary));
+  margin-bottom: 0.25rem;
+}
+
+/* Architecture Details */
+.architectureGrid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .architectureGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.architectureItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.architectureLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgb(var(--text-secondary));
+}
+
+.architectureValue {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: rgb(var(--text-primary));
+}
+
+.layerBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.layerBadge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: rgb(var(--icon-purple) / 0.1);
+  color: rgb(var(--icon-purple));
+  border: 1px solid rgb(var(--icon-purple) / 0.5);
+}
+
+/* ==================== FRAMEWORKS & TAGS ==================== */
+.gridTwo {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .gridTwo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: rgb(var(--secondary));
+  color: rgb(var(--text-secondary));
+  border: 1px solid rgb(var(--border));
+  transition: all 0.2s;
+}
+
+.tagRounded {
+  border-radius: 9999px;
+}
+
+/* ==================== DARK MODE ==================== */
+@media (prefers-color-scheme: dark) {
+  .metricCard:hover,
+  .componentBox:hover {
+    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1);
+  }
+
+  .modalityBadge.rna {
+    background-color: rgb(var(--rna-bg) / 0.2);
+  }
+
+  .modalityBadge.atac {
+    background-color: rgb(var(--atac-bg) / 0.2);
+  }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 1.875rem;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+  }
+
+  .modalityBadges {
+    flex-direction: column;
+  }
+}

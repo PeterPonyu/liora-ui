@@ -1,25 +1,26 @@
-/* app/pages.module.css - SHARED PAGE STYLES */
+/* app/pages.module.css - SHARED PAGE STYLES (MAXIMUM SPACE-OPTIMIZED) */
 
 /* ============================================
    PAGE HEADERS
    ============================================ */
 
 .pageTitle {
-  font-size: 2.25rem;
+  font-size: 1.875rem;             /* ✅ Reduced from 2rem */
   font-weight: 700;
   color: rgb(var(--text-primary));
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.375rem;         /* ✅ Reduced from 0.5rem */
 }
 
 @media (min-width: 768px) {
   .pageTitle {
-    font-size: 2.5rem;
+    font-size: 2rem;               /* ✅ Reduced from 2.25rem */
   }
 }
 
 .pageSubtitle {
-  font-size: 1.125rem;
+  font-size: 0.9375rem;            /* ✅ Reduced from 1rem */
   color: rgb(var(--text-secondary));
+  line-height: 1.4;                /* ✅ Tighter from 1.5 */
 }
 
 /* ============================================
@@ -32,18 +33,18 @@
 
 .searchIcon {
   position: absolute;
-  left: 0.75rem;
+  left: 0.625rem;                  /* ✅ Reduced from 0.75rem */
   top: 50%;
   transform: translateY(-50%);
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.125rem;                 /* ✅ Reduced from 1.25rem */
+  height: 1.125rem;
   color: rgb(var(--text-tertiary));
   pointer-events: none;
 }
 
 .searchInput {
   width: 100%;
-  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  padding: 0.5rem 0.875rem 0.5rem 2.25rem;  /* ✅ Reduced all padding */
   border-radius: 0.5rem;
   border: 1px solid rgb(var(--border));
   background-color: rgb(var(--card));
@@ -69,29 +70,29 @@
 .filterSection {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
 }
 
 .filterLabel {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   font-weight: 600;
   color: rgb(var(--text-secondary));
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
 }
 
 .filterButtons {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
 }
 
 .filterButton {
-  padding: 0.5rem 1rem;
+  padding: 0.4375rem 0.75rem;      /* ✅ Reduced from 0.5rem 0.875rem */
   border-radius: 0.5rem;
   font-weight: 500;
-  font-size: 0.9375rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   border: 2px solid transparent;
   transition: all 0.2s;
   cursor: pointer;
@@ -128,24 +129,24 @@
    ============================================ */
 
 .resultsCount {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   color: rgb(var(--text-secondary));
 }
 
 /* ============================================
-   GRID LAYOUTS
+   GRID LAYOUTS (MAXIMUM SPACE-OPTIMIZED)
    ============================================ */
 
 .grid1 {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 0.875rem;                   /* ✅ Reduced from 1rem */
 }
 
 .grid2 {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 0.875rem;                   /* ✅ Reduced from 1rem */
 }
 
 @media (min-width: 768px) {
@@ -163,7 +164,7 @@
 .grid3 {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 0.875rem;                   /* ✅ Reduced from 1rem */
 }
 
 @media (min-width: 768px) {
@@ -178,11 +179,10 @@
   }
 }
 
-/* ✅ Stat Grid - unchanged */
 .grid4 {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 0.875rem;                   /* ✅ Reduced from 1rem */
 }
 
 @media (min-width: 640px) {
@@ -203,17 +203,17 @@
 
 .emptyState {
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 1.5rem 1rem;            /* ✅ Reduced from 2rem */
 }
 
 .emptyStateText {
-  font-size: 1.125rem;
+  font-size: 0.9375rem;            /* ✅ Reduced from 1rem */
   color: rgb(var(--text-secondary));
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.375rem;         /* ✅ Reduced from 0.5rem */
 }
 
 .emptyStateHint {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   color: rgb(var(--text-tertiary));
 }
 
@@ -229,16 +229,16 @@
 }
 
 .loadingText {
-  font-size: 1.125rem;
+  font-size: 0.9375rem;            /* ✅ Reduced from 1rem */
   color: rgb(var(--text-secondary));
 }
 
 /* ============================================
-   INFO BOX (for category descriptions)
+   INFO BOX (for category descriptions) - MAXIMUM COMPACT
    ============================================ */
 
 .infoBox {
-  padding: 1.5rem;
+  padding: 0.875rem;               /* ✅ Reduced from 1rem */
   border-radius: 0.5rem;
   border: 1px solid rgb(var(--border));
   background-color: rgb(var(--muted));
@@ -246,18 +246,228 @@
 
 .infoBoxTitle {
   font-weight: 600;
+  font-size: 0.875rem;             /* ✅ Reduced from 0.9375rem */
   color: rgb(var(--text-primary));
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.375rem;         /* ✅ Reduced from 0.5rem */
 }
 
 .infoBoxDescription {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
   color: rgb(var(--text-secondary));
 }
 
 .infoBoxCount {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: rgb(var(--text-primary));
-  margin-top: 0.75rem;
+  margin-top: 0.375rem;            /* ✅ Reduced from 0.5rem */
+}
+
+/* ============================================
+   METRIC CARD STYLES (for pages.module.css usage)
+   ============================================ */
+
+.card {
+  display: block;
+  padding: 1.125rem;               /* ✅ Reduced from 1.25rem */
+  border-radius: 0.5rem;
+  border: 2px solid;
+  background-color: rgb(var(--card));
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Category-specific borders and backgrounds */
+.card.clustering {
+  border-color: rgb(var(--metric-clustering-border));
+  background-color: rgb(var(--metric-clustering-bg) / 0.3);
+}
+
+.card.embedding {
+  border-color: rgb(var(--metric-embedding-border));
+  background-color: rgb(var(--metric-embedding-bg) / 0.3);
+}
+
+.card.intrinsic {
+  border-color: rgb(var(--metric-intrinsic-border));
+  background-color: rgb(var(--metric-intrinsic-bg) / 0.3);
+}
+
+.card.runtime {
+  border-color: rgb(var(--metric-runtime-border));
+  background-color: rgb(var(--metric-runtime-bg) / 0.3);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;           /* ✅ Reduced from 0.625rem */
+}
+
+.title {
+  font-size: 1.0625rem;            /* ✅ Reduced from 1.125rem */
+  font-weight: 700;
+  color: rgb(var(--text-primary));
+  transition: color 0.2s;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  margin-top: 0.1875rem;           /* ✅ Reduced from 0.25rem */
+  color: rgb(var(--text-secondary));
+  transition: color 0.2s;
+}
+
+.direction {
+  display: flex;
+  align-items: center;
+  gap: 0.1875rem;                  /* ✅ Reduced from 0.25rem */
+  font-size: 1.0625rem;            /* ✅ Reduced from 1.125rem */
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.direction.clustering {
+  color: rgb(var(--metric-clustering));
+}
+
+.direction.embedding {
+  color: rgb(var(--metric-embedding));
+}
+
+.direction.intrinsic {
+  color: rgb(var(--metric-intrinsic));
+}
+
+.direction.runtime {
+  color: rgb(var(--metric-runtime));
+}
+
+/* Description */
+.description {
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
+  line-height: 1.5;
+  margin-bottom: 0.625rem;         /* ✅ Reduced from 0.75rem */
+  color: rgb(var(--text-secondary));
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.2s;
+}
+
+/* Range box */
+.rangeBox {
+  margin-bottom: 0.625rem;         /* ✅ Reduced from 0.75rem */
+  padding: 0.5rem;                 /* ✅ Reduced from 0.625rem */
+  border-radius: 0.375rem;
+  background-color: rgba(var(--text-primary), 0.05);
+  transition: background-color 0.2s;
+}
+
+.rangeContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
+  font-size: 0.6875rem;            /* ✅ Reduced from 0.75rem */
+}
+
+.rangeText {
+  color: rgb(var(--text-secondary));
+  transition: color 0.2s;
+}
+
+.rangeBetter {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.rangeBetter.clustering {
+  color: rgb(var(--metric-clustering));
+}
+
+.rangeBetter.embedding {
+  color: rgb(var(--metric-embedding));
+}
+
+.rangeBetter.intrinsic {
+  color: rgb(var(--metric-intrinsic));
+}
+
+.rangeBetter.runtime {
+  color: rgb(var(--metric-runtime));
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
+}
+
+.badge {
+  padding: 0.1875rem 0.5rem;       /* ✅ Reduced from 0.25rem 0.625rem */
+  border-radius: 0.375rem;
+  font-size: 0.6875rem;            /* ✅ Reduced from 0.75rem */
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+}
+
+.badge.clustering {
+  background-color: rgb(var(--metric-clustering));
+}
+
+.badge.embedding {
+  background-color: rgb(var(--metric-embedding));
+}
+
+.badge.intrinsic {
+  background-color: rgb(var(--metric-intrinsic));
+}
+
+.badge.runtime {
+  background-color: rgb(var(--metric-runtime));
+}
+
+.chevron {
+  width: 0.875rem;                 /* ✅ Reduced from 1rem */
+  height: 0.875rem;
+  color: rgb(var(--text-secondary));
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .card:hover {
+    box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1);
+  }
+
+  .card.clustering {
+    background-color: rgb(var(--metric-clustering-bg) / 0.2);
+  }
+
+  .card.embedding {
+    background-color: rgb(var(--metric-embedding-bg) / 0.2);
+  }
+
+  .card.intrinsic {
+    background-color: rgb(var(--metric-intrinsic-bg) / 0.2);
+  }
+
+  .card.runtime {
+    background-color: rgb(var(--metric-runtime-bg) / 0.2);
+  }
 }

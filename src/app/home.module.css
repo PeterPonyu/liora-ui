@@ -1,43 +1,43 @@
-/* app/home.module.css - HOME PAGE SPECIFIC STYLES */
+/* app/home.module.css - HOME PAGE SPECIFIC STYLES (SPACE-OPTIMIZED) */
 
 /* ============================================
    HERO SECTION
    ============================================ */
 
 .hero {
-  padding: 4rem 0;
+  padding: 1.5rem 0;               /* ✅ Reduced from 2rem (32px → 24px) */
 }
 
 @media (min-width: 768px) {
   .hero {
-    padding: 6rem 0;
+    padding: 2.25rem 0;            /* ✅ Reduced from 3rem (48px → 36px) */
   }
 }
 
 .heroBadge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
+  padding: 0.4375rem 0.875rem;    /* ✅ Reduced from 0.5rem 1rem */
   border-radius: 9999px;
   border: 1px solid rgb(var(--border));
   background-color: rgb(var(--primary) / 0.05);
 }
 
 .heroBadgeIcon {
-  width: 1rem;
-  height: 1rem;
+  width: 0.875rem;                 /* ✅ Reduced from 1rem */
+  height: 0.875rem;
   color: rgb(var(--primary));
 }
 
 .heroBadgeText {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   font-weight: 600;
   color: rgb(var(--primary));
 }
 
 .heroTitle {
-  font-size: 3rem;
+  font-size: 2.5rem;               /* ✅ Reduced from 3rem */
   font-weight: 700;
   line-height: 1.1;
   color: rgb(var(--text-primary));
@@ -46,25 +46,25 @@
 
 @media (min-width: 768px) {
   .heroTitle {
-    font-size: 3.75rem;
+    font-size: 3.25rem;            /* ✅ Reduced from 3.75rem */
   }
 }
 
 @media (min-width: 1024px) {
   .heroTitle {
-    font-size: 4.5rem;
+    font-size: 4rem;               /* ✅ Reduced from 4.5rem */
   }
 }
 
 .heroSubtitle {
-  font-size: 1.25rem;
-  line-height: 1.75;
+  font-size: 1.125rem;             /* ✅ Reduced from 1.25rem */
+  line-height: 1.6;                /* ✅ Reduced from 1.75 */
   color: rgb(var(--text-secondary));
 }
 
 @media (min-width: 768px) {
   .heroSubtitle {
-    font-size: 1.5rem;
+    font-size: 1.375rem;           /* ✅ Reduced from 1.5rem */
   }
 }
 
@@ -73,53 +73,25 @@
   color: rgb(var(--primary));
 }
 
-.ctaButtons {
+/* ============================================
+   QUICK NAVIGATION CARD
+   ============================================ */
+
+.quickNavCard {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding-top: 1rem;
-}
-
-.ctaPrimary {
-  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  background-color: rgb(var(--primary));
-  color: white;
-  transition: all 0.2s;
-}
-
-.ctaPrimary:hover {
-  gap: 0.75rem;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-}
-
-.ctaPrimary:active {
-  transform: scale(0.95);
-}
-
-.ctaSecondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
+  gap: 0.875rem;                   /* ✅ Reduced from 1rem */
+  padding: 1.125rem;               /* ✅ Reduced from 1.25rem */
+  border-radius: 0.75rem;
   border: 2px solid rgb(var(--border));
-  color: rgb(var(--text-primary));
-  background-color: rgb(var(--secondary));
+  background-color: rgb(var(--card));
   transition: all 0.2s;
 }
 
-.ctaSecondary:hover {
-  gap: 0.75rem;
-}
-
-.ctaSecondary:active {
-  transform: scale(0.95);
+.quickNavCard:hover {
+  border-color: rgb(var(--primary));
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  transform: translateY(-2px);
 }
 
 /* ============================================
@@ -127,7 +99,7 @@
    ============================================ */
 
 .statCard {
-  padding: 1.5rem;
+  padding: 1rem;                   /* ✅ Reduced from 1.25rem */
   border-radius: 0.5rem;
   border: 2px solid rgb(var(--border));
   background-color: rgb(var(--card));
@@ -140,27 +112,27 @@
 }
 
 .statIcon {
-  width: 2rem;
-  height: 2rem;
-  margin-bottom: 0.75rem;
+  width: 1.5rem;                   /* ✅ Reduced from 1.75rem */
+  height: 1.5rem;
+  margin-bottom: 0.375rem;         /* ✅ Reduced from 0.5rem */
   color: rgb(var(--primary));
 }
 
 .statValue {
-  font-size: 1.875rem;
+  font-size: 1.75rem;              /* ✅ Reduced from 1.875rem */
   font-weight: 700;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.1875rem;        /* ✅ Reduced from 0.25rem */
   color: rgb(var(--text-primary));
 }
 
 @media (min-width: 768px) {
   .statValue {
-    font-size: 2.25rem;
+    font-size: 2rem;               /* ✅ Reduced from 2.25rem */
   }
 }
 
 .statLabel {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   color: rgb(var(--text-secondary));
 }
 
@@ -169,7 +141,7 @@
    ============================================ */
 
 .categoryCard {
-  padding: 2rem;
+  padding: 1.25rem;                /* ✅ Reduced from 1.5rem (aligned with other cards) */
   border-radius: 0.75rem;
   border: 2px solid;
   transition: all 0.3s;
@@ -186,42 +158,43 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 0.875rem;                   /* ✅ Reduced from 1rem */
+  margin-bottom: 0.875rem;         /* ✅ Reduced from 1rem */
 }
 
 .categoryCardTitle {
-  font-size: 1.5rem;
+  font-size: 1.125rem;             /* ✅ Reduced from 1.25rem */
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.375rem;         /* ✅ Reduced from 0.5rem */
   color: rgb(var(--text-primary));
 }
 
 .categoryCardDescription {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   color: rgb(var(--text-secondary));
+  line-height: 1.4;
 }
 
 .categoryCardIcon {
-  width: 2rem;
-  height: 2rem;
+  width: 1.75rem;                  /* ✅ Reduced from 2rem */
+  height: 1.75rem;
   flex-shrink: 0;
 }
 
 .categoryCardCount {
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
+  margin-top: 0.875rem;            /* ✅ Reduced from 1rem */
 }
 
 .categoryCardCountValue {
-  font-size: 2.25rem;
+  font-size: 1.875rem;             /* ✅ Reduced from 2rem */
   font-weight: 700;
 }
 
 .categoryCardCountLabel {
-  font-size: 0.75rem;
+  font-size: 0.6875rem;            /* ✅ Reduced from 0.75rem */
   color: rgb(var(--text-secondary));
 }
 
@@ -230,7 +203,7 @@
    ============================================ */
 
 .featureCard {
-  padding: 1.5rem;
+  padding: 1.25rem;                /* ✅ Reduced from 1.5rem (aligned with other cards) */
   border-radius: 0.5rem;
   border: 1px solid rgb(var(--border));
   background-color: rgb(var(--card));
@@ -242,32 +215,33 @@
 }
 
 .featureIconWrapper {
-  width: 3rem;
-  height: 3rem;
+  width: 2.75rem;                  /* ✅ Reduced from 3rem */
+  height: 2.75rem;
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgb(var(--secondary));
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.625rem;         /* ✅ Reduced from 0.75rem */
 }
 
 .featureIcon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.375rem;                 /* ✅ Reduced from 1.5rem */
+  height: 1.375rem;
   color: rgb(var(--primary));
 }
 
 .featureTitle {
   font-weight: 700;
-  font-size: 1.125rem;
+  font-size: 1.0625rem;            /* ✅ Reduced from 1.125rem */
   color: rgb(var(--text-primary));
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.625rem;         /* ✅ Reduced from 0.75rem */
 }
 
 .featureDescription {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   color: rgb(var(--text-secondary));
+  line-height: 1.5;
 }
 
 /* ============================================
@@ -275,7 +249,7 @@
    ============================================ */
 
 .finalCta {
-  padding: 4rem 2rem;
+  padding: 2rem 1.5rem;            /* ✅ Reduced from 3rem 2rem (48px → 32px, 32px → 24px) */
   border-radius: 1rem;
   text-align: center;
   background: linear-gradient(135deg, rgb(var(--primary) / 0.1), rgb(139 92 246 / 0.1));
@@ -283,28 +257,28 @@
 }
 
 .finalCtaTitle {
-  font-size: 1.875rem;
+  font-size: 1.75rem;              /* ✅ Reduced from 1.875rem */
   font-weight: 700;
   color: rgb(var(--text-primary));
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.625rem;         /* ✅ Reduced from 0.75rem */
 }
 
 @media (min-width: 768px) {
   .finalCtaTitle {
-    font-size: 2.25rem;
+    font-size: 2rem;               /* ✅ Reduced from 2.25rem */
   }
 }
 
 .finalCtaDescription {
-  font-size: 1.125rem;
+  font-size: 1.0625rem;            /* ✅ Reduced from 1.125rem */
   color: rgb(var(--text-secondary));
 }
 
 .finalCtaButton {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 2rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
+  padding: 0.875rem 1.75rem;      /* ✅ Reduced from 1rem 2rem */
   border-radius: 0.5rem;
   font-weight: 600;
   background-color: rgb(var(--primary));
@@ -313,7 +287,7 @@
 }
 
 .finalCtaButton:hover {
-  gap: 0.75rem;
+  gap: 0.625rem;                   /* ✅ Reduced from 0.75rem */
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
 }
 
@@ -326,30 +300,29 @@
    ============================================ */
 
 .sectionTitle {
-  font-size: 2.25rem;
+  font-size: 2rem;                 /* ✅ Reduced from 2.25rem */
   font-weight: 700;
   color: rgb(var(--text-primary));
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.375rem;         /* ✅ Reduced from 0.5rem */
 }
 
 @media (min-width: 768px) {
   .sectionTitle {
-    font-size: 3rem;
+    font-size: 2.25rem;            /* ✅ Reduced from 2.5rem */
   }
 }
 
 .sectionSubtitle {
-  font-size: 1.125rem;
+  font-size: 1.0625rem;            /* ✅ Reduced from 1.125rem */
   color: rgb(var(--text-secondary));
 }
-
 
 /* ============================================
    METRIC CATEGORY CARD (for homepage)
    ============================================ */
 
 .metricCategoryCard {
-  padding: 1.5rem;
+  padding: 1.25rem;                /* ✅ Reduced from 1.5rem (aligned with other cards) */
   border-radius: 0.5rem;
   border: 2px solid rgb(var(--border));
   background-color: rgb(var(--secondary));
@@ -366,30 +339,31 @@
 
 .metricCategoryTitle {
   font-weight: 700;
-  font-size: 1.125rem;
+  font-size: 1.0625rem;            /* ✅ Reduced from 1.125rem */
   color: rgb(var(--text-primary));
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.625rem;         /* ✅ Reduced from 0.75rem */
 }
 
 .metricCategoryDescription {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   color: rgb(var(--text-secondary));
-  margin-bottom: 1rem;
+  margin-bottom: 0.875rem;         /* ✅ Reduced from 1rem */
+  line-height: 1.4;
 }
 
 .metricCategoryCount {
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
 }
 
 .metricCategoryCountValue {
-  font-size: 1.875rem;
+  font-size: 1.75rem;              /* ✅ Reduced from 1.875rem */
   font-weight: 700;
   color: rgb(var(--primary));
 }
 
 .metricCategoryCountLabel {
-  font-size: 0.75rem;
+  font-size: 0.6875rem;            /* ✅ Reduced from 0.75rem */
   color: rgb(var(--text-tertiary));
 }

@@ -3,8 +3,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ThemeToggle } from '../ThemeToggle';
-import { FontSizeManager } from '../FontSizeManager';
+import { ThemeToggle } from './ThemeToggle';
+import { FontSizeManager } from './FontSizeManager';
 import { Menu, X, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 import styles from './Header.module.css';
@@ -66,7 +66,6 @@ export function Header() {
             <NavLink href="/datasets" isActive={isActive('/datasets')}>Datasets</NavLink>
             <NavLink href="/models" isActive={isActive('/models')}>Models</NavLink>
             <NavLink href="/metrics" isActive={isActive('/metrics')}>Metrics</NavLink>
-            <NavLink href="/comparison" isActive={isActive('/comparison')}>Compare</NavLink>
           </div>
 
           {/* Right Side Controls */}
@@ -119,13 +118,6 @@ export function Header() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Metrics
-            </MobileNavLink>
-            <MobileNavLink 
-              href="/comparison" 
-              isActive={isActive('/comparison')}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Compare
             </MobileNavLink>
           </div>
         )}

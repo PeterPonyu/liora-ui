@@ -1,0 +1,193 @@
+/* components/DatasetCard/DatasetCard.module.css - SPACE-OPTIMIZED */
+
+.card {
+  height: 100%;
+  padding: 1.25rem;                /* ✅ Reduced from 1.5rem */
+  border-radius: 0.5rem;
+  border: 1px solid rgb(var(--border));
+  background-color: rgb(var(--card));
+  transition: all 0.2s;
+  cursor: pointer;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);     /* ✅ Added subtle lift on hover */
+}
+
+/* ============================================
+   HEADER - COMPACT
+   ============================================ */
+
+.header {
+  margin-bottom: 0.625rem;         /* ✅ Reduced from 0.75rem */
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.625rem;                   /* ✅ Reduced from 0.75rem */
+}
+
+.headerContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: 1.0625rem;            /* ✅ Reduced from 1.125rem */
+  font-weight: 700;
+  color: rgb(var(--text-primary));
+  transition: color 0.2s;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.3;                /* ✅ Added for better spacing */
+}
+
+.accession {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  color: rgb(var(--text-secondary));
+  transition: color 0.2s;
+  word-break: break-word;
+}
+
+/* ============================================
+   TYPE BADGE - COMPACT
+   ============================================ */
+
+.typeBadge {
+  padding: 0.25rem 0.625rem;       /* ✅ Reduced horizontal from 0.75rem */
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.typeBadge.rna {
+  background-color: rgb(var(--rna-primary));
+  color: white;
+}
+
+.typeBadge.atac {
+  background-color: rgb(var(--atac-primary));
+  color: white;
+}
+
+.typeBadge.multimodal {
+  background-color: #06b6d4;
+  color: white;
+}
+
+/* ============================================
+   DESCRIPTION - COMPACT
+   ============================================ */
+
+.description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;          /* ✅ Reduced from 1rem */
+  color: rgb(var(--text-secondary));
+  transition: color 0.2s;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ============================================
+   PLATFORM BOX - COMPACT
+   ============================================ */
+
+.platformBox {
+  margin-bottom: 0.75rem;          /* ✅ Reduced from 1rem */
+  padding: 0.625rem;               /* ✅ Reduced from 0.75rem */
+  border-radius: 0.375rem;
+  background-color: rgb(var(--secondary));
+  transition: background-color 0.2s;
+}
+
+.platformText {
+  font-size: 0.8125rem;            /* ✅ Slightly reduced from 0.875rem */
+  line-height: 1.4;                /* ✅ Tighter line height */
+  color: rgb(var(--text-secondary));
+  transition: color 0.2s;
+  word-break: break-word;
+}
+
+/* ============================================
+   SOURCE BADGES - COMPACT
+   ============================================ */
+
+.sourceBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;                   /* ✅ Increased from 0.25rem for better spacing */
+  margin-bottom: 0.625rem;         /* ✅ Reduced from 0.75rem */
+}
+
+.sourceBadge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  word-break: break-word;
+  white-space: nowrap;             /* ✅ Prevent wrapping in badges */
+}
+
+.sourceBadge.rna {
+  background-color: rgb(var(--rna-bg));
+  color: rgb(var(--rna-text));
+}
+
+.sourceBadge.atac {
+  background-color: rgb(var(--atac-bg));
+  color: rgb(var(--atac-text));
+}
+
+/* ============================================
+   FOOTER - COMPACT
+   ============================================ */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
+  font-size: 0.75rem;
+}
+
+.speciesBadge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  background-color: rgb(var(--secondary));
+  color: rgb(var(--text-secondary));
+  transition: all 0.2s;
+  align-self: flex-start;          /* ✅ Don't stretch full width */
+}
+
+.author {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: rgb(var(--text-secondary));
+  transition: color 0.2s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ============================================
+   DARK MODE ADJUSTMENTS
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  .card:hover {
+    box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1);
+  }
+}

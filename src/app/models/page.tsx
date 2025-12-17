@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { modelsData, modelCategories } from '@/data/models';
-import { ModelCard } from '@/components/ModelCard/ModelCard';
+import { ModelCard } from '@/components/ModelCard';
 import { Search, Filter } from 'lucide-react';
 import { getCategoryColor, getCategoryMetadata } from '@/lib/utils';
 import styles from '../pages.module.css';
@@ -28,7 +28,7 @@ export default function ModelsPage() {
   });
 
   return (
-    <div className="max-w-7xl mx-auto space-y-8">
+    <div className="max-w-7xl mx-auto space-y-5">  {/* ✅ Changed from space-y-8 to space-y-5 */}
       {/* Header */}
       <section>
         <h1 className={styles.pageTitle}>Model Catalog</h1>
@@ -38,7 +38,7 @@ export default function ModelsPage() {
       </section>
 
       {/* Filters */}
-      <section className="space-y-4">
+      <section className="space-y-3">  {/* ✅ Changed from space-y-4 to space-y-3 */}
         {/* Search Bar */}
         <div className={styles.searchWrapper}>
           <Search className={styles.searchIcon} />

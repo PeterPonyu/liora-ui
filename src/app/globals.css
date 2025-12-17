@@ -113,6 +113,58 @@
     --rna-text-bright: 126 34 206;
     --rna-icon-bg: 243 232 255;
     --rna-icon: 147 51 234;
+
+    /* ============================================
+       METRIC CATEGORY COLORS
+       ============================================ */
+    --metric-clustering: 59 130 246;        /* blue-500 */
+    --metric-clustering-bg: 219 234 254;    /* blue-100 */
+    --metric-clustering-border: 147 197 253; /* blue-300 */
+    
+    --metric-embedding: 139 92 246;         /* purple-500 */
+    --metric-embedding-bg: 237 233 254;     /* purple-100 */
+    --metric-embedding-border: 196 181 253; /* purple-300 */
+    
+    --metric-intrinsic: 20 184 166;         /* teal-500 */
+    --metric-intrinsic-bg: 204 251 241;     /* teal-100 */
+    --metric-intrinsic-border: 153 246 228; /* teal-300 */
+    
+    --metric-runtime: 245 158 11;           /* amber-500 */
+    --metric-runtime-bg: 254 243 199;       /* amber-100 */
+    --metric-runtime-border: 252 211 77;    /* amber-300 */
+    /* ============================================
+       MODEL CATEGORY COLORS
+       ============================================ */
+    --category-predictive: 59 130 246;        /* blue-500 */
+    --category-predictive-bg: 219 234 254;    /* blue-100 */
+    --category-predictive-border: 147 197 253; /* blue-300 */
+    
+    --category-generative: 139 92 246;        /* purple-500 */
+    --category-generative-bg: 237 233 254;    /* purple-100 */
+    --category-generative-border: 196 181 253; /* purple-300 */
+    
+    --category-trajectory: 249 115 22;        /* orange-500 */
+    --category-trajectory-bg: 254 215 170;    /* orange-100 */
+    --category-trajectory-border: 251 146 60; /* orange-300 */
+    
+    --category-atac-specific: 236 72 153;     /* pink-500 */
+    --category-atac-specific-bg: 252 231 243; /* pink-100 */
+    --category-atac-specific-border: 249 168 212; /* pink-300 */
+    
+    --category-gaussian-geometric: 20 184 166; /* teal-500 */
+    --category-gaussian-geometric-bg: 204 251 241; /* teal-100 */
+    --category-gaussian-geometric-border: 94 234 212; /* teal-300 */
+    
+    --category-disentanglement: 244 63 94;    /* rose-500 */
+    --category-disentanglement-bg: 255 228 230; /* rose-100 */
+    --category-disentanglement-border: 251 113 133; /* rose-300 */
+
+    /* Icon colors for sections */
+    --icon-blue: 37 99 235;    /* blue-600 */
+    --icon-purple: 147 51 234;  /* purple-600 */
+    --icon-green: 22 163 74;    /* green-600 */
+    --icon-orange: 234 88 12;   /* orange-600 */
+  
   }
 
   /* Dark mode */
@@ -205,6 +257,57 @@
     --rna-text-bright: 216 180 254;
     --rna-icon-bg: 88 28 135 / 0.3;
     --rna-icon: 192 132 252;
+
+    --metric-clustering: 96 165 250;        /* blue-400 */
+    --metric-clustering-bg: 30 58 138;      /* blue-900 with opacity in usage */
+    --metric-clustering-border: 37 99 235;  /* blue-600 */
+    
+    --metric-embedding: 192 132 252;        /* purple-400 */
+    --metric-embedding-bg: 88 28 135;       /* purple-900 with opacity in usage */
+    --metric-embedding-border: 126 34 206;  /* purple-700 */
+    
+    --metric-intrinsic: 45 212 191;         /* teal-400 */
+    --metric-intrinsic-bg: 19 78 74;        /* teal-900 with opacity in usage */
+    --metric-intrinsic-border: 17 94 89;    /* teal-800 */
+    
+    --metric-runtime: 251 191 36;           /* amber-400 */
+    --metric-runtime-bg: 146 64 14;         /* amber-900 with opacity in usage */
+    --metric-runtime-border: 180 83 9;      /* amber-700 */
+
+    /* ============================================
+       MODEL CATEGORY COLORS - DARK MODE
+       ============================================ */
+    --category-predictive: 96 165 250;        /* blue-400 */
+    --category-predictive-bg: 30 58 138;      /* blue-900 */
+    --category-predictive-border: 37 99 235;  /* blue-600 */
+    
+    --category-generative: 192 132 252;       /* purple-400 */
+    --category-generative-bg: 88 28 135;      /* purple-900 */
+    --category-generative-border: 126 34 206; /* purple-700 */
+    
+    --category-trajectory: 251 146 60;        /* orange-400 */
+    --category-trajectory-bg: 124 45 18;      /* orange-900 */
+    --category-trajectory-border: 194 65 12;  /* orange-700 */
+    
+    --category-atac-specific: 244 114 182;    /* pink-400 */
+    --category-atac-specific-bg: 157 23 77;   /* pink-900 */
+    --category-atac-specific-border: 190 24 93; /* pink-700 */
+    
+    --category-gaussian-geometric: 94 234 212; /* teal-400 */
+    --category-gaussian-geometric-bg: 19 78 74; /* teal-900 */
+    --category-gaussian-geometric-border: 17 94 89; /* teal-800 */
+    
+    --category-disentanglement: 251 113 133;  /* rose-400 */
+    --category-disentanglement-bg: 136 19 55; /* rose-900 */
+    --category-disentanglement-border: 190 18 60; /* rose-700 */
+
+    /* Icon colors - dark mode */
+    --icon-blue: 96 165 250;   /* blue-400 */
+    --icon-purple: 192 132 252; /* purple-400 */
+    --icon-green: 74 222 128;   /* green-400 */
+    --icon-orange: 251 146 60;  /* orange-400 */
+
+
   }
 
   html {
@@ -287,7 +390,7 @@
   small {
     font-size: var(--fs-sm);
   }
-  
+
   /* ============================================
    UTILITY CLASSES
    ============================================ */

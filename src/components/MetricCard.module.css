@@ -1,0 +1,205 @@
+/* components/MetricCard.module.css - SPACE-OPTIMIZED */
+
+.card {
+  display: block;
+  padding: 1.25rem;          /* ✅ Reduced from 1.5rem */
+  border-radius: 0.5rem;
+  border: 2px solid;
+  background-color: rgb(var(--card));
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Category-specific borders and backgrounds */
+.card.clustering {
+  border-color: rgb(var(--metric-clustering-border));
+  background-color: rgb(var(--metric-clustering-bg) / 0.3);
+}
+
+.card.embedding {
+  border-color: rgb(var(--metric-embedding-border));
+  background-color: rgb(var(--metric-embedding-bg) / 0.3);
+}
+
+.card.intrinsic {
+  border-color: rgb(var(--metric-intrinsic-border));
+  background-color: rgb(var(--metric-intrinsic-bg) / 0.3);
+}
+
+.card.runtime {
+  border-color: rgb(var(--metric-runtime-border));
+  background-color: rgb(var(--metric-runtime-bg) / 0.3);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.625rem;   /* ✅ Reduced from 0.75rem */
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: rgb(var(--text-primary));
+  transition: color 0.2s;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  color: rgb(var(--text-secondary));
+  transition: color 0.2s;
+}
+
+.direction {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  flex-shrink: 0;            /* ✅ Prevent icon shrinking */
+}
+
+.direction.clustering {
+  color: rgb(var(--metric-clustering));
+}
+
+.direction.embedding {
+  color: rgb(var(--metric-embedding));
+}
+
+.direction.intrinsic {
+  color: rgb(var(--metric-intrinsic));
+}
+
+.direction.runtime {
+  color: rgb(var(--metric-runtime));
+}
+
+/* Description */
+.description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;    /* ✅ Reduced from 1rem */
+  color: rgb(var(--text-secondary));
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.2s;
+}
+
+/* Range box */
+.rangeBox {
+  margin-bottom: 0.75rem;    /* ✅ Reduced from 1rem */
+  padding: 0.625rem;         /* ✅ Reduced from 0.75rem */
+  border-radius: 0.375rem;
+  background-color: rgba(var(--text-primary), 0.05);
+  transition: background-color 0.2s;
+}
+
+.rangeContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;       /* ✅ Better alignment */
+  gap: 0.5rem;               /* ✅ Prevent text collision */
+  font-size: 0.75rem;
+}
+
+.rangeText {
+  color: rgb(var(--text-secondary));
+  transition: color 0.2s;
+}
+
+.rangeBetter {
+  font-weight: 600;
+  white-space: nowrap;       /* ✅ Prevent wrapping */
+}
+
+.rangeBetter.clustering {
+  color: rgb(var(--metric-clustering));
+}
+
+.rangeBetter.embedding {
+  color: rgb(var(--metric-embedding));
+}
+
+.rangeBetter.intrinsic {
+  color: rgb(var(--metric-intrinsic));
+}
+
+.rangeBetter.runtime {
+  color: rgb(var(--metric-runtime));
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;               /* ✅ Spacing between badge and chevron */
+}
+
+.badge {
+  padding: 0.25rem 0.625rem; /* ✅ Slightly reduced horizontal padding */
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;       /* ✅ Prevent text wrapping */
+}
+
+.badge.clustering {
+  background-color: rgb(var(--metric-clustering));
+}
+
+.badge.embedding {
+  background-color: rgb(var(--metric-embedding));
+}
+
+.badge.intrinsic {
+  background-color: rgb(var(--metric-intrinsic));
+}
+
+.badge.runtime {
+  background-color: rgb(var(--metric-runtime));
+}
+
+.chevron {
+  width: 1rem;
+  height: 1rem;
+  color: rgb(var(--text-secondary));
+  transition: color 0.2s;
+  flex-shrink: 0;            /* ✅ Prevent icon shrinking */
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .card:hover {
+    box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1);
+  }
+
+  .card.clustering {
+    background-color: rgb(var(--metric-clustering-bg) / 0.2);
+  }
+
+  .card.embedding {
+    background-color: rgb(var(--metric-embedding-bg) / 0.2);
+  }
+
+  .card.intrinsic {
+    background-color: rgb(var(--metric-intrinsic-bg) / 0.2);
+  }
+
+  .card.runtime {
+    background-color: rgb(var(--metric-runtime-bg) / 0.2);
+  }
+}

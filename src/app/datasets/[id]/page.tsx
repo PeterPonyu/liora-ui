@@ -1,5 +1,5 @@
 import { getAllDatasetIds } from '@/lib/dataLoader';
-import DatasetDetailClient from './client';
+import { DatasetDetailView } from '@/components/DatasetDetailView';
 
 interface PageProps {
   params: Promise<{
@@ -16,5 +16,5 @@ export async function generateStaticParams() {
 
 export default async function DatasetDetailPage({ params }: PageProps) {
   const { id } = await params;
-  return <DatasetDetailClient id={id} />;
+  return <DatasetDetailView id={id} />;
 }

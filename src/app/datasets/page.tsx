@@ -39,7 +39,7 @@ export default function DatasetsPage() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-5">  {/* ✅ Changed from space-y-8 to space-y-5 */}
       {/* Header */}
       <section>
         <h1 className={styles.pageTitle}>Datasets</h1>
@@ -49,7 +49,7 @@ export default function DatasetsPage() {
       </section>
 
       {/* Filters */}
-      <section className="space-y-4">
+      <section className="space-y-3">  {/* ✅ Changed from space-y-4 to space-y-3 */}
         {/* Search Bar */}
         <div className={styles.searchWrapper}>
           <Search className={styles.searchIcon} />

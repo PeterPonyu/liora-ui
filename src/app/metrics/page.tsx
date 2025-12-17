@@ -23,7 +23,7 @@ export default function MetricsPage() {
   });
 
   return (
-    <div className="max-w-7xl mx-auto space-y-8">
+    <div className="max-w-7xl mx-auto space-y-5">  {/* ✅ Changed from space-y-6 to space-y-5 */}
       {/* Header */}
       <section>
         <h1 className={styles.pageTitle}>Evaluation Metrics</h1>
@@ -33,7 +33,7 @@ export default function MetricsPage() {
       </section>
 
       {/* Filters */}
-      <section className="space-y-4">
+      <section className="space-y-3">  {/* ✅ Already optimal */}
         {/* Search Bar */}
         <div className={styles.searchWrapper}>
           <Search className={styles.searchIcon} />
@@ -106,11 +106,11 @@ export default function MetricsPage() {
       )}
 
       {/* Metric Categories Info */}
-      <section className="mt-12 space-y-6">
-        <h2 className={styles.pageTitle} style={{ fontSize: '1.875rem' }}>
+      <section className="mt-6 space-y-3">  {/* ✅ Changed from mt-8 space-y-4 */}
+        <h2 className={styles.pageTitle} style={{ fontSize: '1.375rem' }}>  {/* ✅ Reduced from 1.5rem */}
           Metric Categories
         </h2>
-        <div className={styles.grid2}>
+        <div className={styles.grid4}>
           {metricCategories.map(cat => {
             const metadata = getMetricCategoryMetadata(cat.id);
             const color = getMetricCategoryColor(cat.id);
