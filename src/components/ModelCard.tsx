@@ -1,109 +1,149 @@
+'use client';
+
 import { Model } from '@/types/models';
-import { getCategoryColor, getCategoryBgColor, getComplexityColor, getInterpretabilityColor } from '@/lib/utils';
+import {
+  getCategoryColor,
+} from '@/lib/utils';
 import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
+import { Database, Calendar, Users } from 'lucide-react';
 
 export function ModelCard({ model }: { model: Model }) {
   const categoryColor = getCategoryColor(model.category);
-  const categoryBg = getCategoryBgColor(model.category);
+
+  const complexityStars = ['simple', 'moderate', 'complex'].indexOf(
+    model.complexity
+  ) + 1;
+  const interpretabilityStars = ['low', 'medium', 'high'].indexOf(
+    model.interpretability
+  ) + 1;
+
+  const renderStars = (count: number, total: number = 3) => {
+    return (
+      <div className="model-card-metric-stars">
+        {Array.from({ length: total }).map((_, i) => (
+          <span
+            key={i}
+            className="star"
+            title={i < count ? 'Filled' : 'Empty'}
+          >
+            {i < count ? '★' : '☆'}
+          </span>
+        ))}
+      </div>
+    );
+  };
+
+  const primaryPublication = model.publications[0];
 
   return (
     <Link href={`/models/${model.id}`}>
       <div
-        className="h-full p-6 rounded-lg border transition-all hover:shadow-lg cursor-pointer"
-        style={{
-          backgroundColor: categoryBg,
-          borderColor: getCategoryColor(model.category),
-        }}
+        className="model-card"
+        data-category={model.category}
       >
-        {/* Category Badge */}
-        <div className="mb-3 flex items-start justify-between">
-          <span
-            className="inline-block px-3 py-1 rounded text-sm font-semibold text-white"
-            style={{ backgroundColor: categoryColor }}
-          >
-            {model.category.charAt(0).toUpperCase() + model.category.slice(1)}
-          </span>
-        </div>
-
-        {/* Title */}
-        <h3 className="text-lg font-bold mb-2 transition-colors" style={{ color: 'rgb(var(--text-primary))' }}>
-          {model.displayName}
-        </h3>
-
-        {/* Description */}
-        <p className="text-sm mb-4 line-clamp-2 transition-colors" style={{ color: 'rgb(var(--text-secondary))' }}>
-          {model.description}
-        </p>
-
-        {/* Complexity & Interpretability */}
-        <div className="flex gap-4 mb-4 text-xs">
-          <div>
-            <span className="transition-colors" style={{ color: 'rgb(var(--text-secondary))' }}>Complexity:</span>
+        <div className="model-card-header">
+          <div className="model-card-title-section">
+            <div className="model-card-name">
+              <div className="model-card-shortname">{model.name}</div>
+              <div className="model-card-displayname">
+                {model.displayName}
+              </div>
+            </div>
             <div
-              className="font-semibold mt-1"
-              style={{ color: getComplexityColor(model.complexity) }}
+              className="model-card-category-badge"
+              style={{ backgroundColor: categoryColor }}
+              title={model.category}
             >
-              {'★'.repeat(['simple', 'moderate', 'complex'].indexOf(model.complexity) + 1)}
+              {model.category
+                .split('-')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ')}
             </div>
           </div>
-          <div>
-            <span className="transition-colors" style={{ color: 'rgb(var(--text-secondary))' }}>Interpretability:</span>
-            <div
-              className="font-semibold mt-1"
-              style={{ color: getInterpretabilityColor(model.interpretability) }}
-            >
-              {'★'.repeat(['low', 'medium', 'high'].indexOf(model.interpretability) + 1)}
+
+          <div className="model-card-modality-badges">
+            {model.modalitySupport.includes('rna') && (
+              <div className="model-card-modality-badge rna">
+                <Database className="w-3 h-3" />
+                RNA
+              </div>
+            )}
+            {model.modalitySupport.includes('atac') && (
+              <div className="model-card-modality-badge atac">
+                <Database className="w-3 h-3" />
+                ATAC
+              </div>
+            )}
+          </div>
+
+          {primaryPublication && (
+            <div className="model-card-publication">
+              <div className="model-card-publication-item">
+                <Users className="w-3.5 h-3.5" />
+                <span>{primaryPublication.authors || 'Authors N/A'}</span>
+              </div>
+              <div className="model-card-publication-item">
+                <Calendar className="w-3.5 h-3.5" />
+                <span>{primaryPublication.year}</span>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="model-card-body">
+          <p className="model-card-description">{model.description}</p>
+
+          <div className="model-card-metrics">
+            <div className="model-card-metric">
+              <div className="model-card-metric-label">Complexity</div>
+              <div className="model-card-metric-value">
+                {renderStars(complexityStars)}
+              </div>
+            </div>
+            <div className="model-card-metric">
+              <div className="model-card-metric-label">Interpretability</div>
+              <div className="model-card-metric-value">
+                {renderStars(interpretabilityStars)}
+              </div>
             </div>
           </div>
+
+          {model.frameworks.length > 0 && (
+            <div className="model-card-frameworks">
+              {model.frameworks.slice(0, 3).map(fw => (
+                <span key={fw} className="model-card-framework-tag">
+                  {fw}
+                </span>
+              ))}
+              {model.frameworks.length > 3 && (
+                <span className="model-card-framework-tag">
+                  +{model.frameworks.length - 3}
+                </span>
+              )}
+            </div>
+          )}
+
+          {model.tags.length > 0 && (
+            <div className="model-card-tags">
+              {model.tags.slice(0, 4).map(tag => (
+                <span key={tag} className="model-card-tag">
+                  {tag}
+                </span>
+              ))}
+              {model.tags.length > 4 && (
+                <span className="model-card-tag">
+                  +{model.tags.length - 4}
+                </span>
+              )}
+            </div>
+          )}
         </div>
 
-        {/* Frameworks */}
-        <div className="flex flex-wrap gap-1 mb-4">
-          {model.frameworks.map(fw => (
-            <span
-              key={fw}
-              className="text-xs px-2 py-1 rounded transition-colors"
-              style={{
-                backgroundColor: 'rgb(var(--secondary))',
-                color: 'rgb(var(--text-secondary))',
-              }}
-            >
-              {fw}
-            </span>
-          ))}
-        </div>
-
-        {/* Tags */}
-        <div className="flex flex-wrap gap-1">
-          {model.tags.slice(0, 3).map(tag => (
-            <span
-              key={tag}
-              className="text-xs px-2 py-1 rounded-full transition-colors"
-              style={{
-                backgroundColor: 'rgb(var(--secondary))',
-                color: 'rgb(var(--text-secondary))',
-              }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* In Liora Badge */}
         {model.usesInLiora && (
-          <div
-            className="mt-4 pt-4 border-t transition-colors"
-            style={{ borderColor: 'rgb(var(--border))' }}
-          >
-            <span
-              className="inline-block px-2 py-1 rounded text-xs font-semibold"
-              style={{
-                backgroundColor: 'rgba(34, 197, 94, 0.1)',
-                color: 'rgb(22, 163, 74)',
-              }}
-            >
-              ✓ Used in Liora
+          <div className="model-card-footer">
+            <span className="model-card-liora-badge">
+              <span>✓</span>
+              Used in Liora
             </span>
           </div>
         )}

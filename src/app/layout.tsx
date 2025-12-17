@@ -31,19 +31,34 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                const storedTheme = localStorage.getItem('theme');
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                const theme = storedTheme || (prefersDark ? 'dark' : 'light');
-                if (theme === 'dark') {
-                  document.documentElement.classList.add('dark');
-                }
+                try {
+                  const storedTheme = localStorage.getItem('theme');
+                  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+                  
+                  if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  }
+                  document.documentElement.style.colorScheme = theme;
+
+                  const storedFontSize = localStorage.getItem('fontSize');
+                  const fontSize = storedFontSize || 'medium';
+                  const multipliers = { small: 0.875, medium: 1, large: 1.125 };
+                  document.documentElement.style.fontSize = (multipliers[fontSize] * 16) + 'px';
+                } catch (e) {}
               })();
             `,
           }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white dark:bg-slate-950 text-slate-900 dark:text-white`}>
-        <div className="flex flex-col min-h-screen">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-200`}>
+        <div 
+          className="flex flex-col min-h-screen transition-colors duration-200"
+          style={{
+            backgroundColor: 'rgb(var(--background))',
+            color: 'rgb(var(--foreground))',
+          }}
+        >
           <Header />
           <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
             {children}

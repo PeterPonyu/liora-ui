@@ -1,28 +1,41 @@
 'use client';
 
-import { useState } from 'react';
-import { allDatasets } from '@/data/datasets';
+import { useState, useEffect } from 'react';
+import { Dataset } from '@/types/models';
+import { loadDatasets, searchDatasets } from '@/lib/dataLoader';
 import { DatasetCard } from '@/components/DatasetCard';
-import { Search, Filter } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 export default function DatasetsPage() {
+  const [datasets, setDatasets] = useState<Dataset[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDataType, setSelectedDataType] = useState<string | null>(null);
 
-  const filteredDatasets = allDatasets.filter(dataset => {
-    const matchesSearch =
-      dataset.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      dataset.displayName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      dataset.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      dataset.tissues.some(t => t.toLowerCase().includes(searchQuery.toLowerCase()));
+  useEffect(() => {
+    async function loadData() {
+      const data = await loadDatasets();
+      setDatasets(data);
+      setLoading(false);
+    }
+    loadData();
+  }, []);
 
+  const filteredDatasets = searchDatasets(datasets, searchQuery).filter(dataset => {
     const matchesDataType = !selectedDataType || dataset.dataType === selectedDataType;
-
-    return matchesSearch && matchesDataType;
+    return matchesDataType;
   });
 
-  const rnaCount = allDatasets.filter(d => d.dataType === 'RNA').length;
-  const atacCount = allDatasets.filter(d => d.dataType === 'ATAC').length;
+  const rnaCount = datasets.filter(d => d.dataType === 'RNA').length;
+  const atacCount = datasets.filter(d => d.dataType === 'ATAC').length;
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-lg text-slate-600 dark:text-slate-400">Loading datasets...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">
@@ -32,7 +45,7 @@ export default function DatasetsPage() {
           Datasets
         </h1>
         <p className="text-lg text-slate-600 dark:text-slate-400">
-          Browse {allDatasets.length} single-cell datasets used for benchmarking
+          Browse {datasets.length} single-cell datasets used for benchmarking
         </p>
       </section>
 
@@ -43,7 +56,7 @@ export default function DatasetsPage() {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
           <input
             type="text"
-            placeholder="Search datasets by name, tissue, or description..."
+            placeholder="Search datasets by title, accession, tissue, author, or description..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -60,7 +73,7 @@ export default function DatasetsPage() {
                 : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
             }`}
           >
-            All Types ({allDatasets.length})
+            All Types ({datasets.length})
           </button>
           <button
             onClick={() => setSelectedDataType('RNA')}
@@ -87,14 +100,14 @@ export default function DatasetsPage() {
 
       {/* Results Count */}
       <p className="text-sm text-slate-600 dark:text-slate-400">
-        Showing {filteredDatasets.length} of {allDatasets.length} datasets
+        Showing {filteredDatasets.length} of {datasets.length} datasets
       </p>
 
       {/* Datasets Grid */}
       {filteredDatasets.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredDatasets.map(dataset => (
-            <DatasetCard key={dataset.id} dataset={dataset} />
+            <DatasetCard key={`${dataset.dataType}-${dataset.id}`} dataset={dataset} />
           ))}
         </div>
       ) : (

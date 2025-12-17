@@ -23,33 +23,36 @@ export function ThemeToggle() {
     } else {
       root.classList.remove('dark');
     }
-    // Force CSS variable update
     root.style.colorScheme = newTheme;
+    localStorage.setItem('theme', newTheme);
   };
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
     applyTheme(newTheme);
   };
 
-  if (!mounted) return null;
+  if (!mounted) {
+    return (
+      <div className="w-10 h-10 rounded-lg" style={{ backgroundColor: 'rgb(var(--secondary))' }} />
+    );
+  }
 
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg transition-colors hover:bg-slate-100 active:bg-slate-200"
+      className="p-2.5 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95"
       style={{
         backgroundColor: 'rgb(var(--secondary))',
-        color: theme === 'light' ? 'rgb(var(--text-secondary))' : 'rgb(var(--text-secondary))',
       }}
-      aria-label="Toggle theme"
+      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+      title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
       {theme === 'light' ? (
-        <Moon className="w-5 h-5" style={{ color: 'rgb(var(--text-secondary))' }} />
+        <Moon className="w-5 h-5 transition-colors" style={{ color: 'rgb(var(--text-secondary))' }} />
       ) : (
-        <Sun className="w-5 h-5" style={{ color: 'rgb(var(--text-secondary))' }} />
+        <Sun className="w-5 h-5 transition-colors" style={{ color: 'rgb(var(--theme-icon-sun))' }} />
       )}
     </button>
   );

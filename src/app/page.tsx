@@ -2,16 +2,25 @@
 
 import Link from 'next/link';
 import { modelsData, getModelsByCategory } from '@/data/models';
-import { allDatasets } from '@/data/datasets';
+import { loadDatasets } from '@/lib/dataLoader';
 import { metricsData, metricCategories } from '@/data/metrics';
 import { Brain, Database, BarChart3, TrendingUp } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export default function HomePage() {
-  const unifiedModels = getModelsByCategory('unified');
-  const externalModels = getModelsByCategory('external');
+  const [datasets, setDatasets] = useState<any[]>([]);
+
+  useEffect(() => {
+    loadDatasets().then(data => setDatasets(data));
+  }, []);
+
+  // ✅ CORRECTED: Use valid category names
+  const predictiveModels = getModelsByCategory('predictive');
+  const generativeModels = getModelsByCategory('generative');
   const disentangleModels = getModelsByCategory('disentanglement');
-  const rnaDatasets = allDatasets.filter(d => d.dataType === 'RNA');
-  const atacDatasets = allDatasets.filter(d => d.dataType === 'ATAC');
+  
+  const rnaDatasets = datasets.filter(d => d.dataType === 'RNA');
+  const atacDatasets = datasets.filter(d => d.dataType === 'ATAC');
 
   return (
     <div className="space-y-16">
@@ -21,16 +30,15 @@ export default function HomePage() {
           Liora Benchmarks
         </h1>
         <p className="text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto">
-          Comprehensive visualization and comparison of single-cell analysis models including unified architectures, external tools, and disentanglement methods
+          Comprehensive visualization and comparison of single-cell analysis models
         </p>
       </section>
 
-      {/* Quick Stats */}
-      <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {/* Quick Stats - Removed Benchmarks */}
+      <section className="grid grid-cols-2 md:grid-cols-3 gap-4">
         <StatCard icon={Brain} label="Models" value={modelsData.length} href="/models" />
-        <StatCard icon={Database} label="Datasets" value={allDatasets.length} href="/datasets" />
+        <StatCard icon={Database} label="Datasets" value={datasets.length} href="/datasets" />
         <StatCard icon={BarChart3} label="Metrics" value={metricsData.length} href="/metrics" />
-        <StatCard icon={TrendingUp} label="Benchmarks" value={`${allDatasets.length * modelsData.length}`} href="/benchmarks" />
       </section>
 
       {/* Models Overview */}
@@ -38,19 +46,19 @@ export default function HomePage() {
         <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Models</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <CategoryOverview
-            title="Unified Models"
-            description="Integrated in Liora architecture"
-            count={unifiedModels.length}
+            title="Predictive Models"
+            description="Clustering, classification, imputation"
+            count={predictiveModels.length}
             color="#6366f1"
-            href="/models?category=unified"
+            href="/models?category=predictive"
             icon={Brain}
           />
           <CategoryOverview
-            title="External Models"
-            description="State-of-the-art tools"
-            count={externalModels.length}
+            title="Generative Models"
+            description="Synthesis, augmentation, sampling"
+            count={generativeModels.length}
             color="#14b8a6"
-            href="/models?category=external"
+            href="/models?category=generative"
             icon={TrendingUp}
           />
           <CategoryOverview
@@ -114,8 +122,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Sections */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-8 py-12">
+      {/* CTA Sections - Removed Benchmarks */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12">
         <CtaCard
           icon={Brain}
           title="Explore Models"
@@ -125,14 +133,8 @@ export default function HomePage() {
         <CtaCard
           icon={Database}
           title="Browse Datasets"
-          description="Discover the 80+ single-cell datasets used for benchmarking"
+          description="Discover the single-cell datasets available"
           href="/datasets"
-        />
-        <CtaCard
-          icon={TrendingUp}
-          title="Compare Performance"
-          description="Visualize and compare model performance across datasets and metrics"
-          href="/benchmarks"
         />
       </section>
     </div>

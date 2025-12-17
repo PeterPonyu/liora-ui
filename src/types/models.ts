@@ -1,4 +1,12 @@
-export type ModelCategory = 'unified' | 'external' | 'disentanglement';
+// PATCH: Update ModelCategory type and remove benchmarkDatasets
+
+export type ModelCategory = 
+  | 'predictive' 
+  | 'generative' 
+  | 'atac-specific' 
+  | 'gaussian-geometric' 
+  | 'disentanglement';
+
 export type DataType = 'RNA' | 'ATAC' | 'multimodal';
 export type DataCategory = 'cancer' | 'development' | 'disease' | 'homeostatic';
 export type Species = 'homo_sapiens' | 'mus_musculus' | 'danio_rerio' | 'other';
@@ -50,35 +58,20 @@ export interface Model {
   complexity: 'simple' | 'moderate' | 'complex';
   interpretability: 'low' | 'medium' | 'high';
   usesInLiora: boolean;
-  benchmarkDatasets: string[]; // IDs of datasets this model was benchmarked on
+  modalitySupport: ('rna' | 'atac')[];
 }
 
-// ==================== DATASET TYPES ====================
-export interface DatasetStats {
-  cellCount: number;
-  geneCount: number;
-  hvgCount?: number; // highly variable genes used in benchmarking
-  benchmarkCellCount?: number; // cells after preprocessing (usually 3000)
-  platforms?: string[];
-}
-
+// ==================== DATASET TYPES (JSON-Based) ====================
 export interface Dataset {
-  id: string;
-  name: string;
-  displayName: string;
-  accession?: string; // GSE accession
-  dataType: DataType;
-  category: DataCategory;
-  species: Species;
-  tissues: string[];
+  id: number;
+  title: string;
+  species: string; // "Homo sapiens" or "Mus musculus"
+  author: string;
+  source: string; // Tissue/cell source
+  platform: string; // Sequencing platform
+  accession: string; // GSE accession
   description: string;
-  stats: DatasetStats;
-  preprocessing: {
-    hvgSelection: boolean;
-    cellSampling: boolean;
-    normalization: string;
-  };
-  benchmarkedModels: string[]; // Model IDs
+  dataType?: 'RNA' | 'ATAC'; // Added during loading, not in JSON
 }
 
 // ==================== METRIC TYPES ====================
@@ -116,8 +109,9 @@ export interface BenchmarkSuite {
   id: string;
   name: string;
   description: string;
-  datasets: string[]; // Dataset IDs
-  models: string[]; // Model IDs
+  dataType: 'RNA' | 'ATAC'; // Benchmarks are modality-specific
+  datasets: string[]; // All datasets of this modality
+  models: string[]; // All models supporting this modality
   metrics: string[]; // Metric IDs
   results: BenchmarkResult[];
   benchmarkDate: string;
@@ -131,6 +125,7 @@ export interface FilterOptions {
   species?: Species[];
   complexity?: ('simple' | 'moderate' | 'complex')[];
   interpretability?: ('low' | 'medium' | 'high')[];
+  modalitySupport?: ('rna' | 'atac')[];
 }
 
 export interface SearchResults {

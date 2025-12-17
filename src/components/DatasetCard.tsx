@@ -3,10 +3,10 @@ import { getDataTypeLabel, getSpeciesLabel, getDatasetStatsDescription } from '@
 import Link from 'next/link';
 
 export function DatasetCard({ dataset }: { dataset: Dataset }) {
-  const { label: typeLabel, color: typeColor } = getDataTypeLabel(dataset.dataType);
+  const { label: typeLabel, color: typeColor } = getDataTypeLabel(dataset.dataType || 'RNA');
 
   return (
-    <Link href={`/datasets/${dataset.id}`}>
+    <Link href={`/datasets/${dataset.dataType?.toLowerCase()}-${dataset.id}`}>
       <div
         className="h-full p-6 rounded-lg border transition-all hover:shadow-lg cursor-pointer"
         style={{
@@ -15,17 +15,17 @@ export function DatasetCard({ dataset }: { dataset: Dataset }) {
         }}
       >
         {/* Header */}
-        <div className="mb-3 flex items-start justify-between">
-          <div>
-            <h3 className="text-lg font-bold transition-colors" style={{ color: 'rgb(var(--text-primary))' }}>
-              {dataset.displayName}
+        <div className="mb-3 flex items-start justify-between gap-3">
+          <div className="flex-1 min-w-0">
+            <h3 className="text-lg font-bold transition-colors line-clamp-2" style={{ color: 'rgb(var(--text-primary))' }}>
+              {dataset.title}
             </h3>
             <p className="text-xs mt-1 transition-colors" style={{ color: 'rgb(var(--text-secondary))' }}>
               {dataset.accession}
             </p>
           </div>
           <span
-            className="px-3 py-1 rounded text-xs font-semibold text-white"
+            className="px-3 py-1 rounded text-xs font-semibold text-white whitespace-nowrap"
             style={{ backgroundColor: typeColor }}
           >
             {typeLabel}
@@ -33,42 +33,39 @@ export function DatasetCard({ dataset }: { dataset: Dataset }) {
         </div>
 
         {/* Description */}
-        <p className="text-sm mb-4 line-clamp-2 transition-colors" style={{ color: 'rgb(var(--text-secondary))' }}>
+        <p className="text-sm mb-4 line-clamp-3 transition-colors" style={{ color: 'rgb(var(--text-secondary))' }}>
           {dataset.description}
         </p>
 
-        {/* Stats */}
+        {/* Platform & Source */}
         <div
           className="mb-4 p-3 rounded transition-colors"
           style={{
             backgroundColor: 'rgb(var(--secondary))',
           }}
         >
-          <p className="text-sm font-mono transition-colors" style={{ color: 'rgb(var(--text-secondary))' }}>
+          <p className="text-sm transition-colors" style={{ color: 'rgb(var(--text-secondary))' }}>
             {getDatasetStatsDescription(dataset)}
           </p>
         </div>
 
-        {/* Tissues */}
+        {/* Source/Tissue */}
         <div className="flex flex-wrap gap-1 mb-3">
-          {dataset.tissues.map(tissue => (
-            <span
-              key={tissue}
-              className="text-xs px-2 py-1 rounded-full transition-colors"
-              style={{
-                backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                color: 'rgb(37, 99, 235)',
-              }}
-            >
-              {tissue}
-            </span>
-          ))}
+          <span
+            className="text-xs px-2 py-1 rounded-full transition-colors"
+            style={{
+              backgroundColor: 'rgba(59, 130, 246, 0.1)',
+              color: 'rgb(37, 99, 235)',
+            }}
+          >
+            {dataset.source}
+          </span>
         </div>
 
-        {/* Species & Category */}
-        <div className="flex gap-2 text-xs">
+        {/* Species & Author */}
+        <div className="flex flex-col gap-2 text-xs">
           <span
-            className="px-2 py-1 rounded transition-colors"
+            className="px-2 py-1 rounded transition-colors inline-block"
             style={{
               backgroundColor: 'rgb(var(--secondary))',
               color: 'rgb(var(--text-secondary))',
@@ -76,30 +73,12 @@ export function DatasetCard({ dataset }: { dataset: Dataset }) {
           >
             {getSpeciesLabel(dataset.species)}
           </span>
-          <span
-            className="px-2 py-1 rounded capitalize transition-colors"
-            style={{
-              backgroundColor: 'rgb(var(--secondary))',
-              color: 'rgb(var(--text-secondary))',
-            }}
+          <p
+            className="text-xs italic transition-colors truncate"
+            style={{ color: 'rgb(var(--text-secondary))' }}
+            title={dataset.author}
           >
-            {dataset.category}
-          </span>
-        </div>
-
-        {/* Benchmarked Models Count */}
-        <div
-          className="mt-4 pt-4 border-t transition-colors"
-          style={{ borderColor: 'rgb(var(--border))' }}
-        >
-          <p className="text-xs transition-colors" style={{ color: 'rgb(var(--text-secondary))' }}>
-            <span
-              className="font-semibold transition-colors"
-              style={{ color: 'rgb(var(--text-primary))' }}
-            >
-              {dataset.benchmarkedModels.length}
-            </span>
-            {' '}models benchmarked
+            {dataset.author}
           </p>
         </div>
       </div>
