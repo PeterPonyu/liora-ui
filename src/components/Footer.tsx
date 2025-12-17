@@ -15,21 +15,41 @@ export function Footer() {
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-8">  {/* ✅ Changed to 5 columns */}
+          {/* ✅ NEW ABOUT SECTION */}
+          <div className="md:col-span-2">
             <h3
               className="text-sm font-semibold mb-4 transition-colors"
               style={{ color: 'rgb(var(--text-primary))' }}
             >
-              Liora
+              About Liora
             </h3>
             <p
-              className="text-sm transition-colors"
+              className="text-sm mb-3 transition-colors leading-relaxed"
               style={{ color: 'rgb(var(--text-secondary))' }}
             >
-              Comprehensive benchmarking for single-cell analysis models
+              Liora represents the latest evolution in single-cell variational autoencoders, building upon a lineage of innovation:
             </p>
+            <ul
+              className="text-sm space-y-1.5 transition-colors"
+              style={{ color: 'rgb(var(--text-secondary))' }}
+            >
+              <li>
+                <strong style={{ color: 'rgb(var(--text-primary))' }}>VAE</strong> — Base variational autoencoder architecture
+              </li>
+              <li>
+                <strong style={{ color: 'rgb(var(--text-primary))' }}>iVAE</strong> — Low-β regularization + information bottleneck
+              </li>
+              <li>
+                <strong style={{ color: 'rgb(var(--text-primary))' }}>LiVAE</strong> — Lorentz geometric regularization
+              </li>
+              <li>
+                <strong style={{ color: 'rgb(var(--primary))' }}>Liora</strong> — ODE regularization for temporal dynamics
+              </li>
+            </ul>
+
           </div>
+
           <div>
             <h4
               className="text-sm font-semibold mb-4 transition-colors"
@@ -39,16 +59,17 @@ export function Footer() {
             </h4>
             <ul className={`space-y-2 text-sm ${styles.footerLinks}`}>
               <li>
-                <Link href="/datasets">Datasets</Link>
+                <Link href="/models">Models</Link>
               </li>
               <li>
-                <Link href="/models">Models</Link>
+                <Link href="/datasets">Datasets</Link>
               </li>
               <li>
                 <Link href="/metrics">Metrics</Link>
               </li>
             </ul>
           </div>
+
           <div>
             <h4
               className="text-sm font-semibold mb-4 transition-colors"
@@ -68,6 +89,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
+
           <div>
             <h4
               className="text-sm font-semibold mb-4 transition-colors"
@@ -77,7 +99,9 @@ export function Footer() {
             </h4>
             <ul className={`space-y-2 text-sm ${styles.footerLinks}`}>
               <li>
-                <a href="https://github.com">GitHub</a>
+                <a href="https://github.com/PeterPonyu/liora-ui" target="_blank" rel="noopener noreferrer">
+                  GitHub
+                </a>
               </li>
               <li>
                 <a href="#">Publication</a>
@@ -105,13 +129,13 @@ export function Footer() {
 
           {/* Social Links */}
           <div className={`flex items-center gap-4 ${styles.socialLinks}`}>
-            <a href="https://github.com" aria-label="GitHub">
+            <a href="https://github.com/PeterPonyu/Liora" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <Github className="w-5 h-5" />
             </a>
-            <a href="#" aria-label="Documentation">
+            <a href="https://github.com/PeterPonyu/Liora" aria-label="Documentation">
               <FileText className="w-5 h-5" />
             </a>
-            <a href="mailto:contact@liora.org" aria-label="Email">
+            <a href="mailto:fuzeyu99@126.com" aria-label="Email">
               <Mail className="w-5 h-5" />
             </a>
           </div>

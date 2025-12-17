@@ -176,12 +176,10 @@ export function ModelDetailView({ model }: { model: Model }) {
         </div>
 
         {/* Key Components */}
-        <div>
-          <h3 className={styles.sectionHeader}>
+        <div className={styles.subsectionMargin}>  {/* ✅ Replaced inline style */}
+          <h3 className={styles.subsectionHeader}>  {/* ✅ New class instead of inline styles */}
             <Layers className="w-5 h-5" />
-            <span className={styles.sectionTitle} style={{ fontSize: '1.25rem' }}>
-              Key Components
-            </span>
+            <span className={styles.subsectionTitle}>Key Components</span>
           </h3>
           <div className={styles.componentsGrid}>
             {model.logic.keyComponents.map((component, idx) => (
@@ -195,10 +193,8 @@ export function ModelDetailView({ model }: { model: Model }) {
 
         {/* Mathematical Formulation */}
         {model.logic.mathematicalFormulation && (
-          <div>
-            <h3 className={styles.sectionTitle} style={{ fontSize: '1.25rem', marginTop: '1.5rem' }}>
-              Mathematical Formulation
-            </h3>
+          <div className={styles.subsectionMargin}>  {/* ✅ Replaced inline style */}
+            <h3 className={styles.subsectionTitle}>Mathematical Formulation</h3>
             <div className={styles.codeBlock}>
               {model.logic.mathematicalFormulation}
             </div>
@@ -207,12 +203,10 @@ export function ModelDetailView({ model }: { model: Model }) {
 
         {/* Loss Functions */}
         {model.logic.loss && model.logic.loss.length > 0 && (
-          <div style={{ marginTop: '1.5rem' }}>
-            <h3 className={styles.sectionHeader}>
+          <div className={styles.subsectionMargin}>  {/* ✅ Replaced inline style */}
+            <h3 className={styles.subsectionHeader}>  {/* ✅ New class */}
               <Zap className="w-5 h-5" />
-              <span className={styles.sectionTitle} style={{ fontSize: '1.25rem' }}>
-                Loss Functions
-              </span>
+              <span className={styles.subsectionTitle}>Loss Functions</span>
             </h3>
             <div>
               {model.logic.loss.map((loss, idx) => (
@@ -226,15 +220,13 @@ export function ModelDetailView({ model }: { model: Model }) {
         )}
 
         {/* Data Flow */}
-        <div style={{ marginTop: '1.5rem' }}>
-          <h3 className={styles.sectionHeader}>
+        <div className={styles.subsectionMargin}>  {/* ✅ Replaced inline style */}
+          <h3 className={styles.subsectionHeader}>  {/* ✅ New class */}
             <GitBranch className="w-5 h-5" />
-            <span className={styles.sectionTitle} style={{ fontSize: '1.25rem' }}>
-              Data Flow
-            </span>
+            <span className={styles.subsectionTitle}>Data Flow</span>
           </h3>
           <div className={styles.infoBox}>
-            <p className={styles.codeBlock} style={{ padding: '0.75rem' }}>
+            <p className={styles.codeBlockCondensed}>  {/* ✅ New class instead of inline padding */}
               {model.logic.dataFlow}
             </p>
           </div>
@@ -263,7 +255,7 @@ export function ModelDetailView({ model }: { model: Model }) {
             </p>
           </div>
 
-          <div className={styles.architectureItem} style={{ gridColumn: '1 / -1' }}>
+          <div className={`${styles.architectureItem} ${styles.gridColumnFull}`}>  {/* ✅ New class instead of inline style */}
             <h3 className={styles.architectureLabel}>Key Layers</h3>
             <div className={styles.layerBadges}>
               {model.architecture.keyLayers.map((layer, idx) => (

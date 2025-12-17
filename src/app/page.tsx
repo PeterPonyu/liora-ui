@@ -20,33 +20,24 @@ export default function HomePage() {
   const atacDatasets = datasets.filter(d => d.dataType === 'ATAC');
 
   return (
-    <div className="space-y-8">  {/* ✅ Reduced from space-y-12 (48px → 32px) */}
+    <div className="space-y-8">
       {/* ============================================
           HERO SECTION
           ============================================ */}
-      <section className={`${styles.hero} space-y-5`}>  {/* ✅ Reduced from space-y-6 */}
-        <div className="space-y-4 max-w-4xl">  {/* ✅ Reduced from space-y-5 */}
-          {/* Badge */}
-          <div className={styles.heroBadge}>
-            <Sparkles className={styles.heroBadgeIcon} />
-            <span className={styles.heroBadgeText}>
-              Comprehensive Benchmarking Platform
-            </span>
-          </div>
-
-          {/* Main Heading */}
-          <div className="space-y-2">  {/* ✅ Reduced from space-y-3 */}
+      <section className={`${styles.hero} space-y-5`}>
+        <div className="space-y-4 max-w-4xl">
+          <div className="space-y-2">
             <h1 className={styles.heroTitle}>
               Liora Benchmarks
             </h1>
             <p className={styles.heroSubtitle}>
-              Explore, compare, and analyze <span className={styles.heroHighlight}>{modelsData.length} single-cell models</span> across <span className={styles.heroHighlight}>{modelCategories.length} categories</span> with comprehensive benchmarking data.
+              A comprehensive benchmarking library for <span className={styles.heroHighlight}>single-cell analysis models</span>, featuring Liora—the latest evolution in variational autoencoders from <span className={styles.heroHighlight}>VAE → iVAE → LiVAE → Liora</span>, now with <span className={styles.heroHighlight}>ODE regularization</span>. Compare <span className={styles.heroHighlight}>{modelsData.length} models</span> across <span className={styles.heroHighlight}>{modelCategories.length} categories</span> using <span className={styles.heroHighlight}>{metricsData.length} standardized metrics</span>.
             </p>
           </div>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 pt-6">  {/* ✅ Reduced from pt-8 (32px → 24px) */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 pt-6">
           <StatCard icon={Brain} label="Models" value={modelsData.length} />
           <StatCard icon={Database} label="RNA Datasets" value={rnaDatasets.length} />
           <StatCard icon={Database} label="ATAC Datasets" value={atacDatasets.length} />
@@ -58,14 +49,14 @@ export default function HomePage() {
       {/* ============================================
           QUICK NAVIGATION
           ============================================ */}
-      <section className="space-y-3">  {/* ✅ Reduced from space-y-4 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">  {/* ✅ Consistent gap-3 */}
+      <section className="space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           <Link href="/models" className={styles.quickNavCard}>
             <Brain className="w-8 h-8 text-[rgb(var(--icon-blue))]" />
             <div>
               <h3 className="font-bold text-lg mb-1">Explore {modelsData.length} Models</h3>
               <p className="text-sm text-[rgb(var(--text-secondary))]">
-                Compare architectures, performance metrics, and implementation details
+                Compare architectures, performance, and implementation details
               </p>
             </div>
             <ArrowRight className="w-5 h-5 ml-auto flex-shrink-0" />
@@ -76,7 +67,18 @@ export default function HomePage() {
             <div>
               <h3 className="font-bold text-lg mb-1">Browse {datasets.length} Datasets</h3>
               <p className="text-sm text-[rgb(var(--text-secondary))]">
-                Single-cell transcriptomics and chromatin accessibility benchmarks
+                Single-cell transcriptomics and chromatin accessibility data
+              </p>
+            </div>
+            <ArrowRight className="w-5 h-5 ml-auto flex-shrink-0" />
+          </Link>
+
+          <Link href="/metrics" className={styles.quickNavCard}>
+            <BarChart3 className="w-8 h-8 text-[rgb(var(--icon-emerald))]" />
+            <div>
+              <h3 className="font-bold text-lg mb-1">Explore {metricsData.length} Metrics</h3>
+              <p className="text-sm text-[rgb(var(--text-secondary))]">
+                Standardized evaluation across clustering, embedding, and runtime
               </p>
             </div>
             <ArrowRight className="w-5 h-5 ml-auto flex-shrink-0" />
@@ -85,19 +87,19 @@ export default function HomePage() {
       </section>
 
       {/* ============================================
-          MODELS SECTION
+          MODEL CATEGORIES
           ============================================ */}
-      <section className="space-y-5">  {/* ✅ Reduced from space-y-8 (32px → 20px) */}
+      <section className="space-y-5">
         <div className="space-y-2">
           <h2 className={styles.sectionTitle}>
             Model Categories
           </h2>
           <p className={styles.sectionSubtitle}>
-            Six distinct approaches to single-cell analysis, from contrastive learning to disentangled representations
+            Compare {modelCategories.length} distinct approaches in Liora's benchmarking suite, from contrastive learning to disentangled representations
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">  {/* ✅ Consistent gap-3 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {modelCategories.map((cat) => (
             <CategoryCard
               key={cat.id}
@@ -105,6 +107,7 @@ export default function HomePage() {
               description={cat.description}
               count={cat.count}
               color={`rgb(var(--category-${cat.id}))`}
+              countLabel="models"
               icon={getCategoryIcon(cat.id)}
               href={`/models?category=${cat.id}`}
             />
@@ -113,32 +116,34 @@ export default function HomePage() {
       </section>
 
       {/* ============================================
-          DATASETS SECTION
+          BENCHMARK DATASETS
           ============================================ */}
-      <section className="space-y-5">  {/* ✅ Reduced from space-y-8 */}
+      <section className="space-y-5">
         <div className="space-y-2">
           <h2 className={styles.sectionTitle}>
             Benchmark Datasets
           </h2>
           <p className={styles.sectionSubtitle}>
-            Single-cell transcriptomics and chromatin accessibility data
+            Liora's curated collection of {datasets.length} single-cell datasets for rigorous model evaluation
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">  {/* ✅ Consistent gap-3 */}
-          <DatasetCard
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <CategoryCard
             title="scRNA-seq Datasets"
-            description="Gene expression profiling"
+            description="Gene expression profiling datasets"
             count={rnaDatasets.length}
             color="rgb(var(--rna-primary))"
+            countLabel="datasets"
             icon={Database}
             href="/datasets?type=RNA"
           />
-          <DatasetCard
+          <CategoryCard
             title="scATAC-seq Datasets"
-            description="Chromatin accessibility profiling"
+            description="Chromatin accessibility profiling datasets"
             count={atacDatasets.length}
             color="rgb(var(--atac-primary))"
+            countLabel="datasets"
             icon={Database}
             href="/datasets?type=ATAC"
           />
@@ -146,81 +151,73 @@ export default function HomePage() {
       </section>
 
       {/* ============================================
-          METRICS SECTION
+          EVALUATION METRICS
           ============================================ */}
-      <section className="space-y-5">  {/* ✅ Reduced from space-y-8 */}
+      <section className="space-y-5">
         <div className="space-y-2">
           <h2 className={styles.sectionTitle}>
             Evaluation Metrics
           </h2>
           <p className={styles.sectionSubtitle}>
-            Standardized metrics across {metricCategories.length} evaluation categories
+            {metricsData.length} standardized metrics across {metricCategories.length} evaluation categories for comprehensive model comparison
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">  {/* ✅ Consistent gap-3 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
           {metricCategories.map(cat => (
-            <Link key={cat.id} href={`/metrics?category=${cat.id}`}>
-              <div className={styles.metricCategoryCard}>
-                <h3 className={styles.metricCategoryTitle}>
-                  {cat.label}
-                </h3>
-                <p className={styles.metricCategoryDescription}>
-                  {cat.description}
-                </p>
-                <div className={styles.metricCategoryCount}>
-                  <span className={styles.metricCategoryCountValue}>
-                    {cat.count}
-                  </span>
-                  <span className={styles.metricCategoryCountLabel}>
-                    metrics
-                  </span>
-                </div>
-              </div>
-            </Link>
+            <CategoryCard
+              key={cat.id}
+              title={cat.label}
+              description={cat.description}
+              count={cat.count}
+              color={`rgb(var(--metric-${cat.id}))`}
+              countLabel="metrics"
+              icon={getMetricIcon(cat.id)}
+              href={`/metrics?category=${cat.id}`}
+            />
           ))}
         </div>
       </section>
 
       {/* ============================================
-          FEATURES SECTION
+          PLATFORM CAPABILITIES
           ============================================ */}
-      <section className="space-y-5 py-6">  {/* ✅ Reduced from space-y-8 and py-6 stays */}
+      <section className="space-y-5 py-6">
         <div className="space-y-2">
           <h2 className={styles.sectionTitle}>
             Platform Capabilities
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">  {/* ✅ Consistent gap-3 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           <FeatureCard
             icon={Brain}
             title="Architecture Analysis"
-            description={`Detailed breakdowns of ${modelsData.length} models including encoder/decoder structures, loss functions, and mathematical foundations`}
+            description="Detailed model comparisons including Liora's ODE regularization vs. LiVAE's Lorentz geometry, iVAE's information bottleneck, and classical VAE architectures"
           />
           <FeatureCard
             icon={Database}
-            title="Multi-Modal Data"
-            description={`${datasets.length} single-cell datasets spanning scRNA-seq (${rnaDatasets.length}) and scATAC-seq (${atacDatasets.length}) modalities`}
+            title="Multi-Modal Benchmarking"
+            description={`Evaluate models across ${datasets.length} curated datasets spanning scRNA-seq (${rnaDatasets.length}) and scATAC-seq (${atacDatasets.length}) modalities`}
           />
           <FeatureCard
             icon={BarChart3}
             title="Comprehensive Metrics"
-            description={`${metricsData.length} standardized metrics across clustering (6), embedding quality (8), latent space evaluation (8), and runtime (2)`}
+            description={`${metricsData.length} standardized metrics across clustering (${metricCategories.find(c => c.id === 'clustering')?.count || 6}), embedding quality (${metricCategories.find(c => c.id === 'embedding')?.count || 8}), latent space (${metricCategories.find(c => c.id === 'intrinsic')?.count || 8}), and runtime (${metricCategories.find(c => c.id === 'runtime')?.count || 2})`}
           />
         </div>
       </section>
 
       {/* ============================================
-          CTA SECTION
+          CALL TO ACTION
           ============================================ */}
       <section className={styles.finalCta}>
-        <div className="space-y-2">  {/* ✅ Reduced from space-y-3 */}
+        <div className="space-y-2">
           <h2 className={styles.finalCtaTitle}>
             Ready to explore?
           </h2>
           <p className={styles.finalCtaDescription}>
-            Dive into our comprehensive benchmarking data and discover which models work best for your analysis
+            Dive into Liora's benchmarking library and discover which models work best for your single-cell analysis
           </p>
         </div>
         <Link href="/models" className={styles.finalCtaButton}>
@@ -236,6 +233,9 @@ export default function HomePage() {
    HELPER FUNCTIONS
    ============================================ */
 
+/**
+ * Get icon component for model category
+ */
 function getCategoryIcon(categoryId: string) {
   const iconMap: Record<string, typeof Brain> = {
     'predictive': Brain,
@@ -248,10 +248,26 @@ function getCategoryIcon(categoryId: string) {
   return iconMap[categoryId] || Brain;
 }
 
+/**
+ * Get icon component for metric category
+ */
+function getMetricIcon(categoryId: string) {
+  const iconMap: Record<string, typeof Brain> = {
+    'clustering': Brain,
+    'embedding': TrendingUp,
+    'intrinsic': BarChart3,
+    'runtime': Database,
+  };
+  return iconMap[categoryId] || BarChart3;
+}
+
 /* ============================================
    COMPONENT DEFINITIONS
    ============================================ */
 
+/**
+ * Stat Card - Displays a single statistic with icon
+ */
 function StatCard({
   icon: Icon,
   label,
@@ -270,11 +286,16 @@ function StatCard({
   );
 }
 
+/**
+ * Category Card - Unified card for models, datasets, and metrics
+ * Uses CSS variables for consistent theming
+ */
 interface CategoryCardProps {
   title: string;
   description: string;
   count: number;
   color: string;
+  countLabel: string;
   icon: typeof Brain;
   href: string;
 }
@@ -284,6 +305,7 @@ function CategoryCard({
   description,
   count,
   color,
+  countLabel,
   icon: Icon,
   href,
 }: CategoryCardProps) {
@@ -312,7 +334,7 @@ function CategoryCard({
             {count}
           </span>
           <span className={styles.categoryCardCountLabel}>
-            models
+            {countLabel}
           </span>
         </div>
       </div>
@@ -320,56 +342,9 @@ function CategoryCard({
   );
 }
 
-interface DatasetCardProps {
-  title: string;
-  description: string;
-  count: number;
-  color: string;
-  icon: typeof Brain;
-  href: string;
-}
-
-function DatasetCard({
-  title,
-  description,
-  count,
-  color,
-  icon: Icon,
-  href,
-}: DatasetCardProps) {
-  return (
-    <Link href={href}>
-      <div
-        className={styles.categoryCard}
-        style={{
-          borderColor: color,
-          backgroundColor: `${color}08`,
-        }}
-      >
-        <div className={styles.categoryCardHeader}>
-          <div>
-            <h3 className={styles.categoryCardTitle}>
-              {title}
-            </h3>
-            <p className={styles.categoryCardDescription}>
-              {description}
-            </p>
-          </div>
-          <Icon className={styles.categoryCardIcon} style={{ color }} />
-        </div>
-        <div className={styles.categoryCardCount}>
-          <span className={styles.categoryCardCountValue} style={{ color }}>
-            {count}
-          </span>
-          <span className={styles.categoryCardCountLabel}>
-            datasets
-          </span>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
+/**
+ * Feature Card - Displays platform capabilities
+ */
 interface FeatureCardProps {
   icon: typeof Brain;
   title: string;

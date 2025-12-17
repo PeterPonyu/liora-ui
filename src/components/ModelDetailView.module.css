@@ -1,14 +1,16 @@
+/* app/models/[id]/ModelDetailView.module.css - COMPLETE & OPTIMIZED VERSION */
+
 /* ==================== LAYOUT ==================== */
 .container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.25rem;                    /* ✅ Reduced from 2rem (32px → 20px) */
 }
 
 .backLink {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
   color: rgb(var(--text-tertiary));
   text-decoration: none;
   transition: color 0.2s;
@@ -23,14 +25,14 @@
   background-color: rgb(var(--card));
   border: 1px solid rgb(var(--border));
   border-radius: 0.75rem;
-  padding: 2rem;
+  padding: 1.5rem;                 /* ✅ Reduced from 2rem (32px → 24px) */
   transition: all 0.2s;
 }
 
 .sectionNoBorder {
   background-color: rgb(var(--card));
   border-radius: 0.75rem;
-  padding: 2rem;
+  padding: 1.5rem;                 /* ✅ Reduced from 2rem */
 }
 
 /* ==================== HEADER ==================== */
@@ -38,32 +40,32 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  gap: 1rem;                       /* ✅ Reduced from 1.5rem (24px → 16px) */
+  margin-bottom: 1rem;             /* ✅ Reduced from 1.5rem (24px → 16px) */
 }
 
 .headerContent {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
 }
 
 .titleRow {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.625rem;                   /* ✅ Reduced from 0.75rem */
   flex-wrap: wrap;
 }
 
 .title {
-  font-size: 2.25rem;
+  font-size: 2rem;                 /* ✅ Reduced from 2.25rem */
   font-weight: 700;
   color: rgb(var(--text-primary));
 }
 
 .subtitle {
-  font-size: 1.5rem;
+  font-size: 1.375rem;             /* ✅ Reduced from 1.5rem */
   color: rgb(var(--text-secondary));
 }
 
@@ -71,10 +73,10 @@
 .categoryBadge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.25rem 0.75rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
+  padding: 0.25rem 0.625rem;       /* ✅ Reduced from 0.75rem horizontal */
   border-radius: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   font-weight: 600;
   color: white;
 }
@@ -106,17 +108,18 @@
 /* Modality Badges */
 .modalityBadges {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
 }
 
 .modalityBadge {
-  padding: 0.5rem 1rem;
+  padding: 0.375rem 0.875rem;      /* ✅ Reduced from 0.5rem 1rem */
   border-radius: 0.5rem;
   border: 2px solid;
   font-weight: 600;
+  font-size: 0.875rem;             /* ✅ Added for consistency */
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
 }
 
 .modalityBadge.rna {
@@ -133,37 +136,37 @@
 
 /* Description */
 .description {
-  font-size: 1.125rem;
-  line-height: 1.75;
+  font-size: 1.0625rem;            /* ✅ Reduced from 1.125rem */
+  line-height: 1.6;                /* ✅ Reduced from 1.75 */
   color: rgb(var(--text-secondary));
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;             /* ✅ Reduced from 1.5rem (24px → 16px) */
 }
 
 /* ==================== INFO BOX ==================== */
 .infoBox {
-  padding: 1.5rem;
+  padding: 1.25rem;                /* ✅ Reduced from 1.5rem (24px → 20px) */
   border: 1px solid rgb(var(--border));
   border-radius: 0.75rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;             /* ✅ Reduced from 1.5rem (24px → 16px) */
 }
 
 .infoBoxTitle {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: rgb(var(--text-secondary));
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
+  margin-bottom: 0.625rem;         /* ✅ Reduced from 0.75rem */
 }
 
 .publicationItem {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem 0;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
+  padding: 0.875rem 0;             /* ✅ Reduced from 1rem */
   border-bottom: 1px solid rgb(var(--border));
 }
 
@@ -176,11 +179,11 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;                    /* ✅ Reduced from 1rem */
 }
 
 .publicationTitle {
-  font-size: 1.125rem;
+  font-size: 1.0625rem;            /* ✅ Reduced from 1.125rem */
   font-weight: 600;
   color: rgb(var(--text-primary));
   flex: 1;
@@ -198,23 +201,23 @@
 .publicationMeta {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  font-size: 0.875rem;
+  gap: 0.75rem;                    /* ✅ Reduced from 1rem */
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   color: rgb(var(--text-secondary));
 }
 
 .metaItem {
   display: flex;
   align-items: center;
-  gap: 0.375rem;
+  gap: 0.3125rem;                  /* ✅ Reduced from 0.375rem */
 }
 
 /* ==================== METRICS GRID ==================== */
 .metricsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 0.75rem;                    /* ✅ Reduced from 1rem (16px → 12px) */
+  margin-bottom: 1rem;             /* ✅ Reduced from 1.5rem (24px → 16px) */
 }
 
 @media (min-width: 768px) {
@@ -224,7 +227,7 @@
 }
 
 .metricCard {
-  padding: 1rem;
+  padding: 1.25rem;                /* ✅ Increased from 1rem (16px → 20px, aligned with other cards) */
   border: 1px solid rgb(var(--border));
   border-radius: 0.75rem;
   transition: all 0.2s;
@@ -235,32 +238,32 @@
 }
 
 .metricLabel {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   color: rgb(var(--text-secondary));
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.375rem;         /* ✅ Reduced from 0.5rem */
 }
 
 .metricValue {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
 }
 
 .stars {
   display: flex;
-  gap: 0.25rem;
+  gap: 0.1875rem;                  /* ✅ Reduced from 0.25rem */
   color: #facc15;
-  font-size: 1.25rem;
+  font-size: 1.125rem;             /* ✅ Reduced from 1.25rem */
 }
 
 .metricText {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   font-weight: 500;
   color: rgb(var(--text-primary));
 }
 
 .metricValueText {
-  font-size: 1rem;
+  font-size: 0.9375rem;            /* ✅ Reduced from 1rem */
   font-weight: 600;
   color: rgb(var(--text-primary));
 }
@@ -269,11 +272,12 @@
 .successBadge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
+  padding: 0.375rem 0.875rem;      /* ✅ Reduced from 0.5rem 1rem */
   border: 1px solid rgb(var(--icon-green));
   border-radius: 0.5rem;
   font-weight: 600;
+  font-size: 0.875rem;             /* ✅ Added for consistency */
   background-color: rgb(var(--icon-green) / 0.1);
   color: rgb(var(--icon-green));
 }
@@ -282,14 +286,32 @@
 .sectionHeader {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  gap: 0.625rem;                   /* ✅ Reduced from 0.75rem */
+  margin-bottom: 1rem;             /* ✅ Reduced from 1.5rem (24px → 16px) */
 }
 
 .sectionTitle {
-  font-size: 1.5rem;
+  font-size: 1.375rem;             /* ✅ Reduced from 1.5rem */
   font-weight: 700;
   color: rgb(var(--text-primary));
+}
+
+/* ✅ NEW: Subsection Headers */
+.subsectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.subsectionTitle {
+  font-size: 1.125rem;             /* ✅ NEW: Smaller than sectionTitle */
+  font-weight: 700;
+  color: rgb(var(--text-primary));
+}
+
+.subsectionMargin {
+  margin-top: 1rem;                /* ✅ NEW: Replaces inline style marginTop: '1.5rem' */
 }
 
 .iconBlue {
@@ -306,27 +328,28 @@
 
 /* ==================== CONTENT BOXES ==================== */
 .highlightBox {
-  padding: 1rem;
+  padding: 0.875rem;               /* ✅ Reduced from 1rem */
   border-left: 4px solid rgb(var(--primary));
   border-radius: 0 0.5rem 0.5rem 0;
   background-color: rgb(var(--primary) / 0.05);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;             /* ✅ Reduced from 1.5rem (24px → 16px) */
 }
 
 .highlightTitle {
   font-weight: 600;
   color: rgb(var(--text-primary));
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.375rem;         /* ✅ Reduced from 0.5rem */
 }
 
 .highlightText {
+  font-size: 0.875rem;             /* ✅ Added for consistency */
   color: rgb(var(--text-secondary));
 }
 
 /* Components Grid */
 .componentsGrid {
   display: grid;
-  gap: 1rem;
+  gap: 0.75rem;                    /* ✅ Reduced from 1rem (16px → 12px) */
 }
 
 @media (min-width: 768px) {
@@ -336,7 +359,7 @@
 }
 
 .componentBox {
-  padding: 1rem;
+  padding: 1rem;                   /* ✅ Kept at 16px (acceptable for smaller boxes) */
   border: 1px solid rgb(var(--border));
   border-radius: 0.5rem;
   background-color: rgb(var(--card));
@@ -349,30 +372,43 @@
 
 .componentTitle {
   font-weight: 600;
+  font-size: 0.9375rem;            /* ✅ Added for consistency */
   color: rgb(var(--text-primary));
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.375rem;         /* ✅ Reduced from 0.5rem */
 }
 
 .componentDescription {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   color: rgb(var(--text-secondary));
+  line-height: 1.5;                /* ✅ Added for readability */
 }
 
 /* Code Block */
 .codeBlock {
-  padding: 1rem;
+  padding: 0.875rem;               /* ✅ Reduced from 1rem */
   border-radius: 0.5rem;
   background-color: rgb(var(--muted));
   font-family: 'Courier New', monospace;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   overflow-x: auto;
   color: rgb(var(--text-primary));
-  margin-top: 0.75rem;
+  margin-top: 0.625rem;            /* ✅ Reduced from 0.75rem */
+}
+
+/* ✅ NEW: Condensed code block for inline use */
+.codeBlockCondensed {
+  padding: 0.625rem;               /* ✅ NEW: Replaces inline style padding: '0.75rem' */
+  border-radius: 0.5rem;
+  background-color: rgb(var(--muted));
+  font-family: 'Courier New', monospace;
+  font-size: 0.8125rem;
+  overflow-x: auto;
+  color: rgb(var(--text-primary));
 }
 
 /* Loss Functions */
 .lossItem {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.625rem;         /* ✅ Reduced from 0.75rem */
 }
 
 .lossItem:last-child {
@@ -381,14 +417,15 @@
 
 .lossName {
   font-weight: 600;
+  font-size: 0.9375rem;            /* ✅ Added for consistency */
   color: rgb(var(--text-primary));
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.1875rem;        /* ✅ Reduced from 0.25rem */
 }
 
 /* Architecture Details */
 .architectureGrid {
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;                       /* ✅ Reduced from 1.5rem (24px → 16px) */
 }
 
 @media (min-width: 768px) {
@@ -400,17 +437,22 @@
 .architectureItem {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
+}
+
+/* ✅ NEW: Grid column full-width utility */
+.gridColumnFull {
+  grid-column: 1 / -1;             /* ✅ NEW: Replaces inline style */
 }
 
 .architectureLabel {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   font-weight: 600;
   color: rgb(var(--text-secondary));
 }
 
 .architectureValue {
-  font-size: 1.125rem;
+  font-size: 1.0625rem;            /* ✅ Reduced from 1.125rem */
   font-weight: 600;
   color: rgb(var(--text-primary));
 }
@@ -418,13 +460,13 @@
 .layerBadges {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
 }
 
 .layerBadge {
-  padding: 0.25rem 0.75rem;
+  padding: 0.25rem 0.625rem;       /* ✅ Reduced from 0.75rem horizontal */
   border-radius: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   font-weight: 500;
   background-color: rgb(var(--icon-purple) / 0.1);
   color: rgb(var(--icon-purple));
@@ -434,7 +476,7 @@
 /* ==================== FRAMEWORKS & TAGS ==================== */
 .gridTwo {
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;                       /* ✅ Reduced from 1.5rem (24px → 16px) */
 }
 
 @media (min-width: 768px) {
@@ -446,13 +488,13 @@
 .tagContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.375rem;                   /* ✅ Reduced from 0.5rem */
 }
 
 .tag {
-  padding: 0.5rem 0.75rem;
+  padding: 0.375rem 0.625rem;      /* ✅ Reduced from 0.5rem 0.75rem */
   border-radius: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;            /* ✅ Reduced from 0.875rem */
   font-weight: 500;
   background-color: rgb(var(--secondary));
   color: rgb(var(--text-secondary));
@@ -487,11 +529,11 @@
   }
 
   .title {
-    font-size: 1.875rem;
+    font-size: 1.75rem;            /* ✅ Reduced from 1.875rem */
   }
 
   .subtitle {
-    font-size: 1.25rem;
+    font-size: 1.125rem;           /* ✅ Reduced from 1.25rem */
   }
 
   .modalityBadges {
