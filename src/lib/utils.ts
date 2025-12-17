@@ -12,6 +12,8 @@ export function getCategoryColor(category: ModelCategory | string): string {
       return '#3b82f6'; // blue-500
     case 'generative':
       return '#8b5cf6'; // purple-500
+    case 'trajectory':
+      return '#f97316'; // orange-500 ✅ ADDED
     case 'atac-specific':
       return '#ec4899'; // pink-500
     case 'gaussian-geometric':
@@ -33,6 +35,8 @@ export function getCategoryBgColor(category: ModelCategory | string): string {
       return '#eff6ff'; // blue-50
     case 'generative':
       return '#f5f3ff'; // purple-50
+    case 'trajectory':
+      return '#fff7ed'; // orange-50 ✅ ADDED
     case 'atac-specific':
       return '#fdf2f8'; // pink-50
     case 'gaussian-geometric':
@@ -54,6 +58,8 @@ export function getCategoryBorderColor(category: ModelCategory | string): string
       return '#3b82f6'; // blue-500
     case 'generative':
       return '#8b5cf6'; // purple-500
+    case 'trajectory':
+      return '#f97316'; // orange-500 ✅ ADDED
     case 'atac-specific':
       return '#ec4899'; // pink-500
     case 'gaussian-geometric':
@@ -75,6 +81,8 @@ export function getCategoryTextColor(category: ModelCategory | string): string {
       return '#1e40af'; // blue-800
     case 'generative':
       return '#5b21b6'; // purple-800
+    case 'trajectory':
+      return '#9a3412'; // orange-800 ✅ ADDED
     case 'atac-specific':
       return '#9f1239'; // pink-800
     case 'gaussian-geometric':
@@ -96,6 +104,8 @@ export function getCategoryDarkBgColor(category: ModelCategory | string): string
       return 'rgb(30 58 138 / 0.2)'; // blue-900/20
     case 'generative':
       return 'rgb(88 28 135 / 0.2)'; // purple-900/20
+    case 'trajectory':
+      return 'rgb(124 45 18 / 0.2)'; // orange-900/20 ✅ ADDED
     case 'atac-specific':
       return 'rgb(157 23 77 / 0.2)'; // pink-900/20
     case 'gaussian-geometric':
@@ -168,6 +178,77 @@ export function getInterpretabilityColor(level: string): string {
     default:
       return '#6b7280';
   }
+}
+
+// ==================== METRIC CATEGORY UTILITIES ====================
+
+/**
+ * Get metric category color (primary)
+ */
+export function getMetricCategoryColor(category: string): string {
+  switch (category) {
+    case 'clustering':
+      return '#3b82f6'; // blue-500
+    case 'embedding':
+      return '#8b5cf6'; // purple-500
+    case 'intrinsic':
+      return '#14b8a6'; // teal-500
+    case 'runtime':
+      return '#f59e0b'; // amber-500
+    default:
+      return '#64748b'; // slate-500
+  }
+}
+
+/**
+ * Get metric category background color (light mode)
+ */
+export function getMetricCategoryBgColor(category: string): string {
+  switch (category) {
+    case 'clustering':
+      return '#dbeafe'; // blue-100
+    case 'embedding':
+      return '#ede9fe'; // purple-100
+    case 'intrinsic':
+      return '#ccfbf1'; // teal-100
+    case 'runtime':
+      return '#fef3c7'; // amber-100
+    default:
+      return '#f1f5f9'; // slate-100
+  }
+}
+
+/**
+ * Get metric category metadata
+ */
+export function getMetricCategoryMetadata(category: string) {
+  const metadata: Record<string, { label: string; description: string; icon: string }> = {
+    clustering: {
+      label: 'Clustering & Cell Type Discovery',
+      description: 'Supervised metrics comparing predicted clusters to ground truth labels',
+      icon: '🎯',
+    },
+    embedding: {
+      label: 'Embedding Quality (UMAP & t-SNE)',
+      description: 'Visualization quality via coranking analysis',
+      icon: '📊',
+    },
+    intrinsic: {
+      label: 'Intrinsic Latent Space (LSE)',
+      description: 'Unsupervised geometric, spectral, and topological properties',
+      icon: '🔬',
+    },
+    runtime: {
+      label: 'Computational Efficiency',
+      description: 'Training and inference performance',
+      icon: '⚡',
+    },
+  };
+  return metadata[category] || {
+    label: category,
+    description: '',
+    icon: '📈',
+  };
 }
 
 // ==================== METRIC UTILITIES ====================
@@ -373,7 +454,7 @@ export function filterMetrics(
 // ==================== CATEGORY METADATA ====================
 
 export function getCategoryMetadata(category: ModelCategory) {
-  const metadata = {
+  const metadata: Record<ModelCategory, { label: string; description: string; icon: string }> = {
     predictive: {
       label: 'Predictive Models',
       description: 'Clustering, classification, imputation, and annotation',
@@ -383,6 +464,11 @@ export function getCategoryMetadata(category: ModelCategory) {
       label: 'Generative Models',
       description: 'Data synthesis, augmentation, and generation',
       icon: '✨',
+    },
+    trajectory: {
+      label: 'Trajectory Inference',
+      description: 'Developmental trajectory and pseudo-time inference',
+      icon: '🚀',
     },
     'atac-specific': {
       label: 'scATAC-Specific',

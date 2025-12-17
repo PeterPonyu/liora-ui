@@ -39,15 +39,16 @@ jobs:
         env:
           NODE_ENV: production
 
+      - name: Add .nojekyll file
+        run: touch ./out/.nojekyll
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        with:
-          enablement: true
 
-      - name: Upload to Pages
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.next/standalone'
+          path: './out'  
 
       - name: Deploy to GitHub Pages
         id: deployment

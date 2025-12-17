@@ -1,0 +1,43 @@
+/* components/Footer/Footer.module.css */
+
+.footerLinks a {
+  color: rgb(var(--text-secondary));
+  transition: color 0.2s;
+  display: block;
+}
+
+.footerLinks a:hover {
+  color: rgb(var(--text-primary));
+}
+
+.footerLinks a:focus-visible {
+  color: rgb(var(--primary));
+  outline: 2px solid rgb(var(--primary));
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+.socialLinks a {
+  color: rgb(var(--text-secondary));
+  transition: all 0.2s;
+  display: flex;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.socialLinks a:hover {
+  color: rgb(var(--primary));
+  background-color: rgb(var(--secondary));
+  transform: scale(1.1);
+}
+
+.socialLinks a:focus-visible {
+  color: rgb(var(--primary));
+  outline: 2px solid rgb(var(--primary));
+  outline-offset: 2px;
+  transform: scale(1.1);
+}
+
+.socialLinks a:active {
+  transform: scale(0.95);
+}

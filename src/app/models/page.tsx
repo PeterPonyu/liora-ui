@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { modelsData, modelCategories } from '@/data/models';
-import { ModelCard } from '@/components/ModelCard';
+import { ModelCard } from '@/components/ModelCard/ModelCard';
 import { Search, Filter } from 'lucide-react';
 import { getCategoryColor, getCategoryMetadata } from '@/lib/utils';
+import styles from '../pages.module.css';
 
 export default function ModelsPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -27,13 +28,11 @@ export default function ModelsPage() {
   });
 
   return (
-    <div className="space-y-8">
+    <div className="max-w-7xl mx-auto space-y-8">
       {/* Header */}
       <section>
-        <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-2">
-          Model Catalog
-        </h1>
-        <p className="text-lg text-slate-600 dark:text-slate-400">
+        <h1 className={styles.pageTitle}>Model Catalog</h1>
+        <p className={styles.pageSubtitle}>
           Explore {modelsData.length} single-cell analysis models across 5 categories
         </p>
       </section>
@@ -41,48 +40,42 @@ export default function ModelsPage() {
       {/* Filters */}
       <section className="space-y-4">
         {/* Search Bar */}
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-400" />
+        <div className={styles.searchWrapper}>
+          <Search className={styles.searchIcon} />
           <input
             type="text"
             placeholder="Search models by name, description, or tags..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className={styles.searchInput}
           />
         </div>
 
         {/* Category Filters */}
-        <div>
-          <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2 flex items-center gap-2">
+        <div className={styles.filterSection}>
+          <h3 className={styles.filterLabel}>
             <Filter className="w-4 h-4" />
             Filter by Category
           </h3>
-          <div className="flex flex-wrap gap-2">
+          <div className={styles.filterButtons}>
             <button
               onClick={() => setSelectedCategory(null)}
-              className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                selectedCategory === null
-                  ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
-              }`}
+              className={`${styles.filterButton} ${selectedCategory === null ? styles.active : ''}`}
             >
               All Models ({modelsData.length})
             </button>
             {modelCategories.map(cat => {
               const metadata = getCategoryMetadata(cat.id as any);
+              const color = getCategoryColor(cat.id);
               return (
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                    selectedCategory === cat.id
-                      ? 'text-white'
-                      : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
-                  }`}
+                  className={`${styles.filterButton} ${selectedCategory === cat.id ? styles.active : ''}`}
+                  data-color={cat.id}
                   style={
                     selectedCategory === cat.id
-                      ? { backgroundColor: getCategoryColor(cat.id) }
+                      ? { backgroundColor: color, color: 'white' }
                       : {}
                   }
                   title={metadata.description}
@@ -95,38 +88,28 @@ export default function ModelsPage() {
         </div>
 
         {/* Modality Filters */}
-        <div>
-          <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
-            Filter by Modality
-          </h3>
-          <div className="flex flex-wrap gap-2">
+        <div className={styles.filterSection}>
+          <h3 className={styles.filterLabel}>Filter by Modality</h3>
+          <div className={styles.filterButtons}>
             <button
               onClick={() => setSelectedModality(null)}
-              className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                selectedModality === null
-                  ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
-              }`}
+              className={`${styles.filterButton} ${selectedModality === null ? styles.active : ''}`}
             >
               All Modalities
             </button>
             <button
               onClick={() => setSelectedModality('rna')}
-              className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                selectedModality === 'rna'
-                  ? 'bg-emerald-500 text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
-              }`}
+              className={`${styles.filterButton} ${selectedModality === 'rna' ? styles.active : ''}`}
+              data-color="emerald"
+              style={selectedModality === 'rna' ? { backgroundColor: '#10b981', color: 'white' } : {}}
             >
               RNA ({modelsData.filter(m => m.modalitySupport.includes('rna')).length})
             </button>
             <button
               onClick={() => setSelectedModality('atac')}
-              className={`px-4 py-2 rounded-lg font-medium transition-all ${
-                selectedModality === 'atac'
-                  ? 'bg-amber-500 text-white'
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
-              }`}
+              className={`${styles.filterButton} ${selectedModality === 'atac' ? styles.active : ''}`}
+              data-color="amber"
+              style={selectedModality === 'atac' ? { backgroundColor: '#f59e0b', color: 'white' } : {}}
             >
               ATAC ({modelsData.filter(m => m.modalitySupport.includes('atac')).length})
             </button>
@@ -135,23 +118,23 @@ export default function ModelsPage() {
       </section>
 
       {/* Results Count */}
-      <p className="text-sm text-slate-600 dark:text-slate-400">
+      <p className={styles.resultsCount}>
         Showing {filteredModels.length} of {modelsData.length} models
       </p>
 
       {/* Models Grid */}
       {filteredModels.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className={styles.grid3}>
           {filteredModels.map(model => (
             <ModelCard key={model.id} model={model} />
           ))}
         </div>
       ) : (
-        <div className="text-center py-12">
-          <p className="text-lg text-slate-600 dark:text-slate-400 mb-2">
+        <div className={styles.emptyState}>
+          <p className={styles.emptyStateText}>
             No models found matching your filters
           </p>
-          <p className="text-sm text-slate-500 dark:text-slate-500">
+          <p className={styles.emptyStateHint}>
             Try adjusting your search or filters
           </p>
         </div>

@@ -1,28 +1,23 @@
+'use client';
+
 import { Metric } from '@/types/models';
-import { getMetricDirectionIcon, getRankColor } from '@/lib/utils';
+import { 
+  getMetricDirectionIcon, 
+  getMetricCategoryColor, 
+  getMetricCategoryBgColor 
+} from '@/lib/utils';
 import { ChevronRight } from 'lucide-react';
 
 export function MetricCard({ metric }: { metric: Metric }) {
-  const categoryColors: { [key: string]: string } = {
-    clustering: '#3b82f6',
-    reduction: '#8b5cf6',
-    intrinsic: '#06b6d4',
-    runtime: '#f59e0b',
-  };
-
-  const categoryBgs: { [key: string]: string } = {
-    clustering: '#dbeafe',
-    reduction: '#ede9fe',
-    intrinsic: '#cffafe',
-    runtime: '#fef3c7',
-  };
+  const categoryColor = getMetricCategoryColor(metric.category);
+  const categoryBg = getMetricCategoryBgColor(metric.category);
 
   return (
     <div
       className="p-6 rounded-lg border transition-all hover:shadow-lg cursor-pointer"
       style={{
-        backgroundColor: categoryBgs[metric.category],
-        borderColor: categoryColors[metric.category],
+        backgroundColor: categoryBg,
+        borderColor: categoryColor,
       }}
     >
       {/* Header */}
@@ -38,7 +33,7 @@ export function MetricCard({ metric }: { metric: Metric }) {
         <div className="flex items-center gap-1">
           <span
             className="text-lg font-bold"
-            style={{ color: categoryColors[metric.category] }}
+            style={{ color: categoryColor }}
           >
             {getMetricDirectionIcon(metric.betterDirection)}
           </span>
@@ -56,7 +51,7 @@ export function MetricCard({ metric }: { metric: Metric }) {
           <span className="transition-colors" style={{ color: 'rgb(var(--text-secondary))' }}>
             {metric.range ? `Range: [${metric.range.min}, ${metric.range.max ?? '∞'}]` : 'Custom range'}
           </span>
-          <span className="font-semibold" style={{ color: categoryColors[metric.category] }}>
+          <span className="font-semibold" style={{ color: categoryColor }}>
             {metric.betterDirection === 'higher' ? 'Higher better' : 'Lower better'}
           </span>
         </div>
@@ -66,7 +61,7 @@ export function MetricCard({ metric }: { metric: Metric }) {
       <div className="flex items-center justify-between">
         <span
           className="px-3 py-1 rounded text-xs font-semibold text-white"
-          style={{ backgroundColor: categoryColors[metric.category] }}
+          style={{ backgroundColor: categoryColor }}
         >
           {metric.category.charAt(0).toUpperCase() + metric.category.slice(1)}
         </span>

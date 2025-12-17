@@ -1,7 +1,9 @@
+// src/components/Footer/Footer.tsx
 'use client';
 
 import Link from 'next/link';
 import { Github, FileText, Mail } from 'lucide-react';
+import styles from './Footer.module.css';
 
 export function Footer() {
   return (
@@ -35,7 +37,7 @@ export function Footer() {
             >
               Explore
             </h4>
-            <ul className="space-y-2 text-sm footer-links">
+            <ul className={`space-y-2 text-sm ${styles.footerLinks}`}>
               <li>
                 <Link href="/datasets">Datasets</Link>
               </li>
@@ -54,7 +56,7 @@ export function Footer() {
             >
               Learn
             </h4>
-            <ul className="space-y-2 text-sm footer-links">
+            <ul className={`space-y-2 text-sm ${styles.footerLinks}`}>
               <li>
                 <a href="#">Documentation</a>
               </li>
@@ -73,7 +75,7 @@ export function Footer() {
             >
               Resources
             </h4>
-            <ul className="space-y-2 text-sm footer-links">
+            <ul className={`space-y-2 text-sm ${styles.footerLinks}`}>
               <li>
                 <a href="https://github.com">GitHub</a>
               </li>
@@ -102,40 +104,19 @@ export function Footer() {
           </p>
 
           {/* Social Links */}
-          <div className="flex items-center gap-4 social-links">
-            <a href="https://github.com">
+          <div className={`flex items-center gap-4 ${styles.socialLinks}`}>
+            <a href="https://github.com" aria-label="GitHub">
               <Github className="w-5 h-5" />
             </a>
-            <a href="#">
+            <a href="#" aria-label="Documentation">
               <FileText className="w-5 h-5" />
             </a>
-            <a href="mailto:contact@liora.org">
+            <a href="mailto:contact@liora.org" aria-label="Email">
               <Mail className="w-5 h-5" />
             </a>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        ul.footer-links a {
-          color: rgb(var(--text-secondary));
-          transition: color 0.2s;
-        }
-
-        ul.footer-links a:hover {
-          color: rgb(var(--text-primary));
-        }
-
-        div.social-links a {
-          color: rgb(var(--text-secondary));
-          transition: color 0.2s;
-          display: flex;
-        }
-
-        div.social-links a:hover {
-          color: rgb(var(--primary));
-        }
-      `}</style>
     </footer>
   );
 }

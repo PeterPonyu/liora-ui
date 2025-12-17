@@ -1,4 +1,6 @@
 import { Dataset } from '@/types/models';
+import scRNAData from '@/data/scRNA.json';
+import scATACData from '@/data/scATAC.json';
 
 let cachedDatasets: Dataset[] | null = null;
 
@@ -10,20 +12,12 @@ export async function loadDatasets(): Promise<Dataset[]> {
   if (cachedDatasets) return cachedDatasets;
 
   try {
-    const [rnaResponse, atacResponse] = await Promise.all([
-      fetch('/scRNA.json'),
-      fetch('/scATAC.json'),
-    ]);
-
-    const rnaData = await rnaResponse.json();
-    const atacData = await atacResponse.json();
-
-    const rnaDatasets: Dataset[] = rnaData.datasets.map((d: Dataset) => ({
+    const rnaDatasets: Dataset[] = scRNAData.datasets.map((d: Dataset) => ({
       ...d,
       dataType: 'RNA' as const,
     }));
 
-    const atacDatasets: Dataset[] = atacData.datasets.map((d: Dataset) => ({
+    const atacDatasets: Dataset[] = scATACData.datasets.map((d: Dataset) => ({
       ...d,
       dataType: 'ATAC' as const,
     }));
@@ -42,6 +36,14 @@ export async function loadDatasets(): Promise<Dataset[]> {
 export async function getDatasetById(id: number): Promise<Dataset | undefined> {
   const datasets = await loadDatasets();
   return datasets.find(d => d.id === id);
+}
+
+/**
+ * Get all dataset IDs for static generation
+ */
+export async function getAllDatasetIds(): Promise<string[]> {
+  const datasets = await loadDatasets();
+  return datasets.map(d => `${d.dataType?.toLowerCase() || 'rna'}-${d.id}`);
 }
 
 /**

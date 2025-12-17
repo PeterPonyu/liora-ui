@@ -1,3 +1,4 @@
+// src/components/ThemeToggle.tsx
 'use client';
 
 import { Sun, Moon } from 'lucide-react';
@@ -8,12 +9,14 @@ export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    // Get initial theme immediately (synchronously from localStorage)
     const storedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+    
     setTheme(initialTheme);
     applyTheme(initialTheme);
+    setMounted(true);
   }, []);
 
   const applyTheme = (newTheme: 'light' | 'dark') => {
@@ -33,16 +36,12 @@ export function ThemeToggle() {
     applyTheme(newTheme);
   };
 
-  if (!mounted) {
-    return (
-      <div className="w-10 h-10 rounded-lg" style={{ backgroundColor: 'rgb(var(--secondary))' }} />
-    );
-  }
-
+  // ✅ KEY FIX: Don't render placeholder, render actual button immediately
+  // The script in layout.tsx already set the theme before hydration
   return (
     <button
       onClick={toggleTheme}
-      className="p-2.5 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95"
+      className="p-2.5 rounded-lg transition-all duration-200 hover:scale-110 active:scale-95"
       style={{
         backgroundColor: 'rgb(var(--secondary))',
       }}
@@ -50,9 +49,15 @@ export function ThemeToggle() {
       title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
       {theme === 'light' ? (
-        <Moon className="w-5 h-5 transition-colors" style={{ color: 'rgb(var(--text-secondary))' }} />
+        <Moon 
+          className="w-5 h-5 transition-all duration-300" 
+          style={{ color: 'rgb(var(--text-secondary))' }} 
+        />
       ) : (
-        <Sun className="w-5 h-5 transition-colors" style={{ color: 'rgb(var(--theme-icon-sun))' }} />
+        <Sun 
+          className="w-5 h-5 transition-all duration-300" 
+          style={{ color: 'rgb(var(--theme-icon-sun))' }} 
+        />
       )}
     </button>
   );

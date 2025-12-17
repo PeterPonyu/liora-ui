@@ -1,0 +1,104 @@
+/* components/Header/Header.module.css */
+
+.navLink {
+  position: relative;
+  color: rgb(var(--text-secondary));
+  padding: 0.625rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  outline: none;
+}
+
+.navLink:focus-visible {
+  box-shadow: 0 0 0 3px rgb(var(--primary) / 0.1), 0 0 0 5px rgb(var(--primary) / 0.5);
+  outline: none;
+}
+
+/* Underline animation */
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0.25rem;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  background: linear-gradient(90deg, rgb(var(--primary)), rgb(99 102 241));
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px;
+}
+
+.navLink:hover {
+  color: rgb(var(--text-primary));
+  background-color: rgb(var(--secondary));
+}
+
+.navLink:hover::after {
+  transform: scaleX(1);
+}
+
+/* ACTIVE STATE */
+.navLink.active {
+  color: rgb(var(--primary));
+  background-color: rgb(var(--primary) / 0.08);
+  font-weight: 600;
+}
+
+.navLink.active::after {
+  transform: scaleX(1);
+}
+
+/* Mobile nav links */
+.mobileNavLink {
+  color: rgb(var(--text-secondary));
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  display: block;
+  border-left: 3px solid transparent;
+  outline: none;
+}
+
+.mobileNavLink:focus-visible {
+  background-color: rgb(var(--secondary));
+  box-shadow: inset 3px 0 0 rgb(var(--primary));
+  outline: none;
+}
+
+.mobileNavLink:hover {
+  color: rgb(var(--text-primary));
+  background-color: rgb(var(--secondary));
+  border-left-color: rgb(var(--primary));
+  padding-left: 1.25rem;
+}
+
+/* ACTIVE STATE - mobile */
+.mobileNavLink.active {
+  color: rgb(var(--primary));
+  background-color: rgb(var(--primary) / 0.08);
+  border-left-color: rgb(var(--primary));
+  padding-left: 1.25rem;
+  font-weight: 600;
+}
+
+/* Mobile menu animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobileMenu {
+  animation: slideIn 0.2s ease-out;
+}

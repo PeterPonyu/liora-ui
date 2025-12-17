@@ -1,7 +1,7 @@
 import { Metric } from '@/types/models';
 
 export const metricsData: Metric[] = [
-  // ==================== CLUSTERING METRICS ====================
+  // ==================== CLUSTERING METRICS (6) ====================
   {
     id: 'nmi',
     name: 'Normalized Mutual Information',
@@ -75,116 +75,153 @@ export const metricsData: Metric[] = [
     interpretation: 'Measures biological structure preservation in latent space through correlation patterns.',
   },
 
-  // ==================== DIMENSIONALITY REDUCTION METRICS ====================
+  // ==================== EMBEDDING QUALITY (UMAP + t-SNE = 8 metrics) ====================
+  
+  // UMAP-based metrics (4)
   {
-    id: 'q_local',
-    name: 'Local Structure Preservation',
-    shortName: 'Q_local',
-    category: 'reduction',
-    description: 'Quality of local neighborhood preservation in dimensionality reduction',
-    formula: 'Based on K-NN graph preservation after reduction',
+    id: 'umap_distance_correlation',
+    name: 'UMAP Distance Correlation',
+    shortName: 'UMAP_Dist',
+    category: 'embedding',
+    description: 'Spearman correlation between latent space and UMAP-reduced pairwise distance matrices',
+    formula: 'ρ = spearmanr(D_latent.flatten(), D_umap.flatten())',
+    range: { min: -1, max: 1 },
+    betterDirection: 'higher',
+    interpretation: 'Measures global structure preservation in UMAP visualization. 1 = perfect distance rank preservation.',
+  },
+
+  {
+    id: 'umap_q_local',
+    name: 'UMAP Local Structure Quality',
+    shortName: 'UMAP_Q_local',
+    category: 'embedding',
+    description: 'Average coranking quality for local neighborhoods in UMAP space',
+    formula: 'mean(Q_NX[1:K_max]) from coranking matrix',
     range: { min: 0, max: 1 },
     betterDirection: 'higher',
-    unit: 'proportion',
-    interpretation: 'Measures how well k-nearest neighbors in high-D are preserved in low-D (e.g., UMAP). 1 = perfect preservation.',
+    interpretation: '1 = perfect local neighbor preservation. Measures how well UMAP preserves k-NN structure.',
   },
 
   {
-    id: 'q_global',
-    name: 'Global Structure Preservation',
-    shortName: 'Q_global',
-    category: 'reduction',
-    description: 'Quality of global distance relationships preservation',
-    formula: 'Based on Spearman correlation of distance matrices',
+    id: 'umap_q_global',
+    name: 'UMAP Global Structure Quality',
+    shortName: 'UMAP_Q_global',
+    category: 'embedding',
+    description: 'Average coranking quality for global relationships in UMAP space',
+    formula: 'mean(Q_NX[K_max:]) from coranking matrix',
     range: { min: 0, max: 1 },
     betterDirection: 'higher',
-    interpretation: 'Measures correlation of original vs. reduced distances. 1 = perfect global structure preservation.',
+    interpretation: '1 = perfect global structure preservation. Measures long-range distance fidelity in UMAP.',
   },
 
   {
-    id: 'distance_corr',
-    name: 'Distance Correlation',
-    shortName: 'Dist_Corr',
-    category: 'reduction',
-    description: 'Correlation between original high-dimensional and reduced low-dimensional distances',
-    formula: 'Spearman or Pearson correlation of pairwise distance matrices',
+    id: 'umap_overall_quality',
+    name: 'UMAP Overall Embedding Quality',
+    shortName: 'UMAP_Overall',
+    category: 'embedding',
+    description: 'Comprehensive UMAP quality combining distance correlation, local and global preservation',
+    formula: 'mean(distance_correlation, Q_local, Q_global)',
     range: { min: 0, max: 1 },
     betterDirection: 'higher',
-    interpretation: 'How well pairwise distances are preserved after reduction. 1 = perfect correlation.',
+    interpretation: '≥0.8 = excellent, ≥0.6 = good, ≥0.4 = moderate, <0.4 = poor. Holistic UMAP quality measure.',
   },
 
+  // t-SNE-based metrics (4)
   {
-    id: 'k_max',
-    name: 'Maximum K for Faithful Preservation',
-    shortName: 'K_max',
-    category: 'reduction',
-    description: 'Largest k for which k-NN graph is preserved with high fidelity',
-    formula: 'Maximum k where Jaccard similarity > threshold (~0.9)',
-    range: { min: 1, max: 500 },
+    id: 'tsne_distance_correlation',
+    name: 't-SNE Distance Correlation',
+    shortName: 'tSNE_Dist',
+    category: 'embedding',
+    description: 'Spearman correlation between latent space and t-SNE-reduced pairwise distance matrices',
+    formula: 'ρ = spearmanr(D_latent.flatten(), D_tsne.flatten())',
+    range: { min: -1, max: 1 },
     betterDirection: 'higher',
-    interpretation: 'Higher K_max indicates more reliable neighborhood structure at larger scales.',
+    interpretation: 'Measures global structure preservation in t-SNE visualization. 1 = perfect distance rank preservation.',
   },
 
   {
-    id: 'overall_quality_dr',
-    name: 'Overall Dimensionality Reduction Quality',
-    shortName: 'Overall_DR',
-    category: 'reduction',
-    description: 'Combined quality score for dimensionality reduction',
-    formula: 'Weighted combination of local, global, and distance metrics',
+    id: 'tsne_q_local',
+    name: 't-SNE Local Structure Quality',
+    shortName: 'tSNE_Q_local',
+    category: 'embedding',
+    description: 'Average coranking quality for local neighborhoods in t-SNE space',
+    formula: 'mean(Q_NX[1:K_max]) from coranking matrix',
     range: { min: 0, max: 1 },
     betterDirection: 'higher',
-    interpretation: 'Comprehensive quality metric combining multiple aspects of structure preservation.',
+    interpretation: '1 = perfect local neighbor preservation. Measures how well t-SNE preserves k-NN structure.',
   },
 
-  // ==================== INTRINSIC LATENT SPACE METRICS (LSE) ====================
   {
-    id: 'manifold_dim',
-    name: 'Manifold Dimensionality',
+    id: 'tsne_q_global',
+    name: 't-SNE Global Structure Quality',
+    shortName: 'tSNE_Q_global',
+    category: 'embedding',
+    description: 'Average coranking quality for global relationships in t-SNE space',
+    formula: 'mean(Q_NX[K_max:]) from coranking matrix',
+    range: { min: 0, max: 1 },
+    betterDirection: 'higher',
+    interpretation: '1 = perfect global structure preservation. Measures long-range distance fidelity in t-SNE.',
+  },
+
+  {
+    id: 'tsne_overall_quality',
+    name: 't-SNE Overall Embedding Quality',
+    shortName: 'tSNE_Overall',
+    category: 'embedding',
+    description: 'Comprehensive t-SNE quality combining distance correlation, local and global preservation',
+    formula: 'mean(distance_correlation, Q_local, Q_global)',
+    range: { min: 0, max: 1 },
+    betterDirection: 'higher',
+    interpretation: '≥0.8 = excellent, ≥0.6 = good, ≥0.4 = moderate, <0.4 = poor. Holistic t-SNE quality measure.',
+  },
+
+  // ==================== INTRINSIC LATENT SPACE METRICS (8) ====================
+  {
+    id: 'manifold_dimensionality',
+    name: 'Manifold Dimensionality Efficiency',
     shortName: 'Manifold_Dim',
     category: 'intrinsic',
-    description: 'Effective dimensionality of the latent space (how much information is packed efficiently)',
-    formula: 'Based on participation ratio of PCA components',
-    range: { min: 1, max: 128 },
-    betterDirection: 'lower',
-    interpretation: 'Lower indicates more efficient dimensionality (less noise, more concentrated signal).',
+    description: 'Multi-method dimensionality efficiency score combining variance thresholds, Kaiser criterion, elbow detection, and spectral decay',
+    formula: 'mean(threshold_efficiencies, kaiser_efficiency, elbow_efficiency, decay_score)',
+    range: { min: 0, max: 1 },
+    betterDirection: 'higher',
+    interpretation: 'Higher = more efficient compression (fewer dimensions capture variance). 1 = ideal dimensionality concentration.',
   },
 
   {
-    id: 'spectral_decay',
+    id: 'spectral_decay_rate',
     name: 'Spectral Decay Rate',
     shortName: 'Spectral_Decay',
     category: 'intrinsic',
-    description: 'How quickly information is concentrated in leading dimensions',
-    formula: 'Exponential decay rate of eigenvalues',
+    description: 'Rate of eigenvalue decay indicating information concentration in leading dimensions',
+    formula: '0.6 * sigmoid(-slope_log_eigenvalues) + 0.4 * (λ₁ / Σλᵢ)',
     range: { min: 0, max: 1 },
     betterDirection: 'higher',
-    interpretation: 'Higher decay = information concentrated in few dimensions = cleaner representation.',
+    interpretation: 'Higher = faster exponential decay = information concentrated in few dimensions. Indicates dimensionality efficiency.',
   },
 
   {
     id: 'participation_ratio',
-    name: 'Participation Ratio',
+    name: 'Participation Ratio Score',
     shortName: 'Part_Ratio',
     category: 'intrinsic',
-    description: 'Ratio of effective to actual dimensionality (inverse of Shannon entropy of eigenvalues)',
-    formula: '(Σ λ_i)² / Σ λ_i²',
+    description: 'Effective dimensionality measure from eigenvalue distribution (trajectory: lower is better, steady-state: higher is better)',
+    formula: 'PR = (Σλᵢ)² / Σλᵢ²; Score = 1-PR (trajectory) or PR (steady-state)',
     range: { min: 0, max: 1 },
-    betterDirection: 'lower',
-    unit: 'ratio',
-    interpretation: 'Lower = fewer dimensions carry information = better compression. High value = information spread across dimensions.',
+    betterDirection: 'higher',
+    interpretation: 'For trajectory data: lower PR = information concentrated along developmental axis. For steady-state: higher PR = balanced representation.',
   },
 
   {
-    id: 'anisotropy',
+    id: 'anisotropy_score',
     name: 'Anisotropy Score',
     shortName: 'Anisotropy',
     category: 'intrinsic',
-    description: 'Degree of directional bias in data (important for trajectory inference)',
-    formula: 'Variance ratio of leading vs. orthogonal directions',
+    description: 'Multi-method anisotropy combining log-ellipticity, condition numbers, ratio variance, entropy, dominance, and effective dimensionality',
+    formula: 'Weighted combination: 0.25*ellipticity + 0.25*condition + 0.20*ratio_var + 0.15*entropy + 0.10*dominance + 0.05*eff_dim',
     range: { min: 0, max: 1 },
     betterDirection: 'higher',
-    interpretation: 'Higher = stronger directional bias = better for trajectory detection. Low = spherical distribution.',
+    interpretation: 'High anisotropy = strong directional bias (good for trajectories). Low anisotropy = spherical distribution (good for steady-state).',
   },
 
   {
@@ -192,50 +229,50 @@ export const metricsData: Metric[] = [
     name: 'Trajectory Directionality',
     shortName: 'Traj_Dir',
     category: 'intrinsic',
-    description: 'Presence and strength of clear developmental/temporal axes',
-    formula: 'Based on principal curve fitting and kurtosis',
+    description: 'Dominance of primary developmental axis relative to other directions',
+    formula: 'λ₁ / (1 + λ₁/Σλᵢ₊₁) from PCA eigenvalues',
     range: { min: 0, max: 1 },
     betterDirection: 'higher',
-    interpretation: 'For trajectory data: 1 = clear trajectory, 0 = steady-state. Indicates data type fitness.',
+    interpretation: 'High = clear single developmental trajectory. Low = steady-state or multi-branched development. Data type indicator.',
   },
 
   {
     id: 'noise_resilience',
     name: 'Noise Resilience',
-    shortName: 'Noise_Resilience',
+    shortName: 'Noise_Resil',
     category: 'intrinsic',
-    description: 'Robustness of structure to small perturbations (noise tolerance)',
-    formula: 'Stability score under Gaussian perturbation',
+    description: 'Signal-to-noise ratio based on leading vs. trailing PCA components',
+    formula: 'min(SNR/10, 1), where SNR = Σλ₁₋₂ / Σλ₃₊',
     range: { min: 0, max: 1 },
     betterDirection: 'higher',
-    interpretation: 'Higher = structure more robust to measurement noise = reliable representation.',
+    interpretation: 'Higher = better noise filtering. Indicates robustness to technical variation and measurement errors.',
   },
 
   {
     id: 'core_quality',
-    name: 'Core Structure Quality',
+    name: 'Core Latent Space Quality',
     shortName: 'Core_Quality',
     category: 'intrinsic',
-    description: 'Quality of central data structure (density and coherence)',
-    formula: 'Based on local density and geometric properties',
+    description: 'Fundamental quality score combining manifold, spectral, participation, and anisotropy metrics',
+    formula: 'mean(manifold_dim, spectral_decay, participation_ratio, anisotropy)',
     range: { min: 0, max: 1 },
     betterDirection: 'higher',
-    interpretation: 'Higher = cleaner core structure without spurious outliers.',
+    interpretation: 'Aggregate measure of geometric and topological properties. Foundation for overall quality assessment.',
   },
 
   {
-    id: 'overall_quality_intrin',
-    name: 'Overall Intrinsic Latent Space Quality',
+    id: 'overall_quality_intrinsic',
+    name: 'Overall Intrinsic Quality',
     shortName: 'Overall_LSE',
     category: 'intrinsic',
-    description: 'Comprehensive quality metric for intrinsic latent space properties',
-    formula: 'Weighted combination of all LSE metrics',
+    description: 'Comprehensive latent space quality with data-type-aware weighting',
+    formula: 'Trajectory: 0.5*core + 0.3*traj_dir + 0.2*noise; Steady-state: 0.7*core + 0.3*noise',
     range: { min: 0, max: 1 },
     betterDirection: 'higher',
-    interpretation: 'Holistic measure of latent space quality across all aspects.',
+    interpretation: '≥0.8 = excellent, ≥0.6 = good, ≥0.4 = moderate, <0.4 = needs improvement. Holistic latent space assessment.',
   },
 
-  // ==================== RUNTIME METRICS ====================
+  // ==================== RUNTIME METRICS (2) ====================
   {
     id: 'training_time',
     name: 'Training Time',
@@ -272,8 +309,28 @@ export function getMetricsByCategory(category: string): Metric[] {
 }
 
 export const metricCategories = [
-  { id: 'clustering', label: 'Clustering Metrics', description: 'Quality of discovered cell type clusters', count: 6 },
-  { id: 'reduction', label: 'Dimensionality Reduction', description: 'Visualization and structure preservation', count: 5 },
-  { id: 'intrinsic', label: 'Intrinsic Latent Space', description: 'Internal representation quality (LSE)', count: 8 },
-  { id: 'runtime', label: 'Runtime Performance', description: 'Computational efficiency', count: 2 },
+  { 
+    id: 'clustering', 
+    label: 'Clustering & Cell Type Discovery', 
+    description: 'Supervised metrics comparing predicted clusters to ground truth labels', 
+    count: 6 
+  },
+  { 
+    id: 'embedding', 
+    label: 'Embedding Quality (UMAP & t-SNE)', 
+    description: 'Visualization quality via coranking analysis (4 metrics × 2 methods)', 
+    count: 8 
+  },
+  { 
+    id: 'intrinsic', 
+    label: 'Intrinsic Latent Space (LSE)', 
+    description: 'Unsupervised geometric, spectral, and topological properties', 
+    count: 8 
+  },
+  { 
+    id: 'runtime', 
+    label: 'Computational Efficiency', 
+    description: 'Training and inference performance', 
+    count: 2 
+  },
 ];

@@ -1,0 +1,263 @@
+/* app/pages.module.css - SHARED PAGE STYLES */
+
+/* ============================================
+   PAGE HEADERS
+   ============================================ */
+
+.pageTitle {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: rgb(var(--text-primary));
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .pageTitle {
+    font-size: 2.5rem;
+  }
+}
+
+.pageSubtitle {
+  font-size: 1.125rem;
+  color: rgb(var(--text-secondary));
+}
+
+/* ============================================
+   SEARCH INPUT
+   ============================================ */
+
+.searchWrapper {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  color: rgb(var(--text-tertiary));
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(var(--border));
+  background-color: rgb(var(--card));
+  color: rgb(var(--text-primary));
+  font-size: 0.9375rem;
+  transition: all 0.2s;
+}
+
+.searchInput::placeholder {
+  color: rgb(var(--text-tertiary));
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: rgb(var(--primary));
+  box-shadow: 0 0 0 3px rgb(var(--primary) / 0.1);
+}
+
+/* ============================================
+   FILTER BUTTONS
+   ============================================ */
+
+.filterSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filterLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgb(var(--text-secondary));
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filterButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filterButton {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Inactive state */
+.filterButton:not(.active) {
+  background-color: rgb(var(--secondary));
+  color: rgb(var(--text-secondary));
+  border-color: rgb(var(--border));
+}
+
+.filterButton:not(.active):hover {
+  background-color: rgb(var(--muted));
+  color: rgb(var(--text-primary));
+  border-color: rgb(var(--border));
+}
+
+/* Active state - default (primary) */
+.filterButton.active {
+  background-color: rgb(var(--primary));
+  color: white;
+  border-color: rgb(var(--primary));
+}
+
+/* Active state - custom colors */
+.filterButton.active[data-color] {
+  border-color: currentColor;
+}
+
+/* ============================================
+   RESULTS COUNT
+   ============================================ */
+
+.resultsCount {
+  font-size: 0.875rem;
+  color: rgb(var(--text-secondary));
+}
+
+/* ============================================
+   GRID LAYOUTS
+   ============================================ */
+
+.grid1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .grid2 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ✅ Stat Grid - unchanged */
+.grid4 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .grid4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+
+.emptyState {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.emptyStateText {
+  font-size: 1.125rem;
+  color: rgb(var(--text-secondary));
+  margin-bottom: 0.5rem;
+}
+
+.emptyStateHint {
+  font-size: 0.875rem;
+  color: rgb(var(--text-tertiary));
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+
+.loadingState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.loadingText {
+  font-size: 1.125rem;
+  color: rgb(var(--text-secondary));
+}
+
+/* ============================================
+   INFO BOX (for category descriptions)
+   ============================================ */
+
+.infoBox {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(var(--border));
+  background-color: rgb(var(--muted));
+}
+
+.infoBoxTitle {
+  font-weight: 600;
+  color: rgb(var(--text-primary));
+  margin-bottom: 0.5rem;
+}
+
+.infoBoxDescription {
+  font-size: 0.875rem;
+  color: rgb(var(--text-secondary));
+}
+
+.infoBoxCount {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgb(var(--text-primary));
+  margin-top: 0.75rem;
+}

@@ -12,20 +12,35 @@ export function DatasetCard({ dataset }: { dataset: Dataset }) {
         style={{
           borderColor: 'rgb(var(--border))',
           backgroundColor: 'rgb(var(--card))',
+          wordBreak: 'break-word',
+          overflowWrap: 'break-word',
         }}
       >
         {/* Header */}
         <div className="mb-3 flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-bold transition-colors line-clamp-2" style={{ color: 'rgb(var(--text-primary))' }}>
+            <h3 
+              className="text-lg font-bold transition-colors line-clamp-2" 
+              style={{ 
+                color: 'rgb(var(--text-primary))',
+                wordBreak: 'break-word',
+                overflowWrap: 'break-word',
+              }}
+            >
               {dataset.title}
             </h3>
-            <p className="text-xs mt-1 transition-colors" style={{ color: 'rgb(var(--text-secondary))' }}>
+            <p 
+              className="text-xs mt-1 transition-colors" 
+              style={{ 
+                color: 'rgb(var(--text-secondary))',
+                wordBreak: 'break-word',
+              }}
+            >
               {dataset.accession}
             </p>
           </div>
           <span
-            className="px-3 py-1 rounded text-xs font-semibold text-white whitespace-nowrap"
+            className="px-3 py-1 rounded text-xs font-semibold text-white whitespace-nowrap flex-shrink-0"
             style={{ backgroundColor: typeColor }}
           >
             {typeLabel}
@@ -33,7 +48,14 @@ export function DatasetCard({ dataset }: { dataset: Dataset }) {
         </div>
 
         {/* Description */}
-        <p className="text-sm mb-4 line-clamp-3 transition-colors" style={{ color: 'rgb(var(--text-secondary))' }}>
+        <p 
+          className="text-sm mb-4 line-clamp-3 transition-colors" 
+          style={{ 
+            color: 'rgb(var(--text-secondary))',
+            wordBreak: 'break-word',
+            overflowWrap: 'break-word',
+          }}
+        >
           {dataset.description}
         </p>
 
@@ -44,7 +66,13 @@ export function DatasetCard({ dataset }: { dataset: Dataset }) {
             backgroundColor: 'rgb(var(--secondary))',
           }}
         >
-          <p className="text-sm transition-colors" style={{ color: 'rgb(var(--text-secondary))' }}>
+          <p 
+            className="text-sm transition-colors" 
+            style={{ 
+              color: 'rgb(var(--text-secondary))',
+              wordBreak: 'break-word',
+            }}
+          >
             {getDatasetStatsDescription(dataset)}
           </p>
         </div>
@@ -56,6 +84,7 @@ export function DatasetCard({ dataset }: { dataset: Dataset }) {
             style={{
               backgroundColor: 'rgba(59, 130, 246, 0.1)',
               color: 'rgb(37, 99, 235)',
+              wordBreak: 'break-word',
             }}
           >
             {dataset.source}

@@ -1,17 +1,17 @@
 import type { NextConfig } from "next";
 
 const isProduction = process.env.NODE_ENV === "production";
-const repoName = "Liora"; // GitHub repo name
+const repoName = "liora-ui"; 
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactCompiler: true,
-  output: "standalone",
+  output: "export", 
   basePath: isProduction ? `/${repoName}` : "",
   assetPrefix: isProduction ? `/${repoName}/` : "",
   images: {
     unoptimized: true,
   },
+  trailingSlash: true, 
 };
 
 export default nextConfig;

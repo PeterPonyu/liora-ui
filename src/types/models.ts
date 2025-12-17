@@ -5,7 +5,8 @@ export type ModelCategory =
   | 'generative' 
   | 'atac-specific' 
   | 'gaussian-geometric' 
-  | 'disentanglement';
+  | 'disentanglement'
+  | 'trajectory';
 
 export type DataType = 'RNA' | 'ATAC' | 'multimodal';
 export type DataCategory = 'cancer' | 'development' | 'disease' | 'homeostatic';
@@ -75,8 +76,8 @@ export interface Dataset {
 }
 
 // ==================== METRIC TYPES ====================
-export type MetricCategory = 'clustering' | 'reduction' | 'intrinsic' | 'runtime';
-export type BetterDirection = 'higher' | 'lower';
+export type MetricCategory = 'clustering' | 'embedding' | 'intrinsic' | 'runtime';
+export type BetterDirection = 'higher' | 'lower' ;
 
 export interface Metric {
   id: string;

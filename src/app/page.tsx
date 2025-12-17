@@ -1,11 +1,13 @@
+// src/app/page.tsx
 'use client';
 
 import Link from 'next/link';
 import { modelsData, getModelsByCategory } from '@/data/models';
 import { loadDatasets } from '@/lib/dataLoader';
 import { metricsData, metricCategories } from '@/data/metrics';
-import { Brain, Database, BarChart3, TrendingUp } from 'lucide-react';
+import { Brain, Database, BarChart3, TrendingUp, ArrowRight, Sparkles } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import styles from './home.module.css';
 
 export default function HomePage() {
   const [datasets, setDatasets] = useState<any[]>([]);
@@ -14,7 +16,6 @@ export default function HomePage() {
     loadDatasets().then(data => setDatasets(data));
   }, []);
 
-  // ✅ CORRECTED: Use valid category names
   const predictiveModels = getModelsByCategory('predictive');
   const generativeModels = getModelsByCategory('generative');
   const disentangleModels = getModelsByCategory('disentanglement');
@@ -23,193 +24,278 @@ export default function HomePage() {
   const atacDatasets = datasets.filter(d => d.dataType === 'ATAC');
 
   return (
-    <div className="space-y-16">
-      {/* Hero Section */}
-      <section className="text-center py-12">
-        <h1 className="text-5xl md:text-6xl font-bold text-slate-900 dark:text-white mb-4">
-          Liora Benchmarks
-        </h1>
-        <p className="text-xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto">
-          Comprehensive visualization and comparison of single-cell analysis models
-        </p>
+    <div className="space-y-20">
+      {/* ============================================
+          HERO SECTION
+          ============================================ */}
+      <section className={`${styles.hero} space-y-8`}>
+        <div className="space-y-6 max-w-4xl">
+          {/* Badge */}
+          <div className={styles.heroBadge}>
+            <Sparkles className={styles.heroBadgeIcon} />
+            <span className={styles.heroBadgeText}>
+              Comprehensive Benchmarking Platform
+            </span>
+          </div>
+
+          {/* Main Heading */}
+          <div className="space-y-4">
+            <h1 className={styles.heroTitle}>
+              Liora Benchmarks
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Explore, compare, and analyze <span className={styles.heroHighlight}>21 single-cell models</span> across <span className={styles.heroHighlight}>5 categories</span> with comprehensive benchmarking data.
+            </p>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className={styles.ctaButtons}>
+            <Link href="/models" className={styles.ctaPrimary}>
+              Explore Models
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link href="/datasets" className={styles.ctaSecondary}>
+              Browse Datasets
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-12">
+          <StatCard icon={Brain} label="Models" value={modelsData.length} />
+          <StatCard icon={Database} label="Datasets" value={datasets.length} />
+          <StatCard icon={BarChart3} label="Metrics" value={metricsData.length} />
+          <StatCard icon={TrendingUp} label="Categories" value={5} />
+        </div>
       </section>
 
-      {/* Quick Stats - Removed Benchmarks */}
-      <section className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <StatCard icon={Brain} label="Models" value={modelsData.length} href="/models" />
-        <StatCard icon={Database} label="Datasets" value={datasets.length} href="/datasets" />
-        <StatCard icon={BarChart3} label="Metrics" value={metricsData.length} href="/metrics" />
-      </section>
+      {/* ============================================
+          MODELS SECTION
+          ============================================ */}
+      <section className="space-y-12">
+        <div className="space-y-2">
+          <h2 className={styles.sectionTitle}>
+            Model Categories
+          </h2>
+          <p className={styles.sectionSubtitle}>
+            Comprehensive collection of single-cell analysis models organized by approach
+          </p>
+        </div>
 
-      {/* Models Overview */}
-      <section className="space-y-8">
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Models</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <CategoryOverview
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <CategoryCard
             title="Predictive Models"
-            description="Clustering, classification, imputation"
+            description="Clustering, classification, and imputation"
             count={predictiveModels.length}
-            color="#6366f1"
-            href="/models?category=predictive"
+            color="#3b82f6"
             icon={Brain}
+            href="/models?category=predictive"
           />
-          <CategoryOverview
+          <CategoryCard
             title="Generative Models"
-            description="Synthesis, augmentation, sampling"
+            description="Synthesis, augmentation, and sampling"
             count={generativeModels.length}
-            color="#14b8a6"
+            color="#8b5cf6"
+            icon={Sparkles}
             href="/models?category=generative"
-            icon={TrendingUp}
           />
-          <CategoryOverview
-            title="Disentanglement"
-            description="Factor analysis methods"
+          <CategoryCard
+            title="Disentanglement Models"
+            description="Factor analysis and interpretability"
             count={disentangleModels.length}
             color="#f43f5e"
-            href="/models?category=disentanglement"
             icon={BarChart3}
+            href="/models?category=disentanglement"
           />
         </div>
       </section>
 
-      {/* Datasets Overview */}
-      <section className="space-y-8">
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Datasets</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <CategoryOverview
+      {/* ============================================
+          DATASETS SECTION
+          ============================================ */}
+      <section className="space-y-12">
+        <div className="space-y-2">
+          <h2 className={styles.sectionTitle}>
+            Benchmark Datasets
+          </h2>
+          <p className={styles.sectionSubtitle}>
+            Single-cell transcriptomics and chromatin accessibility data
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <DatasetCard
             title="scRNA-seq Datasets"
-            description="Transcriptomics data"
+            description="Gene expression profiling"
             count={rnaDatasets.length}
             color="#3b82f6"
+            icon={Database}
             href="/datasets?type=RNA"
           />
-          <CategoryOverview
+          <DatasetCard
             title="scATAC-seq Datasets"
-            description="Accessibility data"
+            description="Chromatin accessibility profiling"
             count={atacDatasets.length}
             color="#8b5cf6"
+            icon={Database}
             href="/datasets?type=ATAC"
           />
         </div>
       </section>
 
-      {/* Metrics Overview */}
-      <section className="space-y-8">
-        <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Evaluation Metrics</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* ============================================
+          METRICS SECTION
+          ============================================ */}
+      <section className="space-y-12">
+        <div className="space-y-2">
+          <h2 className={styles.sectionTitle}>
+            Evaluation Metrics
+          </h2>
+          <p className={styles.sectionSubtitle}>
+            Standardized metrics across {metricCategories.length} categories
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {metricCategories.map(cat => (
-            <div
-              key={cat.id}
-              className="p-6 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 hover:shadow-lg transition-shadow"
-            >
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">
-                {cat.label}
-              </h3>
-              <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                {cat.description}
-              </p>
-              <p className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                {cat.count}
-              </p>
-              <Link
-                href={`/metrics?category=${cat.id}`}
-                className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300"
-              >
-                Explore →
-              </Link>
-            </div>
+            <Link key={cat.id} href={`/metrics?category=${cat.id}`}>
+              <div className={styles.metricCategoryCard}>
+                <h3 className={styles.metricCategoryTitle}>
+                  {cat.label}
+                </h3>
+                <p className={styles.metricCategoryDescription}>
+                  {cat.description}
+                </p>
+                <div className={styles.metricCategoryCount}>
+                  <span className={styles.metricCategoryCountValue}>
+                    {cat.count}
+                  </span>
+                  <span className={styles.metricCategoryCountLabel}>
+                    metrics
+                  </span>
+                </div>
+              </div>
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* CTA Sections - Removed Benchmarks */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 py-12">
-        <CtaCard
-          icon={Brain}
-          title="Explore Models"
-          description="Understand the logic, architecture, and performance of each model"
-          href="/models"
-        />
-        <CtaCard
-          icon={Database}
-          title="Browse Datasets"
-          description="Discover the single-cell datasets available"
-          href="/datasets"
-        />
+      {/* ============================================
+          FEATURES SECTION
+          ============================================ */}
+      <section className="space-y-12 py-8">
+        <div className="space-y-2">
+          <h2 className={styles.sectionTitle}>
+            Platform Features
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <FeatureCard
+            icon={Brain}
+            title="Model Architecture"
+            description="In-depth analysis of model logic, architecture, and mathematical foundations"
+          />
+          <FeatureCard
+            icon={Database}
+            title="Comprehensive Data"
+            description="80+ single-cell datasets covering RNA-seq and ATAC-seq modalities"
+          />
+          <FeatureCard
+            icon={BarChart3}
+            title="Performance Metrics"
+            description="Standardized benchmarking across clustering, reduction, and runtime metrics"
+          />
+        </div>
+      </section>
+
+      {/* ============================================
+          CTA SECTION
+          ============================================ */}
+      <section className={styles.finalCta}>
+        <div className="space-y-3">
+          <h2 className={styles.finalCtaTitle}>
+            Ready to explore?
+          </h2>
+          <p className={styles.finalCtaDescription}>
+            Dive into our comprehensive benchmarking data and discover which models work best for your analysis
+          </p>
+        </div>
+        <Link href="/models" className={styles.finalCtaButton}>
+          Start Exploring
+          <ArrowRight className="w-5 h-5" />
+        </Link>
       </section>
     </div>
   );
 }
 
+/* ============================================
+   COMPONENT DEFINITIONS
+   ============================================ */
+
 function StatCard({
   icon: Icon,
   label,
   value,
-  href,
 }: {
   icon: typeof Brain;
   label: string;
-  value: number | string;
-  href: string;
+  value: number;
 }) {
   return (
-    <Link href={href}>
-      <div className="p-6 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-600 transition-all cursor-pointer">
-        <Icon className="w-8 h-8 text-indigo-600 dark:text-indigo-400 mb-3" />
-        <p className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-          {value}
-        </p>
-        <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-          {label}
-        </p>
-      </div>
-    </Link>
+    <div className={styles.statCard}>
+      <Icon className={styles.statIcon} />
+      <p className={styles.statValue}>{value}</p>
+      <p className={styles.statLabel}>{label}</p>
+    </div>
   );
 }
 
-function CategoryOverview({
-  title,
-  description,
-  count,
-  color,
-  href,
-  icon: Icon,
-}: {
+interface CategoryCardProps {
   title: string;
   description: string;
   count: number;
   color: string;
+  icon: typeof Brain;
   href: string;
-  icon?: typeof Brain;
-}) {
+}
+
+function CategoryCard({
+  title,
+  description,
+  count,
+  color,
+  icon: Icon,
+  href,
+}: CategoryCardProps) {
   return (
     <Link href={href}>
       <div
-        className="p-8 rounded-lg border-2 hover:shadow-lg transition-all cursor-pointer"
+        className={styles.categoryCard}
         style={{
           borderColor: color,
-          backgroundColor: color + '10',
+          backgroundColor: `${color}08`,
         }}
       >
-        <div className="flex items-start justify-between mb-4">
+        <div className={styles.categoryCardHeader}>
           <div>
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+            <h3 className={styles.categoryCardTitle}>
               {title}
             </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+            <p className={styles.categoryCardDescription}>
               {description}
             </p>
           </div>
-          {Icon && (
-            <Icon className="w-8 h-8" style={{ color }} />
-          )}
+          <Icon className={styles.categoryCardIcon} style={{ color }} />
         </div>
-        <div className="flex items-baseline gap-2">
-          <span className="text-4xl font-bold text-slate-900 dark:text-white">
+        <div className={styles.categoryCardCount}>
+          <span className={styles.categoryCardCountValue} style={{ color }}>
             {count}
           </span>
-          <span className="text-sm text-slate-600 dark:text-slate-400">
-            items
+          <span className={styles.categoryCardCountLabel}>
+            models
           </span>
         </div>
       </div>
@@ -217,28 +303,78 @@ function CategoryOverview({
   );
 }
 
-function CtaCard({
-  icon: Icon,
+interface DatasetCardProps {
+  title: string;
+  description: string;
+  count: number;
+  color: string;
+  icon: typeof Brain;
+  href: string;
+}
+
+function DatasetCard({
   title,
   description,
+  count,
+  color,
+  icon: Icon,
   href,
-}: {
+}: DatasetCardProps) {
+  return (
+    <Link href={href}>
+      <div
+        className={styles.categoryCard}
+        style={{
+          borderColor: color,
+          backgroundColor: `${color}08`,
+        }}
+      >
+        <div className={styles.categoryCardHeader}>
+          <div>
+            <h3 className={styles.categoryCardTitle}>
+              {title}
+            </h3>
+            <p className={styles.categoryCardDescription}>
+              {description}
+            </p>
+          </div>
+          <Icon className={styles.categoryCardIcon} style={{ color }} />
+        </div>
+        <div className={styles.categoryCardCount}>
+          <span className={styles.categoryCardCountValue} style={{ color }}>
+            {count}
+          </span>
+          <span className={styles.categoryCardCountLabel}>
+            datasets
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+interface FeatureCardProps {
   icon: typeof Brain;
   title: string;
   description: string;
-  href: string;
-}) {
+}
+
+function FeatureCard({
+  icon: Icon,
+  title,
+  description,
+}: FeatureCardProps) {
   return (
-    <Link href={href}>
-      <div className="p-8 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:shadow-lg hover:border-slate-300 dark:hover:border-slate-600 transition-all cursor-pointer">
-        <Icon className="w-12 h-12 text-indigo-600 dark:text-indigo-400 mb-4" />
-        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-          {title}
-        </h3>
-        <p className="text-slate-600 dark:text-slate-400">
-          {description}
-        </p>
+    <div className={styles.featureCard}>
+      <div className={styles.featureIconWrapper}>
+        <Icon className={styles.featureIcon} />
       </div>
-    </Link>
+      <h3 className={styles.featureTitle}>
+        {title}
+      </h3>
+      <p className={styles.featureDescription}>
+        {description}
+      </p>
+    </div>
   );
 }

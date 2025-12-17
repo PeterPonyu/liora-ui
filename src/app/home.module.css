@@ -1,0 +1,395 @@
+/* app/home.module.css - HOME PAGE SPECIFIC STYLES */
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero {
+  padding: 4rem 0;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding: 6rem 0;
+  }
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(var(--border));
+  background-color: rgb(var(--primary) / 0.05);
+}
+
+.heroBadgeIcon {
+  width: 1rem;
+  height: 1rem;
+  color: rgb(var(--primary));
+}
+
+.heroBadgeText {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgb(var(--primary));
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: rgb(var(--text-primary));
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 768px) {
+  .heroTitle {
+    font-size: 3.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heroTitle {
+    font-size: 4.5rem;
+  }
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  line-height: 1.75;
+  color: rgb(var(--text-secondary));
+}
+
+@media (min-width: 768px) {
+  .heroSubtitle {
+    font-size: 1.5rem;
+  }
+}
+
+.heroHighlight {
+  font-weight: 600;
+  color: rgb(var(--primary));
+}
+
+.ctaButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  background-color: rgb(var(--primary));
+  color: white;
+  transition: all 0.2s;
+}
+
+.ctaPrimary:hover {
+  gap: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+.ctaPrimary:active {
+  transform: scale(0.95);
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  border: 2px solid rgb(var(--border));
+  color: rgb(var(--text-primary));
+  background-color: rgb(var(--secondary));
+  transition: all 0.2s;
+}
+
+.ctaSecondary:hover {
+  gap: 0.75rem;
+}
+
+.ctaSecondary:active {
+  transform: scale(0.95);
+}
+
+/* ============================================
+   STAT CARD
+   ============================================ */
+
+.statCard {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid rgb(var(--border));
+  background-color: rgb(var(--card));
+  transition: all 0.3s;
+}
+
+.statCard:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  transform: scale(1.05);
+}
+
+.statIcon {
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 0.75rem;
+  color: rgb(var(--primary));
+}
+
+.statValue {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: rgb(var(--text-primary));
+}
+
+@media (min-width: 768px) {
+  .statValue {
+    font-size: 2.25rem;
+  }
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: rgb(var(--text-secondary));
+}
+
+/* ============================================
+   CATEGORY/DATASET CARD
+   ============================================ */
+
+.categoryCard {
+  padding: 2rem;
+  border-radius: 0.75rem;
+  border: 2px solid;
+  transition: all 0.3s;
+  cursor: pointer;
+  height: 100%;
+}
+
+.categoryCard:hover {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  transform: scale(1.05);
+}
+
+.categoryCardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.categoryCardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: rgb(var(--text-primary));
+}
+
+.categoryCardDescription {
+  font-size: 0.875rem;
+  color: rgb(var(--text-secondary));
+}
+
+.categoryCardIcon {
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+}
+
+.categoryCardCount {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.categoryCardCountValue {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+.categoryCardCountLabel {
+  font-size: 0.75rem;
+  color: rgb(var(--text-secondary));
+}
+
+/* ============================================
+   FEATURE CARD
+   ============================================ */
+
+.featureCard {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(var(--border));
+  background-color: rgb(var(--card));
+  transition: all 0.3s;
+}
+
+.featureCard:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+.featureIconWrapper {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(var(--secondary));
+  margin-bottom: 0.75rem;
+}
+
+.featureIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: rgb(var(--primary));
+}
+
+.featureTitle {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: rgb(var(--text-primary));
+  margin-bottom: 0.75rem;
+}
+
+.featureDescription {
+  font-size: 0.875rem;
+  color: rgb(var(--text-secondary));
+}
+
+/* ============================================
+   FINAL CTA SECTION
+   ============================================ */
+
+.finalCta {
+  padding: 4rem 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  background: linear-gradient(135deg, rgb(var(--primary) / 0.1), rgb(139 92 246 / 0.1));
+  border: 2px solid rgb(var(--border));
+}
+
+.finalCtaTitle {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: rgb(var(--text-primary));
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .finalCtaTitle {
+    font-size: 2.25rem;
+  }
+}
+
+.finalCtaDescription {
+  font-size: 1.125rem;
+  color: rgb(var(--text-secondary));
+}
+
+.finalCtaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  background-color: rgb(var(--primary));
+  color: white;
+  transition: all 0.2s;
+}
+
+.finalCtaButton:hover {
+  gap: 0.75rem;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+.finalCtaButton:active {
+  transform: scale(0.95);
+}
+
+/* ============================================
+   SECTION HEADERS
+   ============================================ */
+
+.sectionTitle {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: rgb(var(--text-primary));
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .sectionTitle {
+    font-size: 3rem;
+  }
+}
+
+.sectionSubtitle {
+  font-size: 1.125rem;
+  color: rgb(var(--text-secondary));
+}
+
+
+/* ============================================
+   METRIC CATEGORY CARD (for homepage)
+   ============================================ */
+
+.metricCategoryCard {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid rgb(var(--border));
+  background-color: rgb(var(--secondary));
+  transition: all 0.3s;
+  cursor: pointer;
+  height: 100%;
+}
+
+.metricCategoryCard:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  transform: scale(1.05);
+  border-color: currentColor;
+}
+
+.metricCategoryTitle {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: rgb(var(--text-primary));
+  margin-bottom: 0.75rem;
+}
+
+.metricCategoryDescription {
+  font-size: 0.875rem;
+  color: rgb(var(--text-secondary));
+  margin-bottom: 1rem;
+}
+
+.metricCategoryCount {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.metricCategoryCountValue {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: rgb(var(--primary));
+}
+
+.metricCategoryCountLabel {
+  font-size: 0.75rem;
+  color: rgb(var(--text-tertiary));
+}

@@ -1,3 +1,4 @@
+// src/components/ModelCard/ModelCard.tsx
 'use client';
 
 import { Model } from '@/types/models';
@@ -6,6 +7,7 @@ import {
 } from '@/lib/utils';
 import Link from 'next/link';
 import { Database, Calendar, Users } from 'lucide-react';
+import styles from './ModelCard.module.css';
 
 export function ModelCard({ model }: { model: Model }) {
   const categoryColor = getCategoryColor(model.category);
@@ -19,7 +21,7 @@ export function ModelCard({ model }: { model: Model }) {
 
   const renderStars = (count: number, total: number = 3) => {
     return (
-      <div className="model-card-metric-stars">
+      <div className={styles.metricStars}>
         {Array.from({ length: total }).map((_, i) => (
           <span
             key={i}
@@ -38,19 +40,19 @@ export function ModelCard({ model }: { model: Model }) {
   return (
     <Link href={`/models/${model.id}`}>
       <div
-        className="model-card"
+        className={styles.card}
         data-category={model.category}
       >
-        <div className="model-card-header">
-          <div className="model-card-title-section">
-            <div className="model-card-name">
-              <div className="model-card-shortname">{model.name}</div>
-              <div className="model-card-displayname">
+        <div className={styles.header}>
+          <div className={styles.titleSection}>
+            <div className={styles.name}>
+              <div className={styles.shortname}>{model.name}</div>
+              <div className={styles.displayname}>
                 {model.displayName}
               </div>
             </div>
             <div
-              className="model-card-category-badge"
+              className={styles.categoryBadge}
               style={{ backgroundColor: categoryColor }}
               title={model.category}
             >
@@ -61,15 +63,15 @@ export function ModelCard({ model }: { model: Model }) {
             </div>
           </div>
 
-          <div className="model-card-modality-badges">
+          <div className={styles.modalityBadges}>
             {model.modalitySupport.includes('rna') && (
-              <div className="model-card-modality-badge rna">
+              <div className={`${styles.modalityBadge} ${styles.rna}`}>
                 <Database className="w-3 h-3" />
                 RNA
               </div>
             )}
             {model.modalitySupport.includes('atac') && (
-              <div className="model-card-modality-badge atac">
+              <div className={`${styles.modalityBadge} ${styles.atac}`}>
                 <Database className="w-3 h-3" />
                 ATAC
               </div>
@@ -77,12 +79,12 @@ export function ModelCard({ model }: { model: Model }) {
           </div>
 
           {primaryPublication && (
-            <div className="model-card-publication">
-              <div className="model-card-publication-item">
+            <div className={styles.publication}>
+              <div className={styles.publicationItem}>
                 <Users className="w-3.5 h-3.5" />
                 <span>{primaryPublication.authors || 'Authors N/A'}</span>
               </div>
-              <div className="model-card-publication-item">
+              <div className={styles.publicationItem}>
                 <Calendar className="w-3.5 h-3.5" />
                 <span>{primaryPublication.year}</span>
               </div>
@@ -90,33 +92,33 @@ export function ModelCard({ model }: { model: Model }) {
           )}
         </div>
 
-        <div className="model-card-body">
-          <p className="model-card-description">{model.description}</p>
+        <div className={styles.body}>
+          <p className={styles.description}>{model.description}</p>
 
-          <div className="model-card-metrics">
-            <div className="model-card-metric">
-              <div className="model-card-metric-label">Complexity</div>
-              <div className="model-card-metric-value">
+          <div className={styles.metrics}>
+            <div className={styles.metric}>
+              <div className={styles.metricLabel}>Complexity</div>
+              <div className={styles.metricValue}>
                 {renderStars(complexityStars)}
               </div>
             </div>
-            <div className="model-card-metric">
-              <div className="model-card-metric-label">Interpretability</div>
-              <div className="model-card-metric-value">
+            <div className={styles.metric}>
+              <div className={styles.metricLabel}>Interpretability</div>
+              <div className={styles.metricValue}>
                 {renderStars(interpretabilityStars)}
               </div>
             </div>
           </div>
 
           {model.frameworks.length > 0 && (
-            <div className="model-card-frameworks">
+            <div className={styles.frameworks}>
               {model.frameworks.slice(0, 3).map(fw => (
-                <span key={fw} className="model-card-framework-tag">
+                <span key={fw} className={styles.frameworkTag}>
                   {fw}
                 </span>
               ))}
               {model.frameworks.length > 3 && (
-                <span className="model-card-framework-tag">
+                <span className={styles.frameworkTag}>
                   +{model.frameworks.length - 3}
                 </span>
               )}
@@ -124,14 +126,14 @@ export function ModelCard({ model }: { model: Model }) {
           )}
 
           {model.tags.length > 0 && (
-            <div className="model-card-tags">
+            <div className={styles.tags}>
               {model.tags.slice(0, 4).map(tag => (
-                <span key={tag} className="model-card-tag">
+                <span key={tag} className={styles.tag}>
                   {tag}
                 </span>
               ))}
               {model.tags.length > 4 && (
-                <span className="model-card-tag">
+                <span className={styles.tag}>
                   +{model.tags.length - 4}
                 </span>
               )}
@@ -140,8 +142,8 @@ export function ModelCard({ model }: { model: Model }) {
         </div>
 
         {model.usesInLiora && (
-          <div className="model-card-footer">
-            <span className="model-card-liora-badge">
+          <div className={styles.footer}>
+            <span className={styles.lioraBadge}>
               <span>✓</span>
               Used in Liora
             </span>
