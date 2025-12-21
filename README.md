@@ -5,14 +5,14 @@ A comprehensive interactive dashboard for exploring single-cell analysis models,
 ## 🎯 What You Can Do Here
 
 ### 📊 **Explore Datasets**
-Browse and analyze **80+ single-cell RNA-seq and ATAC-seq datasets** from NCBI GEO with detailed metadata, preprocessing information, and statistics.
+Browse and analyze **66 single-cell RNA-seq and ATAC-seq datasets** (48 scRNA, 18 scATAC) from NCBI GEO with detailed metadata, preprocessing information, and statistics.
 
-### 🧬 **Discover Models**
-Learn about **21 state-of-the-art models** organized by category:
-- **Predictive Models** (8): scVI, scGNN, SCALEX, CellBLAST, scGCC, CLEAR, scDAC, scDeepCluster
-- **Generative Models** (2): scDiffusion, siVAE
-- **scATAC-Specific** (2): PeakVI, scTour
-- **Geometric Models** (3): GMVAE variants (PGM, Poincaré, Hyperbolic-Wrapped)
+Learn about **23 state-of-the-art models** organized by category:
+- **Predictive Models** (2): scGCC, CLEAR
+- **Generative Models** (10): scVI, scGNN, SCALEX, CellBLAST, scDAC, scDeepCluster, scDHMap, scSMD, scDiffusion, siVAE
+- **scATAC-Specific** (2): PeakVI, PoissonVI
+- **Trajectory** (1): scTour
+- **Geometric Models** (4): GMVAE variants (PGM, Poincaré, Hyperbolic-Wrapped, Learnable-PGM)
 - **Disentanglement Models** (4): β-VAE, InfoVAE, TCVAE, DIPVAE
 
 Each model includes:
