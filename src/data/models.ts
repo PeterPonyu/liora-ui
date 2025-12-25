@@ -94,18 +94,23 @@ export function getModelStats() {
       rna: modelsData.filter(m => m.modalitySupport.includes('rna')).length,
       atac: modelsData.filter(m => m.modalitySupport.includes('atac')).length,
     },
-    usedInLiora: modelsData.filter(m => m.usesInLiora).length,
-    notImplemented: modelsData.filter(m => !m.usesInLiora).length,
+    usedInLAIOR: modelsData.filter(m => m.usesInLAIOR).length,
+    notImplemented: modelsData.filter(m => !m.usesInLAIOR).length,
   };
 }
 
 // Filter models by implementation status
+export function getLAIORModels(): Model[] {
+  return modelsData.filter(m => m.usesInLAIOR);
+}
+
+// Backward compatibility alias
 export function getLioraModels(): Model[] {
-  return modelsData.filter(m => m.usesInLiora);
+  return getLAIORModels();
 }
 
 export function getExternalModels(): Model[] {
-  return modelsData.filter(m => !m.usesInLiora);
+  return modelsData.filter(m => !m.usesInLAIOR);
 }
 
 // Filter by complexity

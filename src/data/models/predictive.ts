@@ -54,7 +54,7 @@ export const predictiveModels: Model[] = [
     tags: ['contrastive', 'graph', 'clustering', 'encoder-only', 'rna'],
     complexity: 'complex',
     interpretability: 'medium',
-    usesInLiora: true,
+    usesInLAIOR: true,
     modalitySupport: ['rna'],
   },
 
@@ -111,7 +111,7 @@ export const predictiveModels: Model[] = [
     tags: ['contrastive', 'embedding', 'batch-robust', 'encoder-only', 'rna'],
     complexity: 'moderate',
     interpretability: 'medium',
-    usesInLiora: true,
+    usesInLAIOR: true,
     modalitySupport: ['rna'],
   },
 ];

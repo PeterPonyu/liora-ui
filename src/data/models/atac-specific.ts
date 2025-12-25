@@ -54,7 +54,7 @@ export const atacSpecificModels: Model[] = [
     tags: ['vae', 'atac-seq', 'sparse', 'chromatin', 'generative'],
     complexity: 'moderate',
     interpretability: 'high',
-    usesInLiora: false,
+    usesInLAIOR: false,
     modalitySupport: ['atac'],
   },
 
@@ -111,7 +111,7 @@ export const atacSpecificModels: Model[] = [
     tags: ['vae', 'atac-seq', 'poisson', 'fragment-counts', 'generative'],
     complexity: 'moderate',
     interpretability: 'high',
-    usesInLiora: false,
+    usesInLAIOR: false,
     modalitySupport: ['atac'],
   },
 ];

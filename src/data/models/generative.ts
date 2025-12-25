@@ -54,7 +54,7 @@ export const generativeModels: Model[] = [
     tags: ['vae', 'generative', 'batch-correction', 'rna'],
     complexity: 'moderate',
     interpretability: 'high',
-    usesInLiora: false,
+    usesInLAIOR: false,
     modalitySupport: ['rna'],
   },
 
@@ -112,7 +112,7 @@ export const generativeModels: Model[] = [
     tags: ['graph', 'clustering', 'imputation', 'vae', 'rna'],
     complexity: 'complex',
     interpretability: 'medium',
-    usesInLiora: true,
+    usesInLAIOR: true,
     modalitySupport: ['rna'],
   },
 
@@ -165,7 +165,7 @@ export const generativeModels: Model[] = [
     tags: ['vae', 'batch-correction', 'integration', 'rna'],
     complexity: 'moderate',
     interpretability: 'high',
-    usesInLiora: true,
+    usesInLAIOR: true,
     modalitySupport: ['rna'],
   },
 
@@ -222,7 +222,7 @@ export const generativeModels: Model[] = [
     tags: ['vae', 'search', 'annotation', 'batch-correction', 'rna'],
     complexity: 'moderate',
     interpretability: 'medium',
-    usesInLiora: true,
+    usesInLAIOR: true,
     modalitySupport: ['rna'],
   },
 
@@ -280,7 +280,7 @@ export const generativeModels: Model[] = [
     tags: ['clustering', 'adaptive', 'autoencoder', 'vae', 'rna'],
     complexity: 'moderate',
     interpretability: 'high',
-    usesInLiora: true,
+    usesInLAIOR: true,
     modalitySupport: ['rna'],
   },
 
@@ -338,7 +338,7 @@ export const generativeModels: Model[] = [
     tags: ['clustering', 'zinb', 'deep-embedded', 'vae', 'rna'],
     complexity: 'moderate',
     interpretability: 'medium',
-    usesInLiora: true,
+    usesInLAIOR: true,
     modalitySupport: ['rna'],
   },
 
@@ -397,7 +397,7 @@ export const generativeModels: Model[] = [
     tags: ['hyperbolic', 'hierarchical', 'visualization', 'vae', 'rna'],
     complexity: 'complex',
     interpretability: 'medium',
-    usesInLiora: true,
+    usesInLAIOR: true,
     modalitySupport: ['rna'],
   },
 
@@ -455,7 +455,7 @@ export const generativeModels: Model[] = [
     tags: ['clustering', 'cnn', 'mutual-information', 'vae', 'rna'],
     complexity: 'moderate',
     interpretability: 'low',
-    usesInLiora: true,
+    usesInLAIOR: true,
     modalitySupport: ['rna'],
   },
 
@@ -512,7 +512,7 @@ export const generativeModels: Model[] = [
     tags: ['diffusion', 'generative', 'conditional', 'reconstruction', 'rna'],
     complexity: 'complex',
     interpretability: 'low',
-    usesInLiora: true,
+    usesInLAIOR: true,
     modalitySupport: ['rna'],
   },
 
@@ -569,7 +569,7 @@ export const generativeModels: Model[] = [
     tags: ['vae', 'interpretable', 'generative', 'rna'],
     complexity: 'moderate',
     interpretability: 'high',
-    usesInLiora: true,
+    usesInLAIOR: true,
     modalitySupport: ['rna'],
   },
 ];

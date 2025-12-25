@@ -55,7 +55,7 @@ export const trajectoryModels: Model[] = [
     tags: ['trajectory', 'pseudo-time', 'development', 'vae', 'generative', 'rna'],
     complexity: 'moderate',
     interpretability: 'high',
-    usesInLiora: false,
+    usesInLAIOR: false,
     modalitySupport: ['rna', 'atac'],
   },
 ];

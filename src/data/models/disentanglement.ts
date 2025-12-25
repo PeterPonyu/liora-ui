@@ -54,7 +54,7 @@ export const disentanglementModels: Model[] = [
     tags: ['vae', 'disentanglement', 'factors', 'generative', 'rna'],
     complexity: 'moderate',
     interpretability: 'high',
-    usesInLiora: false,
+    usesInLAIOR: false,
     modalitySupport: ['rna'],
   },
 
@@ -111,7 +111,7 @@ export const disentanglementModels: Model[] = [
     tags: ['vae', 'disentanglement', 'information-theory', 'generative', 'rna'],
     complexity: 'complex',
     interpretability: 'high',
-    usesInLiora: false,
+    usesInLAIOR: false,
     modalitySupport: ['rna'],
   },
 
@@ -172,7 +172,7 @@ export const disentanglementModels: Model[] = [
     tags: ['vae', 'disentanglement', 'total-correlation', 'generative', 'rna'],
     complexity: 'complex',
     interpretability: 'high',
-    usesInLiora: false,
+    usesInLAIOR: false,
     modalitySupport: ['rna'],
   },
 
@@ -233,7 +233,7 @@ export const disentanglementModels: Model[] = [
     tags: ['vae', 'disentanglement', 'factorial-prior', 'generative', 'rna'],
     complexity: 'complex',
     interpretability: 'high',
-    usesInLiora: false,
+    usesInLAIOR: false,
     modalitySupport: ['rna'],
   },
 ];

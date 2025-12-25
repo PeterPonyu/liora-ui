@@ -58,7 +58,7 @@ export const gaussianGeometricModels: Model[] = [
     tags: ['vae', 'mixture', 'clustering', 'gaussian', 'generative', 'rna'],
     complexity: 'complex',
     interpretability: 'high',
-    usesInLiora: true,
+    usesInLAIOR: true,
     modalitySupport: ['rna'],
   },
 
@@ -115,7 +115,7 @@ export const gaussianGeometricModels: Model[] = [
     tags: ['vae', 'hyperbolic', 'hierarchical', 'geometric', 'generative', 'rna'],
     complexity: 'complex',
     interpretability: 'high',
-    usesInLiora: true,
+    usesInLAIOR: true,
     modalitySupport: ['rna'],
   },
 
@@ -176,7 +176,7 @@ export const gaussianGeometricModels: Model[] = [
     tags: ['vae', 'hyperbolic', 'wrapped', 'hierarchical', 'generative', 'rna'],
     complexity: 'complex',
     interpretability: 'high',
-    usesInLiora: true,
+    usesInLAIOR: true,
     modalitySupport: ['rna'],
   },
 
@@ -233,7 +233,7 @@ export const gaussianGeometricModels: Model[] = [
     tags: ['vae', 'learnable-curvature', 'pgm', 'geometric', 'adaptive', 'manifold', 'generative', 'rna'],
     complexity: 'complex',
     interpretability: 'medium',
-    usesInLiora: true,
+    usesInLAIOR: true,
     modalitySupport: ['rna'],
   },
 ];
