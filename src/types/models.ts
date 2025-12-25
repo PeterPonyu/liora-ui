@@ -58,7 +58,7 @@ export interface Model {
   tags: string[];
   complexity: 'simple' | 'moderate' | 'complex';
   interpretability: 'low' | 'medium' | 'high';
-  usesInLiora: boolean;
+  usesInLAIOR: boolean;
   modalitySupport: ('rna' | 'atac')[];
 }
 

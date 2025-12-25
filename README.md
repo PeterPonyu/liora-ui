@@ -1,6 +1,6 @@
-# Liora Benchmarking Dashboard
+# LAIOR Benchmarking Dashboard
 
-A comprehensive interactive dashboard for exploring single-cell analysis models, datasets, and benchmarking results from the Liora project.
+A comprehensive interactive dashboard for exploring single-cell analysis models, datasets, and benchmarking results from the LAIOR (Lorentz Attentive Interpretable ODE Regularized VAE) project.
 
 ## 🎯 What You Can Do Here
 
@@ -50,7 +50,7 @@ Access the dashboard at: **https://PeterPonyu.github.io/liora-ui**
 
 ## 📚 **Key Features**
 
-✨ **Unified Model Catalog** - All Liora unified models in one place  
+✨ **Unified Model Catalog** - All LAIOR unified models in one place    
 ✨ **Cross-Model Comparison** - Compare performance across datasets  
 ✨ **Interactive Visualizations** - Heatmaps, charts, and tables  
 ✨ **Educational Content** - Learn model architectures and methods  
@@ -67,12 +67,12 @@ Access the dashboard at: **https://PeterPonyu.github.io/liora-ui**
 
 ## 🔗 **Related Projects**
 
-- **Liora**: Main benchmarking framework - https://github.com/PeterPonyu/Liora
+- **LAIOR**: Main benchmarking framework - https://github.com/PeterPonyu/Liora
 - **UI**: Web pages - https://github.com/PeterPonyu/liora-ui
 
 ## 📖 **Learn More**
 
-For detailed information about Liora models and benchmarking methodology, visit the main Liora repository.
+For detailed information about LAIOR models and benchmarking methodology, visit the main LAIOR repository.
 
 ---
 

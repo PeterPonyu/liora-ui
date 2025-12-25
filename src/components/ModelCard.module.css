@@ -331,7 +331,7 @@
   justify-content: space-between;
 }
 
-.lioraBadge {
+.laiorBadge {
   display: inline-flex;
   align-items: center;
   gap: 0.3125rem;                  /* ✅ Reduced from 0.375rem */
@@ -344,7 +344,7 @@
   border: 1.5px solid rgb(22 163 74);
 }
 
-:global(.dark) .lioraBadge {
+:global(.dark) .laiorBadge {
   background-color: rgb(134 239 172 / 0.15);
   color: rgb(134 239 172);
   border-color: rgb(134 239 172);

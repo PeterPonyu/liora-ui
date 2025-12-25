@@ -141,11 +141,11 @@ export function ModelCard({ model }: { model: Model }) {
           )}
         </div>
 
-        {model.usesInLiora && (
+        {model.usesInLAIOR && (
           <div className={styles.footer}>
-            <span className={styles.lioraBadge}>
+            <span className={styles.laiorBadge}>
               <span>✓</span>
-              Used in Liora
+              Used in LAIOR
             </span>
           </div>
         )}

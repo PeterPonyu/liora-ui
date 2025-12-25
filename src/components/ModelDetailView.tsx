@@ -149,11 +149,11 @@ export function ModelDetailView({ model }: { model: Model }) {
           </div>
         </div>
 
-        {/* Liora Badge */}
-        {model.usesInLiora && (
-          <div className={styles.successBadge}>
-            <CheckCircle className="w-5 h-5" />
-            Used in Liora Framework
+        {/* LAIOR Badge */}
+        {model.usesInLAIOR && (
+          <div className={styles.badge}>
+            <CheckCircle className="w-4 h-4" />
+            Used in LAIOR Framework
           </div>
         )}
       </section>

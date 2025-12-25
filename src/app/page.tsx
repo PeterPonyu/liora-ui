@@ -28,10 +28,10 @@ export default function HomePage() {
         <div className="space-y-4 max-w-4xl">
           <div className="space-y-2">
             <h1 className={styles.heroTitle}>
-              Liora Benchmarks
+              LAIOR Benchmarks
             </h1>
             <p className={styles.heroSubtitle}>
-              A comprehensive benchmarking library for <span className={styles.heroHighlight}>single-cell analysis models</span>, featuring Liora—the latest evolution in variational autoencoders from <span className={styles.heroHighlight}>VAE → iVAE → LiVAE → Liora</span>, now with <span className={styles.heroHighlight}>ODE regularization</span>. Compare <span className={styles.heroHighlight}>{modelsData.length} models</span> across <span className={styles.heroHighlight}>{modelCategories.length} categories</span> using <span className={styles.heroHighlight}>{metricsData.length} standardized metrics</span>.
+              A comprehensive benchmarking library for <span className={styles.heroHighlight}>single-cell analysis models</span>, featuring LAIOR (Lorentz Attentive Interpretable ODE Regularized VAE)—the latest evolution in variational autoencoders from <span className={styles.heroHighlight}>VAE → iVAE → LiVAE → LAIOR</span>, integrating <span className={styles.heroHighlight}>geometric regularization, information bottleneck, and ODE-based trajectory stabilization</span>. Compare <span className={styles.heroHighlight}>{modelsData.length} models</span> across <span className={styles.heroHighlight}>{modelCategories.length} categories</span> using <span className={styles.heroHighlight}>{metricsData.length} standardized metrics</span>.
             </p>
           </div>
         </div>
@@ -94,9 +94,9 @@ export default function HomePage() {
           <h2 className={styles.sectionTitle}>
             Model Categories
           </h2>
-          <p className={styles.sectionSubtitle}>
-            Compare {modelCategories.length} distinct approaches in Liora's benchmarking suite, from contrastive learning to disentangled representations
-          </p>
+            <p className={styles.sectionSubtitle}>
+              Compare {modelCategories.length} distinct approaches in LAIOR's benchmarking suite, from contrastive learning to disentangled representations
+            </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -123,9 +123,9 @@ export default function HomePage() {
           <h2 className={styles.sectionTitle}>
             Benchmark Datasets
           </h2>
-          <p className={styles.sectionSubtitle}>
-            Liora's curated collection of {datasets.length} single-cell datasets for rigorous model evaluation
-          </p>
+            <p className={styles.sectionSubtitle}>
+              LAIOR's curated collection of {datasets.length} single-cell datasets for rigorous model evaluation
+            </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -193,8 +193,7 @@ export default function HomePage() {
           <FeatureCard
             icon={Brain}
             title="Architecture Analysis"
-            description="Detailed model comparisons including Liora's ODE regularization vs. LiVAE's Lorentz geometry, iVAE's information bottleneck, and classical VAE architectures"
-          />
+            description="Detailed model comparisons including LAIOR's integrated architecture (ODE regularization + Lorentz geometry + information bottleneck + transformer attention) vs. LiVAE, iVAE, and classical VAE approaches"          />
           <FeatureCard
             icon={Database}
             title="Multi-Modal Benchmarking"
@@ -217,7 +216,7 @@ export default function HomePage() {
             Ready to explore?
           </h2>
           <p className={styles.finalCtaDescription}>
-            Dive into Liora's benchmarking library and discover which models work best for your single-cell analysis
+            Dive into LAIOR's benchmarking library and discover which models work best for your single-cell analysis
           </p>
         </div>
         <Link href="/models" className={styles.finalCtaButton}>

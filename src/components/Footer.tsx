@@ -22,13 +22,13 @@ export function Footer() {
               className="text-sm font-semibold mb-4 transition-colors"
               style={{ color: 'rgb(var(--text-primary))' }}
             >
-              About Liora
+              About LAIOR
             </h3>
             <p
               className="text-sm mb-3 transition-colors leading-relaxed"
               style={{ color: 'rgb(var(--text-secondary))' }}
             >
-              Liora represents the latest evolution in single-cell variational autoencoders, building upon a lineage of innovation:
+              LAIOR represents the latest evolution in single-cell variational autoencoders, building upon a lineage of innovation:
             </p>
             <ul
               className="text-sm space-y-1.5 transition-colors"
@@ -44,7 +44,7 @@ export function Footer() {
                 <strong style={{ color: 'rgb(var(--text-primary))' }}>LiVAE</strong> — Lorentz geometric regularization
               </li>
               <li>
-                <strong style={{ color: 'rgb(var(--primary))' }}>Liora</strong> — ODE regularization for temporal dynamics
+                <strong style={{ color: 'rgb(var(--primary))' }}>LAIOR</strong> — ODE regularization for temporal dynamics
               </li>
             </ul>
 
@@ -124,7 +124,7 @@ export function Footer() {
             className="text-sm transition-colors"
             style={{ color: 'rgb(var(--text-secondary))' }}
           >
-            &copy; 2025 Liora. All rights reserved.
+            &copy; 2025 LAIOR. All rights reserved.
           </p>
 
           {/* Social Links */}

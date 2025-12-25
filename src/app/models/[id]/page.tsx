@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   return {
-    title: `${model.name} - ${model.displayName} | Liora Benchmark`,
+    title: `${model.name} - ${model.displayName} | LAIOR Benchmark`,
     description: model.description,
   };
 }

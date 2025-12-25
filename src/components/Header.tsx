@@ -50,7 +50,7 @@ export function Header() {
                   backgroundClip: 'text',
                 }}
               >
-                Liora Benchmarks
+                LAIOR Benchmarks
               </span>
               <span 
                 className="hidden sm:block text-xs font-medium"

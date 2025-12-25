@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Liora Benchmarks - Single-Cell Models & Datasets",
+  title: "LAIOR Benchmarks - Single-Cell Models & Datasets",
   description: "Comprehensive benchmarking and visualization for single-cell analysis models including unified models, external tools, and disentanglement methods",
 };
 
