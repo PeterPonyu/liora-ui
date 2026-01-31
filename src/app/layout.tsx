@@ -32,6 +32,7 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
+                  // Theme initialization
                   const storedTheme = localStorage.getItem('theme');
                   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                   const theme = storedTheme || (prefersDark ? 'dark' : 'light');
@@ -45,6 +46,19 @@ export default function RootLayout({
                   const fontSize = storedFontSize || 'medium';
                   const multipliers = { small: 0.875, medium: 1, large: 1.125 };
                   document.documentElement.style.fontSize = (multipliers[fontSize] * 16) + 'px';
+                  
+                  // SPA routing fix for GitHub Pages
+                  // Handle redirects from 404.html
+                  (function(l) {
+                    if (l.search[1] === '/') {
+                      var decoded = l.search.slice(1).split('&').map(function(s) { 
+                        return s.replace(/~and~/g, '&')
+                      }).join('?');
+                      window.history.replaceState(null, null,
+                        l.pathname.slice(0, -1) + decoded + l.hash
+                      );
+                    }
+                  }(window.location));
                 } catch (e) {}
               })();
             `,
