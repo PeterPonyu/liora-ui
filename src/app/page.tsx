@@ -24,25 +24,47 @@ export default function HomePage() {
       {/* ============================================
           HERO SECTION
           ============================================ */}
-      <section className={`${styles.hero} space-y-5`}>
-        <div className="space-y-4 max-w-4xl">
-          <div className="space-y-2">
-            <h1 className={styles.heroTitle}>
-              LAIOR Benchmarks
-            </h1>
-            <p className={styles.heroSubtitle}>
-              A comprehensive benchmarking library for <span className={styles.heroHighlight}>single-cell analysis models</span>, featuring LAIOR (Lorentz Attentive Interpretable ODE Regularized VAE)—the latest evolution in variational autoencoders from <span className={styles.heroHighlight}>VAE → iVAE → LiVAE → LAIOR</span>, integrating <span className={styles.heroHighlight}>geometric regularization, information bottleneck, and ODE-based trajectory stabilization</span>. Compare <span className={styles.heroHighlight}>{modelsData.length} models</span> across <span className={styles.heroHighlight}>{modelCategories.length} categories</span> using <span className={styles.heroHighlight}>{metricsData.length} standardized metrics</span>.
-            </p>
+      <section className={styles.heroShell}>
+        <div className={styles.heroGlow} />
+        <div className={styles.heroGrid}>
+          <div className="space-y-5">
+            <div className={styles.heroBadge}>
+              <Sparkles className={styles.heroBadgeIcon} />
+              <span className={styles.heroBadgeText}>Benchmark Gateway</span>
+            </div>
+            <div className="space-y-3">
+              <h1 className={styles.heroTitle}>LAIOR Benchmarks</h1>
+              <p className={styles.heroSubtitle}>
+                A comprehensive benchmarking library for <span className={styles.heroHighlight}>single-cell analysis models</span>, featuring LAIOR (Lorentz Attentive Interpretable ODE Regularized VAE)—the latest evolution in variational autoencoders from <span className={styles.heroHighlight}>VAE → iVAE → LiVAE → LAIOR</span>, integrating <span className={styles.heroHighlight}>geometric regularization, information bottleneck, and ODE-based trajectory stabilization</span>. Compare <span className={styles.heroHighlight}>{modelsData.length} models</span> across <span className={styles.heroHighlight}>{modelCategories.length} categories</span> using <span className={styles.heroHighlight}>{metricsData.length} standardized metrics</span>.
+              </p>
+            </div>
+            <div className={styles.heroActions}>
+              <Link href="/models" className={styles.heroPrimary}>
+                Explore Models
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link href="/datasets" className={styles.heroSecondary}>
+                Browse Datasets
+              </Link>
+            </div>
+            <div className={styles.heroMeta}>
+              <span>{modelsData.length} Models</span>
+              <span>{metricsData.length} Metrics</span>
+              <span>{datasets.length} Datasets</span>
+              <span>{modelCategories.length} Categories</span>
+            </div>
           </div>
-        </div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 pt-6">
-          <StatCard icon={Brain} label="Models" value={modelsData.length} />
-          <StatCard icon={Database} label="RNA Datasets" value={rnaDatasets.length} />
-          <StatCard icon={Database} label="ATAC Datasets" value={atacDatasets.length} />
-          <StatCard icon={BarChart3} label="Metrics" value={metricsData.length} />
-          <StatCard icon={TrendingUp} label="Categories" value={modelCategories.length} />
+          <div className={styles.heroPanel}>
+            <div className={styles.heroPanelTag}>Snapshot</div>
+            <div className={styles.heroPanelTitle}>Benchmark Coverage</div>
+            <div className={styles.heroPanelGrid}>
+              <StatCard icon={Brain} label="Models" value={modelsData.length} />
+              <StatCard icon={Database} label="RNA" value={rnaDatasets.length} />
+              <StatCard icon={Database} label="ATAC" value={atacDatasets.length} />
+              <StatCard icon={BarChart3} label="Metrics" value={metricsData.length} />
+            </div>
+          </div>
         </div>
       </section>
 

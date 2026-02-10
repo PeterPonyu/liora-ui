@@ -5,13 +5,161 @@
    ============================================ */
 
 .hero {
-  padding: 1.5rem 0;               /* ✅ Reduced from 2rem (32px → 24px) */
+  padding: 1.5rem 0;
 }
 
 @media (min-width: 768px) {
   .hero {
-    padding: 2.25rem 0;            /* ✅ Reduced from 3rem (48px → 36px) */
+    padding: 2.25rem 0;
   }
+}
+
+.heroShell {
+  position: relative;
+  padding: 2.5rem 1.75rem;
+  border-radius: 1.5rem;
+  border: 2px solid rgb(var(--border));
+  background: radial-gradient(circle at top left, rgb(var(--primary) / 0.08), transparent 55%),
+              radial-gradient(circle at bottom right, rgb(14 116 144 / 0.08), transparent 55%),
+              rgb(var(--card));
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .heroShell {
+    padding: 3rem 2.5rem;
+  }
+}
+
+.heroGlow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.heroGlow::before,
+.heroGlow::after {
+  content: '';
+  position: absolute;
+  width: 16rem;
+  height: 16rem;
+  border-radius: 9999px;
+  filter: blur(40px);
+  opacity: 0.5;
+  animation: floatSoft 12s ease-in-out infinite;
+}
+
+.heroGlow::before {
+  top: -5rem;
+  right: -4rem;
+  background: rgb(var(--primary) / 0.18);
+}
+
+.heroGlow::after {
+  bottom: -5rem;
+  left: -4rem;
+  background: rgb(14 116 144 / 0.18);
+  animation-delay: 2s;
+}
+
+.heroGrid {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .heroGrid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.heroPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.75rem;
+  border-radius: 9999px;
+  background: linear-gradient(120deg, rgb(var(--primary)), rgb(14 116 144));
+  color: white;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 18px 30px -20px rgb(var(--primary) / 0.7);
+}
+
+.heroPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 24px 36px -24px rgb(var(--primary) / 0.9);
+}
+
+.heroSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 9999px;
+  border: 2px solid rgb(var(--border));
+  color: rgb(var(--text-primary));
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.heroSecondary:hover {
+  background-color: rgb(var(--secondary));
+  transform: translateY(-2px);
+}
+
+.heroMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgb(var(--text-tertiary));
+}
+
+.heroMeta span {
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(var(--border));
+  background-color: rgb(var(--card));
+}
+
+.heroPanel {
+  border-radius: 1.25rem;
+  border: 2px solid rgb(var(--border));
+  background: rgb(var(--background));
+  padding: 1.5rem;
+  box-shadow: 0 24px 40px -32px rgb(15 23 42 / 0.25);
+}
+
+.heroPanelTag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: rgb(var(--text-tertiary));
+}
+
+.heroPanelTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  color: rgb(var(--text-primary));
+}
+
+.heroPanelGrid {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
 }
 
 .heroBadge {
@@ -36,41 +184,52 @@
   color: rgb(var(--primary));
 }
 
+
 .heroTitle {
-  font-size: 2.5rem;               /* ✅ Reduced from 3rem */
+  font-size: 2.75rem;
   font-weight: 700;
   line-height: 1.1;
   color: rgb(var(--text-primary));
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
 }
 
 @media (min-width: 768px) {
   .heroTitle {
-    font-size: 3.25rem;            /* ✅ Reduced from 3.75rem */
+    font-size: 3.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .heroTitle {
-    font-size: 4rem;               /* ✅ Reduced from 4.5rem */
+    font-size: 4.25rem;
   }
 }
 
+
 .heroSubtitle {
-  font-size: 1.125rem;             /* ✅ Reduced from 1.25rem */
-  line-height: 1.6;                /* ✅ Reduced from 1.75 */
+  font-size: 1.15rem;
+  line-height: 1.7;
   color: rgb(var(--text-secondary));
 }
 
 @media (min-width: 768px) {
   .heroSubtitle {
-    font-size: 1.375rem;           /* ✅ Reduced from 1.5rem */
+    font-size: 1.45rem;
   }
 }
 
 .heroHighlight {
   font-weight: 600;
   color: rgb(var(--primary));
+}
+
+@keyframes floatSoft {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
 }
 
 /* ============================================
