@@ -74,6 +74,3 @@ Access the dashboard at: **https://PeterPonyu.github.io/liora-ui**
 
 For detailed information about LAIOR models and benchmarking methodology, visit the main LAIOR repository.
 
----
-
-**Created with ❤️ for the single-cell analysis community**
