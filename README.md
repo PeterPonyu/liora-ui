@@ -1,3 +1,9 @@
+<div align="center">
+  <a href="https://peterponyu.github.io/">
+    <img src="https://peterponyu.github.io/assets/badges/liora-ui.svg" width="64" alt="ZF Lab · liora-ui">
+  </a>
+</div>
+
 # LAIOR Benchmarking Dashboard
 
 A comprehensive interactive dashboard for exploring single-cell analysis models, datasets, and benchmarking results from the LAIOR (Lorentz Attentive Interpretable ODE Regularized VAE) project.

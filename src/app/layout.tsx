@@ -18,6 +18,9 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "LAIOR Benchmarks - Single-Cell Models & Datasets",
   description: "Comprehensive benchmarking and visualization for single-cell analysis models including unified models, external tools, and disentanglement methods",
+  icons: {
+    icon: { url: '/liora-ui/favicon.svg', type: 'image/svg+xml' },
+  },
 };
 
 export default function RootLayout({
