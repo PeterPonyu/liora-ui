@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ThemeToggle } from './ThemeToggle';
 import { FontSizeManager } from './FontSizeManager';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import styles from './Header.module.css';
 
@@ -31,14 +31,18 @@ export function Header() {
         <div className="flex justify-between items-center py-4">
           {/* Logo & Brand */}
           <Link href="/" className="flex items-center gap-3 shrink-0 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500 rounded-lg">
-            <div 
-              className="w-9 h-9 rounded-xl flex items-center justify-center shadow-md transition-transform duration-200 group-hover:scale-110 group-hover:rotate-3 group-active:scale-95"
-              style={{
-                background: 'linear-gradient(135deg, rgb(var(--primary)) 0%, rgb(99 102 241) 100%)',
-              }}
+            <svg 
+              className="w-9 h-9 flex-shrink-0 shadow-md rounded-full transition-transform duration-200 group-hover:scale-110 group-hover:rotate-3 group-active:scale-95"
+              viewBox="0 0 128 128"
             >
-              <Sparkles className="w-5 h-5 text-white" />
-            </div>
+              <circle cx="64" cy="64" r="62" fill="#1e3a8a"/>
+              <circle cx="64" cy="64" r="60" fill="none" stroke="#3451b2" strokeWidth="2.5"/>
+              <path d="M18 46 C38 46,50 22,64 22 C78 22,92 46,110 46" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="3.5" strokeLinecap="round"/>
+              <path d="M18 22 C38 22,50 46,64 46 C78 46,92 22,110 22" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="3.5" strokeLinecap="round"/>
+              <circle cx="18" cy="46" r="3" fill="#818cf8"/><circle cx="110" cy="46" r="3" fill="#818cf8"/>
+              <circle cx="18" cy="22" r="3" fill="#818cf8"/><circle cx="110" cy="22" r="3" fill="#818cf8"/>
+              <text x="64" y="82" fontFamily="JetBrains Mono,monospace" fontSize="44" fontWeight="700" fill="#fff" textAnchor="middle" dominantBaseline="central">LU</text>
+            </svg>
             <div className="flex flex-col">
               <span
                 className="text-lg font-bold tracking-tight transition-colors"
