@@ -14,6 +14,21 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }: PageProps) {
+  const { id } = await params;
+
+  return {
+    title: `${id} | LAIOR Benchmarks`,
+    description: 'Dataset detail page within the LAIOR Benchmarks public microsite.',
+    alternates: {
+      canonical: `/liora-ui/datasets/${id}/`,
+    },
+    openGraph: {
+      url: `https://peterponyu.github.io/liora-ui/datasets/${id}/`,
+    },
+  };
+}
+
 export default async function DatasetDetailPage({ params }: PageProps) {
   const { id } = await params;
   return <DatasetDetailView id={id} />;

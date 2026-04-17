@@ -25,8 +25,14 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   return {
-    title: `${metric.shortName} - ${metric.name} | Liora Metrics`,
+    title: `${metric.shortName} | LAIOR Benchmarks`,
     description: metric.description,
+    alternates: {
+      canonical: `/liora-ui/metrics/${metric.id}/`,
+    },
+    openGraph: {
+      url: `https://peterponyu.github.io/liora-ui/metrics/${metric.id}/`,
+    },
   };
 }
 

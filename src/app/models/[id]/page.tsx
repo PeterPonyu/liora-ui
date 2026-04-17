@@ -25,8 +25,14 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   return {
-    title: `${model.name} - ${model.displayName} | LAIOR Benchmark`,
+    title: `${model.name} | LAIOR Benchmarks`,
     description: model.description,
+    alternates: {
+      canonical: `/liora-ui/models/${model.id}/`,
+    },
+    openGraph: {
+      url: `https://peterponyu.github.io/liora-ui/models/${model.id}/`,
+    },
   };
 }
 
