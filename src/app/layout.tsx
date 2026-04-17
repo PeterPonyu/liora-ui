@@ -16,8 +16,31 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LAIOR Benchmarks - Single-Cell Models & Datasets",
-  description: "Comprehensive benchmarking and visualization for single-cell analysis models including unified models, external tools, and disentanglement methods",
+  metadataBase: new URL("https://peterponyu.github.io"),
+  title: {
+    default: "LAIOR Benchmarks | Public Microsite",
+    template: "%s | LAIOR Benchmarks",
+  },
+  description: "Public microsite for LAIOR benchmark datasets, model summaries, metrics, and detailed benchmark exploration.",
+  alternates: {
+    canonical: "/liora-ui/",
+  },
+  openGraph: {
+    title: "LAIOR Benchmarks | Public Microsite",
+    description: "Public microsite for LAIOR benchmark datasets, model summaries, metrics, and detailed benchmark exploration.",
+    url: "https://peterponyu.github.io/liora-ui/",
+    siteName: "LAIOR Benchmarks",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "LAIOR Benchmarks | Public Microsite",
+    description: "Public microsite for LAIOR benchmark datasets, model summaries, metrics, and detailed benchmark exploration.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
     icon: { url: '/liora-ui/favicon.svg', type: 'image/svg+xml' },
   },
