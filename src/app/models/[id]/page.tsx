@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   return {
-    title: `${model.name} | LAIOR Benchmarks`,
+    title: model.name,
     description: model.description,
     alternates: {
       canonical: `/liora-ui/models/${model.id}/`,

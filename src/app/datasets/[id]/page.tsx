@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PageProps) {
   const { id } = await params;
 
   return {
-    title: `${id} | LAIOR Benchmarks`,
+    title: id,
     description: 'Dataset detail page within the LAIOR Benchmarks public microsite.',
     alternates: {
       canonical: `/liora-ui/datasets/${id}/`,

@@ -3,34 +3,40 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
+const siteTitle = "LAIOR Benchmarks | Public Microsite";
+const siteDescription = "Public microsite for LAIOR benchmark datasets, model summaries, metrics, and detailed benchmark exploration.";
+const canonicalPath = "/liora-ui/";
+const canonicalUrl = "https://peterponyu.github.io/liora-ui/";
+const iconPath = process.env.NODE_ENV === "production" ? "/liora-ui/favicon.svg" : "/favicon.svg";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://peterponyu.github.io"),
   title: {
-    default: "LAIOR Benchmarks | Public Microsite",
+    default: siteTitle,
     template: "%s | LAIOR Benchmarks",
   },
-  description: "Public microsite for LAIOR benchmark datasets, model summaries, metrics, and detailed benchmark exploration.",
+  description: siteDescription,
   alternates: {
-    canonical: "/liora-ui/",
+    canonical: canonicalPath,
   },
   openGraph: {
-    title: "LAIOR Benchmarks | Public Microsite",
-    description: "Public microsite for LAIOR benchmark datasets, model summaries, metrics, and detailed benchmark exploration.",
-    url: "https://peterponyu.github.io/liora-ui/",
+    title: siteTitle,
+    description: siteDescription,
+    url: canonicalUrl,
     siteName: "LAIOR Benchmarks",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "LAIOR Benchmarks | Public Microsite",
-    description: "Public microsite for LAIOR benchmark datasets, model summaries, metrics, and detailed benchmark exploration.",
+    title: siteTitle,
+    description: siteDescription,
   },
   robots: {
     index: true,
     follow: true,
   },
   icons: {
-    icon: { url: '/liora-ui/favicon.svg', type: 'image/svg+xml' },
+    icon: { url: iconPath, type: 'image/svg+xml' },
   },
 };
 
