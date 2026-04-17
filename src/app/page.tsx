@@ -32,6 +32,24 @@ export default function HomePage() {
               <Sparkles className={styles.heroBadgeIcon} />
               <span className={styles.heroBadgeText}>Benchmark Gateway</span>
             </div>
+            <div className="flex flex-wrap gap-2 text-xs font-medium text-[rgb(var(--text-secondary))]">
+              <a
+                href="https://peterponyu.github.io/scportal/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border px-3 py-1 transition-colors hover:bg-[rgb(var(--card))]"
+              >
+                Open SCPortal
+              </a>
+              <a
+                href="https://peterponyu.github.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border px-3 py-1 transition-colors hover:bg-[rgb(var(--card))]"
+              >
+                Back to Homepage
+              </a>
+            </div>
             <div className="space-y-3">
               <h1 className={styles.heroTitle}>LAIOR Benchmarks</h1>
               <p className={styles.heroSubtitle}>
@@ -209,6 +227,9 @@ export default function HomePage() {
           <h2 className={styles.sectionTitle}>
             Platform Capabilities
           </h2>
+          <p className={styles.sectionSubtitle}>
+            Use this microsite for deep benchmark inspection, and use SCPortal for cross-project discovery.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
