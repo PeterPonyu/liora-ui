@@ -1,25 +1,42 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-});
-
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
+const siteTitle = "LAIOR Benchmarks | Public Microsite";
+const siteDescription = "Public microsite for LAIOR benchmark datasets, model summaries, metrics, and detailed benchmark exploration.";
+const canonicalPath = "/liora-ui/";
+const canonicalUrl = "https://peterponyu.github.io/liora-ui/";
+const iconPath = process.env.NODE_ENV === "production" ? "/liora-ui/favicon.svg" : "/favicon.svg";
 
 export const metadata: Metadata = {
-  title: "LAIOR Benchmarks - Single-Cell Models & Datasets",
-  description: "Comprehensive benchmarking and visualization for single-cell analysis models including unified models, external tools, and disentanglement methods",
+  metadataBase: new URL("https://peterponyu.github.io"),
+  title: {
+    default: siteTitle,
+    template: "%s | LAIOR Benchmarks",
+  },
+  description: siteDescription,
+  alternates: {
+    canonical: canonicalPath,
+  },
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    url: canonicalUrl,
+    siteName: "LAIOR Benchmarks",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
-    icon: { url: '/liora-ui/favicon.svg', type: 'image/svg+xml' },
+    icon: { url: iconPath, type: 'image/svg+xml' },
   },
 };
 
@@ -69,7 +86,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${spaceGrotesk.variable} ${plexMono.variable} antialiased transition-colors duration-200 font-sans`}>
+      <body className="antialiased transition-colors duration-200 font-sans">
         <div 
           className="flex flex-col min-h-screen transition-colors duration-200"
           style={{

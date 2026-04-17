@@ -67,7 +67,7 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
-            <NavAnchor href="https://peterponyu.github.io/scportal/">Portal</NavAnchor>
+            <NavAnchor href="https://peterponyu.github.io/scportal/">SCPortal</NavAnchor>
             <NavAnchor href="https://peterponyu.github.io/">Homepage</NavAnchor>
             <NavLink href="/datasets" isActive={isActive('/datasets')}>Datasets</NavLink>
             <NavLink href="/models" isActive={isActive('/models')}>Models</NavLink>
@@ -105,7 +105,7 @@ export function Header() {
             style={{ borderColor: 'rgb(var(--border))' }}
           >
             <MobileNavAnchor href="https://peterponyu.github.io/scportal/" onClick={() => setMobileMenuOpen(false)}>
-              Portal
+              SCPortal
             </MobileNavAnchor>
             <MobileNavAnchor href="https://peterponyu.github.io/" onClick={() => setMobileMenuOpen(false)}>
               Homepage

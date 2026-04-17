@@ -44,7 +44,7 @@ export function Footer() {
                 <strong style={{ color: 'rgb(var(--text-primary))' }}>LAIOR Benchmarks</strong> — Detailed benchmark destination
               </li>
               <li>
-                <strong style={{ color: 'rgb(var(--primary))' }}>Related Utilities</strong> — Linked where workflows overlap
+                <strong style={{ color: 'rgb(var(--primary))' }}>Related Tools</strong> — Linked where workflows overlap
               </li>
             </ul>
 
@@ -59,7 +59,7 @@ export function Footer() {
             </h4>
             <ul className={`space-y-2 text-sm ${styles.footerLinks}`}>
               <li>
-                <a href="https://peterponyu.github.io/scportal/" target="_blank" rel="noopener noreferrer">Portal</a>
+                <a href="https://peterponyu.github.io/scportal/" target="_blank" rel="noopener noreferrer">SCPortal</a>
               </li>
               <li>
                 <a href="https://peterponyu.github.io/" target="_blank" rel="noopener noreferrer">Homepage</a>
