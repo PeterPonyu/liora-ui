@@ -1,19 +1,13 @@
-<div align="center">
-  <a href="https://peterponyu.github.io/">
-    <img src="https://peterponyu.github.io/assets/badges/liora-ui.svg" width="64" alt="ZF Lab · liora-ui">
-  </a>
-</div>
-
 # LAIOR Benchmarking Dashboard
 
-A comprehensive interactive dashboard for exploring single-cell analysis models, datasets, and benchmarking results from the LAIOR (Lorentz Attentive Interpretable ODE Regularized VAE) project.
+An interactive dashboard for exploring single-cell analysis models, datasets, and benchmarking views from the LAIOR project.
 
 ## 🎯 What You Can Do Here
 
 ### 📊 **Explore Datasets**
-Browse and analyze **66 single-cell RNA-seq and ATAC-seq datasets** (48 scRNA, 18 scATAC) from NCBI GEO with detailed metadata, preprocessing information, and statistics.
+Browse single-cell RNA-seq and ATAC-seq benchmark datasets with metadata, preprocessing notes, and summary views.
 
-Learn about **23 state-of-the-art models** organized by category:
+Learn about benchmark models organized by category:
 - **Predictive Models** (2): scGCC, CLEAR
 - **Generative Models** (10): scVI, scGNN, SCALEX, CellBLAST, scDAC, scDeepCluster, scDHMap, scSMD, scDiffusion, siVAE
 - **scATAC-Specific** (2): PeakVI, PoissonVI
@@ -36,7 +30,7 @@ Analyze how models perform across datasets using multiple metrics:
 - **Runtime & Efficiency**: Training time, memory usage
 
 ### 🔍 **Understand Metrics**
-Interactive reference library explaining all 50+ evaluation metrics with:
+Interactive reference library explaining the evaluation metrics used in the dashboard:
 - Clear definitions and interpretations
 - Range and direction (higher/lower is better)
 - Mathematical formulas
@@ -44,11 +38,11 @@ Interactive reference library explaining all 50+ evaluation metrics with:
 
 ## 🌓 **User Experience**
 
-- **Dark/Light Theme Toggle**: Seamlessly switch between themes with persistent storage
-- **Responsive Design**: Works perfectly on desktop, tablet, and mobile
+- **Dark/Light Theme Toggle**: Switch between themes with persistent storage
+- **Responsive Design**: Works across desktop and mobile layouts
 - **Fast Navigation**: Quick links between related models, datasets, and metrics
 - **Advanced Filtering**: Search and filter by model category, modality, complexity, and more
-- **Consistent Styling**: Professional design inspired by modern data platforms
+- **Consistent Styling**: A focused layout for catalog and result browsing
 
 ## 🚀 **Live Demo**
 
@@ -56,11 +50,10 @@ Access the dashboard at: **https://PeterPonyu.github.io/liora-ui**
 
 ## 📚 **Key Features**
 
-✨ **Unified Model Catalog** - All LAIOR unified models in one place    
-✨ **Cross-Model Comparison** - Compare performance across datasets  
-✨ **Interactive Visualizations** - Heatmaps, charts, and tables  
-✨ **Educational Content** - Learn model architectures and methods  
-✨ **Fast & Responsive** - Optimized for modern browsers  
+- **Model Catalog** - Browse the models included in the dashboard
+- **Cross-Model Comparison** - Compare performance across datasets
+- **Interactive Visualizations** - Heatmaps, charts, and tables
+- **Reference Content** - Review model and metric summaries
 
 ## 🛠 **Technology Stack**
 
@@ -78,5 +71,4 @@ Access the dashboard at: **https://PeterPonyu.github.io/liora-ui**
 
 ## 📖 **Learn More**
 
-For detailed information about LAIOR models and benchmarking methodology, visit the main LAIOR repository.
-
+For implementation details and project context, visit the main LAIOR repository.
