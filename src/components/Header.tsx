@@ -67,6 +67,8 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
+            <NavAnchor href="https://peterponyu.github.io/scportal/">Portal</NavAnchor>
+            <NavAnchor href="https://peterponyu.github.io/">Homepage</NavAnchor>
             <NavLink href="/datasets" isActive={isActive('/datasets')}>Datasets</NavLink>
             <NavLink href="/models" isActive={isActive('/models')}>Models</NavLink>
             <NavLink href="/metrics" isActive={isActive('/metrics')}>Metrics</NavLink>
@@ -102,6 +104,12 @@ export function Header() {
             className={`md:hidden pb-4 pt-2 border-t space-y-1 ${styles.mobileMenu}`}
             style={{ borderColor: 'rgb(var(--border))' }}
           >
+            <MobileNavAnchor href="https://peterponyu.github.io/scportal/" onClick={() => setMobileMenuOpen(false)}>
+              Portal
+            </MobileNavAnchor>
+            <MobileNavAnchor href="https://peterponyu.github.io/" onClick={() => setMobileMenuOpen(false)}>
+              Homepage
+            </MobileNavAnchor>
             <MobileNavLink 
               href="/datasets" 
               isActive={isActive('/datasets')}
@@ -147,6 +155,19 @@ function NavLink({ href, children, isActive }: NavLinkProps) {
   );
 }
 
+function NavAnchor({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a
+      href={href}
+      className={styles.navLink}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {children}
+    </a>
+  );
+}
+
 interface MobileNavLinkProps {
   href: string;
   children: React.ReactNode;
@@ -163,5 +184,27 @@ function MobileNavLink({ href, children, isActive, onClick }: MobileNavLinkProps
     >
       {children}
     </Link>
+  );
+}
+
+function MobileNavAnchor({
+  href,
+  children,
+  onClick,
+}: {
+  href: string;
+  children: React.ReactNode;
+  onClick?: () => void;
+}) {
+  return (
+    <a
+      href={href}
+      className={styles.mobileNavLink}
+      onClick={onClick}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {children}
+    </a>
   );
 }
