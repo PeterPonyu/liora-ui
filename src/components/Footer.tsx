@@ -4,6 +4,11 @@
 import Link from 'next/link';
 import { Github, FileText, Mail } from 'lucide-react';
 import styles from './Footer.module.css';
+import {
+  homepageLink,
+  relatedPublicToolLinks,
+  scportalLink,
+} from '@/lib/publicGraph';
 
 export function Footer() {
   return (
@@ -35,10 +40,10 @@ export function Footer() {
               style={{ color: 'rgb(var(--text-secondary))' }}
             >
               <li>
-                <strong style={{ color: 'rgb(var(--text-primary))' }}>Homepage</strong> — Public identity and top-level overview
+                <strong style={{ color: 'rgb(var(--text-primary))' }}>{homepageLink.name}</strong> — Public identity and top-level overview
               </li>
               <li>
-                <strong style={{ color: 'rgb(var(--text-primary))' }}>SCPortal</strong> — Canonical discovery hub
+                <strong style={{ color: 'rgb(var(--text-primary))' }}>{scportalLink.name}</strong> — Canonical discovery hub
               </li>
               <li>
                 <strong style={{ color: 'rgb(var(--text-primary))' }}>LAIOR Benchmarks</strong> — Detailed benchmark destination
@@ -59,10 +64,10 @@ export function Footer() {
             </h4>
             <ul className={`space-y-2 text-sm ${styles.footerLinks}`}>
               <li>
-                <a href="https://peterponyu.github.io/scportal/" target="_blank" rel="noopener noreferrer">SCPortal</a>
+                <a href={scportalLink.href} target="_blank" rel="noopener noreferrer">{scportalLink.name}</a>
               </li>
               <li>
-                <a href="https://peterponyu.github.io/" target="_blank" rel="noopener noreferrer">Homepage</a>
+                <a href={homepageLink.href} target="_blank" rel="noopener noreferrer">{homepageLink.name}</a>
               </li>
               <li>
                 <Link href="/models">Models</Link>
@@ -84,15 +89,11 @@ export function Footer() {
               Related Tools
             </h4>
             <ul className={`space-y-2 text-sm ${styles.footerLinks}`}>
-              <li>
-                <a href="https://peterponyu.github.io/mrnapp-intersection/" target="_blank" rel="noopener noreferrer">mRNA Intersection</a>
-              </li>
-              <li>
-                <a href="https://peterponyu.github.io/scportal/datasets/" target="_blank" rel="noopener noreferrer">Dataset Hub</a>
-              </li>
-              <li>
-                <a href="https://peterponyu.github.io/scportal/benchmarks/" target="_blank" rel="noopener noreferrer">Benchmark Overview</a>
-              </li>
+              {relatedPublicToolLinks.map((link) => (
+                <li key={link.id}>
+                  <a href={link.href} target="_blank" rel="noopener noreferrer">{link.name}</a>
+                </li>
+              ))}
             </ul>
           </div>
 

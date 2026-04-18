@@ -8,6 +8,7 @@ import { FontSizeManager } from './FontSizeManager';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import styles from './Header.module.css';
+import { externalShellLinks } from '@/lib/publicGraph';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -67,8 +68,11 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
-            <NavAnchor href="https://peterponyu.github.io/scportal/">SCPortal</NavAnchor>
-            <NavAnchor href="https://peterponyu.github.io/">Homepage</NavAnchor>
+            {externalShellLinks.map((link) => (
+              <NavAnchor key={link.id} href={link.href}>
+                {link.name}
+              </NavAnchor>
+            ))}
             <NavLink href="/datasets" isActive={isActive('/datasets')}>Datasets</NavLink>
             <NavLink href="/models" isActive={isActive('/models')}>Models</NavLink>
             <NavLink href="/metrics" isActive={isActive('/metrics')}>Metrics</NavLink>
@@ -104,12 +108,15 @@ export function Header() {
             className={`md:hidden pb-4 pt-2 border-t space-y-1 ${styles.mobileMenu}`}
             style={{ borderColor: 'rgb(var(--border))' }}
           >
-            <MobileNavAnchor href="https://peterponyu.github.io/scportal/" onClick={() => setMobileMenuOpen(false)}>
-              SCPortal
-            </MobileNavAnchor>
-            <MobileNavAnchor href="https://peterponyu.github.io/" onClick={() => setMobileMenuOpen(false)}>
-              Homepage
-            </MobileNavAnchor>
+            {externalShellLinks.map((link) => (
+              <MobileNavAnchor
+                key={link.id}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.name}
+              </MobileNavAnchor>
+            ))}
             <MobileNavLink 
               href="/datasets" 
               isActive={isActive('/datasets')}
