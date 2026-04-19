@@ -162,6 +162,26 @@
   gap: 0.75rem;
 }
 
+.heroPanelNote {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.85rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(var(--primary) / 0.22);
+  background: rgb(var(--primary) / 0.07);
+  color: rgb(var(--text-secondary));
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.heroPanelNote svg {
+  flex-shrink: 0;
+  margin-top: 0.08rem;
+  color: rgb(var(--primary));
+}
+
 .heroBadge {
   display: inline-flex;
   align-items: center;
@@ -230,6 +250,225 @@
   50% {
     transform: translateY(-14px);
   }
+}
+
+/* ============================================
+   FLAGSHIP JOURNEY
+   ============================================ */
+
+.sectionEyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(var(--primary));
+}
+
+.journeySection {
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+  border: 2px solid rgb(var(--border));
+  background:
+    linear-gradient(135deg, rgb(var(--primary) / 0.08), transparent 36%),
+    linear-gradient(315deg, rgb(14 116 144 / 0.08), transparent 38%),
+    rgb(var(--card));
+}
+
+@media (min-width: 768px) {
+  .journeySection {
+    padding: 2rem;
+  }
+}
+
+.journeyHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.55rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .journeyHeader {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.journeyHubLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: fit-content;
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(var(--border));
+  background: rgb(var(--background));
+  color: rgb(var(--text-primary));
+  font-weight: 700;
+  font-size: 0.875rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.journeyHubLink:hover {
+  transform: translateY(-2px);
+  border-color: rgb(var(--primary));
+  color: rgb(var(--primary));
+}
+
+.journeyHubLink:focus-visible {
+  outline: 3px solid rgb(var(--primary) / 0.35);
+  outline-offset: 3px;
+}
+
+.journeyGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+@media (min-width: 768px) {
+  .journeyGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.journeyCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 1.1rem;
+  border-radius: 1rem;
+  border: 1px solid rgb(var(--border));
+  background: rgb(var(--background));
+  color: rgb(var(--text-primary));
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.journeyCard:hover {
+  transform: translateY(-3px);
+  border-color: rgb(var(--primary));
+  box-shadow: 0 18px 30px -24px rgb(15 23 42 / 0.35);
+}
+
+.journeyCard:focus-visible {
+  outline: 3px solid rgb(var(--primary) / 0.35);
+  outline-offset: 3px;
+}
+
+.journeyIndex {
+  width: fit-content;
+  padding: 0.3rem 0.55rem;
+  border-radius: 9999px;
+  background: rgb(var(--primary) / 0.1);
+  color: rgb(var(--primary));
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.journeyTitle {
+  margin-top: 0.8rem;
+  color: rgb(var(--text-primary));
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.journeyDescription {
+  margin-top: 0.5rem;
+  color: rgb(var(--text-secondary));
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.journeyCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  color: rgb(var(--primary));
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+/* ============================================
+   BENCHMARK WORKFLOW CARDS
+   ============================================ */
+
+.workflowGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+}
+
+@media (min-width: 768px) {
+  .workflowGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.workflowCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border: 2px solid rgb(var(--border));
+  background:
+    radial-gradient(circle at top right, rgb(var(--primary) / 0.08), transparent 40%),
+    rgb(var(--card));
+  color: rgb(var(--text-primary));
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.workflowCard:hover {
+  transform: translateY(-3px);
+  border-color: rgb(var(--primary));
+  box-shadow: 0 20px 34px -28px rgb(15 23 42 / 0.4);
+}
+
+.workflowCard:focus-visible {
+  outline: 3px solid rgb(var(--primary) / 0.35);
+  outline-offset: 3px;
+}
+
+.workflowIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.85rem;
+  background: rgb(var(--primary) / 0.1);
+  color: rgb(var(--primary));
+}
+
+.workflowTitle {
+  margin-top: 0.95rem;
+  color: rgb(var(--text-primary));
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.workflowDescription {
+  margin-top: 0.55rem;
+  color: rgb(var(--text-secondary));
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+.workflowCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  color: rgb(var(--primary));
+  font-size: 0.875rem;
+  font-weight: 800;
 }
 
 /* ============================================

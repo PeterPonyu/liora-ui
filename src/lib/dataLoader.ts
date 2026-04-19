@@ -4,30 +4,38 @@ import scATACData from '@/data/scATAC.json';
 
 let cachedDatasets: Dataset[] | null = null;
 
-/**
- * Load and merge datasets from both JSON files
- * Adds dataType based on source file
- */
-export async function loadDatasets(): Promise<Dataset[]> {
+function buildDatasets(): Dataset[] {
+  const rnaDatasets: Dataset[] = scRNAData.datasets.map((d: Dataset) => ({
+    ...d,
+    dataType: 'RNA' as const,
+  }));
+
+  const atacDatasets: Dataset[] = scATACData.datasets.map((d: Dataset) => ({
+    ...d,
+    dataType: 'ATAC' as const,
+  }));
+
+  return [...rnaDatasets, ...atacDatasets];
+}
+
+export function loadDatasetsSync(): Dataset[] {
   if (cachedDatasets) return cachedDatasets;
 
   try {
-    const rnaDatasets: Dataset[] = scRNAData.datasets.map((d: Dataset) => ({
-      ...d,
-      dataType: 'RNA' as const,
-    }));
-
-    const atacDatasets: Dataset[] = scATACData.datasets.map((d: Dataset) => ({
-      ...d,
-      dataType: 'ATAC' as const,
-    }));
-
-    cachedDatasets = [...rnaDatasets, ...atacDatasets];
+    cachedDatasets = buildDatasets();
     return cachedDatasets;
   } catch (error) {
     console.error('Failed to load datasets:', error);
     return [];
   }
+}
+
+/**
+ * Load and merge datasets from both JSON files
+ * Adds dataType based on source file
+ */
+export async function loadDatasets(): Promise<Dataset[]> {
+  return loadDatasetsSync();
 }
 
 /**

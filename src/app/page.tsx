@@ -3,15 +3,16 @@
 
 import Link from 'next/link';
 import { modelsData, modelCategories } from '@/data/models';
-import { loadDatasets } from '@/lib/dataLoader';
+import { loadDatasets, loadDatasetsSync } from '@/lib/dataLoader';
 import { metricsData, metricCategories } from '@/data/metrics';
-import { Brain, Database, BarChart3, TrendingUp, ArrowRight, Sparkles } from 'lucide-react';
+import { Brain, Database, BarChart3, TrendingUp, ArrowRight, Sparkles, CheckCircle2, ExternalLink } from 'lucide-react';
+import { homepageLink, scportalLink } from '@/lib/publicGraph';
 import type { Dataset } from '@/types/models';
 import { useEffect, useState } from 'react';
 import styles from './home.module.css';
 
 export default function HomePage() {
-  const [datasets, setDatasets] = useState<Dataset[]>([]);
+  const [datasets, setDatasets] = useState<Dataset[]>(() => loadDatasetsSync());
 
   useEffect(() => {
     loadDatasets().then(data => setDatasets(data));
@@ -35,26 +36,26 @@ export default function HomePage() {
             </div>
             <div className="flex flex-wrap gap-2 text-xs font-medium text-[rgb(var(--text-secondary))]">
               <a
-                href="https://peterponyu.github.io/scportal/"
+                href={scportalLink.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full border px-3 py-1 transition-colors hover:bg-[rgb(var(--card))]"
               >
-                Open SCPortal
+                {scportalLink.name} discovery hub
               </a>
               <a
-                href="https://peterponyu.github.io/"
+                href={homepageLink.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-full border px-3 py-1 transition-colors hover:bg-[rgb(var(--card))]"
               >
-                Back to Homepage
+                {homepageLink.name} identity root
               </a>
             </div>
             <div className="space-y-3">
               <h1 className={styles.heroTitle}>LAIOR Benchmarks</h1>
               <p className={styles.heroSubtitle}>
-                A comprehensive benchmarking library for <span className={styles.heroHighlight}>single-cell analysis models</span>, featuring LAIOR (Lorentz Attentive Interpretable ODE Regularized VAE)—the latest evolution in variational autoencoders from <span className={styles.heroHighlight}>VAE → iVAE → LiVAE → LAIOR</span>, integrating <span className={styles.heroHighlight}>geometric regularization, information bottleneck, and ODE-based trajectory stabilization</span>. Compare <span className={styles.heroHighlight}>{modelsData.length} models</span> across <span className={styles.heroHighlight}>{modelCategories.length} categories</span> using <span className={styles.heroHighlight}>{metricsData.length} standardized metrics</span>.
+                A focused benchmark microsite for <span className={styles.heroHighlight}>single-cell analysis models</span>, featuring LAIOR (Lorentz Attentive Interpretable ODE Regularized VAE)—the latest evolution in variational autoencoders from <span className={styles.heroHighlight}>VAE → iVAE → LiVAE → LAIOR</span>. Use it after SCPortal discovery to compare <span className={styles.heroHighlight}>{modelsData.length} models</span>, inspect <span className={styles.heroHighlight}>{datasets.length || 'curated'} datasets</span>, and choose from <span className={styles.heroHighlight}>{metricsData.length} standardized metrics</span>.
               </p>
             </div>
             <div className={styles.heroActions}>
@@ -64,6 +65,9 @@ export default function HomePage() {
               </Link>
               <Link href="/datasets" className={styles.heroSecondary}>
                 Browse Datasets
+              </Link>
+              <Link href="/metrics" className={styles.heroSecondary}>
+                Review Metrics
               </Link>
             </div>
             <div className={styles.heroMeta}>
@@ -83,7 +87,63 @@ export default function HomePage() {
               <StatCard icon={Database} label="ATAC" value={atacDatasets.length} />
               <StatCard icon={BarChart3} label="Metrics" value={metricsData.length} />
             </div>
+            <div className={styles.heroPanelNote}>
+              <CheckCircle2 className="w-4 h-4" />
+              <span>Purpose-built for benchmark inspection; broader project navigation stays in SCPortal.</span>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* ============================================
+          FLAGSHIP JOURNEY CONTINUITY
+          ============================================ */}
+      <section className={styles.journeySection} aria-labelledby="flagship-journey-title">
+        <div className={styles.sectionEyebrow}>Flagship triad</div>
+        <div className={styles.journeyHeader}>
+          <div>
+            <h2 id="flagship-journey-title" className={styles.sectionTitle}>
+              Identity → discovery → benchmark proof
+            </h2>
+            <p className={styles.sectionSubtitle}>
+              This site stays intentionally narrow: verify the public identity on the homepage, explore the ecosystem in SCPortal, then use LAIOR Benchmarks for model, dataset, and metric decisions.
+            </p>
+          </div>
+          <a
+            href={scportalLink.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.journeyHubLink}
+          >
+            Open discovery hub
+            <ExternalLink className="w-4 h-4" />
+          </a>
+        </div>
+
+        <div className={styles.journeyGrid}>
+          <JourneyCard
+            index="01"
+            title={`${homepageLink.name}: identity root`}
+            description="Confirm authorship, public profile context, and canonical project naming before evaluating a benchmark destination."
+            href={homepageLink.href}
+            cta="Visit identity root"
+            external
+          />
+          <JourneyCard
+            index="02"
+            title={`${scportalLink.name}: discovery hub`}
+            description="Use SCPortal when the task is still exploratory: compare public surfaces, route across projects, and preserve landing-only/local-first boundaries."
+            href={scportalLink.href}
+            cta="Explore routes"
+            external
+          />
+          <JourneyCard
+            index="03"
+            title="LAIOR Benchmarks: focused product"
+            description="Stay here when the task is benchmark-specific: compare model families, inspect datasets, and choose evaluation metrics."
+            href="/models"
+            cta="Start benchmark review"
+          />
         </div>
       </section>
 
@@ -124,6 +184,45 @@ export default function HomePage() {
             </div>
             <ArrowRight className="w-5 h-5 ml-auto flex-shrink-0" />
           </Link>
+        </div>
+      </section>
+
+      {/* ============================================
+          TASK-FOCUSED BENCHMARK WORKFLOWS
+          ============================================ */}
+      <section className="space-y-5" aria-labelledby="workflow-title">
+        <div className="space-y-2">
+          <div className={styles.sectionEyebrow}>Choose a benchmark task</div>
+          <h2 id="workflow-title" className={styles.sectionTitle}>
+            Product-quality paths for model evaluation
+          </h2>
+          <p className={styles.sectionSubtitle}>
+            The homepage and SCPortal establish context; these task cards move directly into benchmark evidence.
+          </p>
+        </div>
+
+        <div className={styles.workflowGrid}>
+          <WorkflowCard
+            icon={Brain}
+            title="Compare model families"
+            description="Review predictive, generative, trajectory, ATAC-specific, geometric, and disentanglement approaches side by side."
+            href="/models"
+            cta={`View ${modelsData.length} models`}
+          />
+          <WorkflowCard
+            icon={Database}
+            title="Audit dataset coverage"
+            description="Inspect scRNA-seq and scATAC-seq benchmark coverage before choosing an evaluation route."
+            href="/datasets"
+            cta={`Browse ${datasets.length || 'curated'} datasets`}
+          />
+          <WorkflowCard
+            icon={BarChart3}
+            title="Select evaluation metrics"
+            description="Match clustering, embedding, intrinsic latent-space, and runtime metrics to the benchmark question."
+            href="/metrics"
+            cta={`Review ${metricsData.length} metrics`}
+          />
         </div>
       </section>
 
@@ -257,14 +356,14 @@ export default function HomePage() {
       <section className={styles.finalCta}>
         <div className="space-y-2">
           <h2 className={styles.finalCtaTitle}>
-            Ready to explore?
+            Ready to inspect benchmark evidence?
           </h2>
           <p className={styles.finalCtaDescription}>
-            Dive into LAIOR&apos;s benchmarking library and discover which models work best for your single-cell analysis
+            Start with model families, then validate the dataset and metric assumptions behind the comparison.
           </p>
         </div>
         <Link href="/models" className={styles.finalCtaButton}>
-          Start Exploring
+          Start Benchmark Review
           <ArrowRight className="w-5 h-5" />
         </Link>
       </section>
@@ -326,6 +425,80 @@ function StatCard({
       <p className={styles.statValue}>{value}</p>
       <p className={styles.statLabel}>{label}</p>
     </div>
+  );
+}
+
+interface JourneyCardProps {
+  index: string;
+  title: string;
+  description: string;
+  href: string;
+  cta: string;
+  external?: boolean;
+}
+
+function JourneyCard({
+  index,
+  title,
+  description,
+  href,
+  cta,
+  external = false,
+}: JourneyCardProps) {
+  const content = (
+    <>
+      <span className={styles.journeyIndex}>{index}</span>
+      <h3 className={styles.journeyTitle}>{title}</h3>
+      <p className={styles.journeyDescription}>{description}</p>
+      <span className={styles.journeyCta}>
+        {cta}
+        {external ? <ExternalLink className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
+      </span>
+    </>
+  );
+
+  if (external) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={styles.journeyCard}>
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={styles.journeyCard}>
+      {content}
+    </Link>
+  );
+}
+
+interface WorkflowCardProps {
+  icon: typeof Brain;
+  title: string;
+  description: string;
+  href: string;
+  cta: string;
+}
+
+function WorkflowCard({
+  icon: Icon,
+  title,
+  description,
+  href,
+  cta,
+}: WorkflowCardProps) {
+  return (
+    <Link href={href} className={styles.workflowCard}>
+      <div className={styles.workflowIcon}>
+        <Icon className="w-5 h-5" />
+      </div>
+      <h3 className={styles.workflowTitle}>{title}</h3>
+      <p className={styles.workflowDescription}>{description}</p>
+      <span className={styles.workflowCta}>
+        {cta}
+        <ArrowRight className="w-4 h-4" />
+      </span>
+    </Link>
   );
 }
 
