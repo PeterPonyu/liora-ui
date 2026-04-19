@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { modelsData, modelCategories } from '@/data/models';
+import type { ModelCategory } from '@/types/models';
 import { ModelCard } from '@/components/ModelCard';
 import { Search, Filter } from 'lucide-react';
 import { getCategoryColor, getCategoryMetadata } from '@/lib/utils';
@@ -65,7 +66,7 @@ export default function ModelsPage() {
               All Models ({modelsData.length})
             </button>
             {modelCategories.map(cat => {
-              const metadata = getCategoryMetadata(cat.id as any);
+              const metadata = getCategoryMetadata(cat.id as ModelCategory);
               const color = getCategoryColor(cat.id);
               return (
                 <button

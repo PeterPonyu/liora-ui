@@ -6,11 +6,12 @@ import { modelsData, modelCategories } from '@/data/models';
 import { loadDatasets } from '@/lib/dataLoader';
 import { metricsData, metricCategories } from '@/data/metrics';
 import { Brain, Database, BarChart3, TrendingUp, ArrowRight, Sparkles } from 'lucide-react';
+import type { Dataset } from '@/types/models';
 import { useEffect, useState } from 'react';
 import styles from './home.module.css';
 
 export default function HomePage() {
-  const [datasets, setDatasets] = useState<any[]>([]);
+  const [datasets, setDatasets] = useState<Dataset[]>([]);
 
   useEffect(() => {
     loadDatasets().then(data => setDatasets(data));
@@ -135,7 +136,7 @@ export default function HomePage() {
             Model Categories
           </h2>
             <p className={styles.sectionSubtitle}>
-              Compare {modelCategories.length} distinct approaches in LAIOR's benchmarking suite, from contrastive learning to disentangled representations
+              Compare {modelCategories.length} distinct approaches in LAIOR&apos;s benchmarking suite, from contrastive learning to disentangled representations
             </p>
         </div>
 
@@ -164,7 +165,7 @@ export default function HomePage() {
             Benchmark Datasets
           </h2>
             <p className={styles.sectionSubtitle}>
-              LAIOR's curated collection of {datasets.length} single-cell datasets for rigorous model evaluation
+              LAIOR&apos;s curated collection of {datasets.length} single-cell datasets for rigorous model evaluation
             </p>
         </div>
 
@@ -259,7 +260,7 @@ export default function HomePage() {
             Ready to explore?
           </h2>
           <p className={styles.finalCtaDescription}>
-            Dive into LAIOR's benchmarking library and discover which models work best for your single-cell analysis
+            Dive into LAIOR&apos;s benchmarking library and discover which models work best for your single-cell analysis
           </p>
         </div>
         <Link href="/models" className={styles.finalCtaButton}>
