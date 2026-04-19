@@ -3,10 +3,7 @@
 import Link from 'next/link';
 import { Metric } from '@/types/models';
 import { metricsData } from '@/data/metrics';
-import { 
-  getMetricCategoryMetadata,
-  getMetricDirectionIcon 
-} from '@/lib/utils';
+import { getMetricCategoryMetadata, getMetricDirectionIcon } from '@/lib/utils';
 import { ArrowLeft, TrendingUp, TrendingDown } from 'lucide-react';
 import styles from './MetricDetailView.module.css';
 
@@ -16,7 +13,6 @@ interface MetricDetailViewProps {
 
 export function MetricDetailView({ metric }: MetricDetailViewProps) {
   const categoryMeta = getMetricCategoryMetadata(metric.category);
-  const directionIcon = getMetricDirectionIcon(metric.betterDirection);
 
   // Get related metrics in the same category
   const relatedMetrics = metricsData

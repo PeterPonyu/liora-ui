@@ -11,37 +11,32 @@ const fontSizeMultipliers = {
   large: 1.125,   // 112.5%
 };
 
+function getInitialFontSize(): FontSize {
+  if (typeof window === 'undefined') return 'medium';
+
+  const storedSize = localStorage.getItem('fontSize') as FontSize | null;
+  return storedSize && storedSize in fontSizeMultipliers ? storedSize : 'medium';
+}
+
+function applyFontSize(size: FontSize) {
+  const root = document.documentElement;
+  const multiplier = fontSizeMultipliers[size];
+  root.style.fontSize = `${multiplier * 16}px`;
+  localStorage.setItem('fontSize', size);
+}
+
 export function FontSizeManager() {
-  const [fontSize, setFontSize] = useState<FontSize>('medium');
-  const [mounted, setMounted] = useState(false);
+  const [fontSize, setFontSize] = useState<FontSize>(getInitialFontSize);
   const [showOptions, setShowOptions] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    const storedSize = localStorage.getItem('fontSize') as FontSize | null;
-    const initialSize = storedSize || 'medium';
-    setFontSize(initialSize);
-    applyFontSize(initialSize);
-  }, []);
-
-  const applyFontSize = (size: FontSize) => {
-    const root = document.documentElement;
-    const multiplier = fontSizeMultipliers[size];
-    root.style.fontSize = `${multiplier * 16}px`;
-    localStorage.setItem('fontSize', size);
-  };
+    applyFontSize(fontSize);
+  }, [fontSize]);
 
   const changeFontSize = (newSize: FontSize) => {
     setFontSize(newSize);
-    applyFontSize(newSize);
     setShowOptions(false);
   };
-
-  if (!mounted) {
-    return (
-      <div className="w-10 h-10 rounded-lg" style={{ backgroundColor: 'rgb(var(--secondary))' }} />
-    );
-  }
 
   return (
     <div className="relative">
