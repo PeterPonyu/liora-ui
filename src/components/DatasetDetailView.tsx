@@ -18,8 +18,7 @@ export function DatasetDetailView({ id }: DatasetDetailViewProps) {
 
   useEffect(() => {
     async function loadDataset() {
-      const numericId = parseInt(id.split('-')[1]);
-      const data = await getDatasetById(numericId);
+      const data = await getDatasetById(id);
       setDataset(data || null);
       setLoading(false);
     }

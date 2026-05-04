@@ -39,11 +39,25 @@ export async function loadDatasets(): Promise<Dataset[]> {
 }
 
 /**
- * Get dataset by ID (searches both RNA and ATAC)
+ * Get dataset by slug (e.g. "rna-1", "atac-1") to avoid id collisions
+ * between RNA and ATAC datasets that share the same numeric id.
+ * Falls back to first numeric match if no type prefix is present.
  */
-export async function getDatasetById(id: number): Promise<Dataset | undefined> {
+export async function getDatasetById(slug: string | number): Promise<Dataset | undefined> {
   const datasets = await loadDatasets();
-  return datasets.find(d => d.id === id);
+  if (typeof slug === 'number') {
+    return datasets.find(d => d.id === slug);
+  }
+  const parts = slug.split('-');
+  const numericPart = parts.length > 1 ? parts[parts.length - 1] : parts[0];
+  const numId = parseInt(numericPart, 10);
+  if (Number.isNaN(numId)) return undefined;
+  if (parts.length > 1) {
+    const typePrefix = parts.slice(0, -1).join('-').toUpperCase();
+    const typed = datasets.find(d => d.id === numId && d.dataType === typePrefix);
+    if (typed) return typed;
+  }
+  return datasets.find(d => d.id === numId);
 }
 
 /**

@@ -131,7 +131,7 @@ export function Footer() {
             className="text-sm transition-colors"
             style={{ color: 'rgb(var(--text-secondary))' }}
           >
-            &copy; 2025 LAIOR. All rights reserved.
+            &copy; {new Date().getFullYear()} LAIOR. All rights reserved.
           </p>
 
           {/* Social Links */}
