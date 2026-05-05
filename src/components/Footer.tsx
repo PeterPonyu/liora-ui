@@ -27,29 +27,29 @@ export function Footer() {
               className="text-sm font-semibold mb-4 transition-colors"
               style={{ color: 'rgb(var(--text-primary))' }}
             >
-              About This Site
+              About
             </h3>
             <p
               className="text-sm mb-3 transition-colors leading-relaxed"
               style={{ color: 'rgb(var(--text-secondary))' }}
             >
-              LAIOR Benchmarks is a focused public microsite for benchmark datasets, model summaries, and metric views.
+              LAIOR Benchmarks is a reference for benchmark datasets, model summaries, and metric definitions.
             </p>
             <ul
               className="text-sm space-y-1.5 transition-colors"
               style={{ color: 'rgb(var(--text-secondary))' }}
             >
               <li>
-                <strong style={{ color: 'rgb(var(--text-primary))' }}>{homepageLink.name}</strong> — Public identity and top-level overview
+                <strong style={{ color: 'rgb(var(--text-primary))' }}>{homepageLink.name}</strong> — Profile and project overview
               </li>
               <li>
-                <strong style={{ color: 'rgb(var(--text-primary))' }}>{scportalLink.name}</strong> — Canonical discovery hub
+                <strong style={{ color: 'rgb(var(--text-primary))' }}>{scportalLink.name}</strong> — Browse related single-cell projects
               </li>
               <li>
-                <strong style={{ color: 'rgb(var(--text-primary))' }}>LAIOR Benchmarks</strong> — Detailed benchmark destination
+                <strong style={{ color: 'rgb(var(--text-primary))' }}>LAIOR Benchmarks</strong> — Detailed benchmark reference
               </li>
               <li>
-                <strong style={{ color: 'rgb(var(--primary))' }}>Related Tools</strong> — Linked where workflows overlap
+                <strong style={{ color: 'rgb(var(--primary))' }}>Related Tools</strong> — Other public tools in this project set
               </li>
             </ul>
 
