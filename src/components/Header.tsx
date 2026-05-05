@@ -61,7 +61,7 @@ export function Header() {
                 className="hidden sm:block text-xs font-medium"
                 style={{ color: 'rgb(var(--text-tertiary))' }}
               >
-                Single-Cell Analysis
+                Models, datasets, metrics
               </span>
             </div>
           </Link>

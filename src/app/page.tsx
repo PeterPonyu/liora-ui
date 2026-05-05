@@ -31,8 +31,8 @@ export default function HomePage() {
         <div className={styles.heroGrid}>
           <div className="space-y-5">
             <div className={styles.heroBadge}>
-              <Sparkles className={styles.heroBadgeIcon} />
-              <span className={styles.heroBadgeText}>Benchmark Gateway</span>
+              <BarChart3 className={styles.heroBadgeIcon} />
+              <span className={styles.heroBadgeText}>LAIOR benchmark site</span>
             </div>
             <div className="flex flex-wrap gap-2 text-xs font-medium text-[rgb(var(--text-secondary))]">
               <a
@@ -41,7 +41,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="rounded-full border px-3 py-1 transition-colors hover:bg-[rgb(var(--card))]"
               >
-                {scportalLink.name} discovery hub
+                Open {scportalLink.name}
               </a>
               <a
                 href={homepageLink.href}
@@ -49,13 +49,13 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="rounded-full border px-3 py-1 transition-colors hover:bg-[rgb(var(--card))]"
               >
-                {homepageLink.name} identity root
+                Open {homepageLink.name}
               </a>
             </div>
             <div className="space-y-3">
               <h1 className={styles.heroTitle}>LAIOR Benchmarks</h1>
               <p className={styles.heroSubtitle}>
-                A focused benchmark microsite for <span className={styles.heroHighlight}>single-cell analysis models</span>, featuring LAIOR (Lorentz Attentive Interpretable ODE Regularized VAE)—the latest evolution in variational autoencoders from <span className={styles.heroHighlight}>VAE → iVAE → LiVAE → LAIOR</span>. Use it after SCPortal discovery to compare <span className={styles.heroHighlight}>{modelsData.length} models</span>, inspect <span className={styles.heroHighlight}>{datasets.length || 'curated'} datasets</span>, and choose from <span className={styles.heroHighlight}>{metricsData.length} standardized metrics</span>.
+                LAIOR Benchmarks collects {modelsData.length} single-cell analysis models, {datasets.length || 'curated'} datasets, and {metricsData.length} evaluation metrics for comparison.
               </p>
             </div>
             <div className={styles.heroActions}>
@@ -79,8 +79,8 @@ export default function HomePage() {
           </div>
 
           <div className={styles.heroPanel}>
-            <div className={styles.heroPanelTag}>Snapshot</div>
-            <div className={styles.heroPanelTitle}>Benchmark Coverage</div>
+            <div className={styles.heroPanelTag}>Coverage</div>
+            <div className={styles.heroPanelTitle}>Included in this site</div>
             <div className={styles.heroPanelGrid}>
               <StatCard icon={Brain} label="Models" value={modelsData.length} />
               <StatCard icon={Database} label="RNA" value={rnaDatasets.length} />
@@ -89,7 +89,7 @@ export default function HomePage() {
             </div>
             <div className={styles.heroPanelNote}>
               <CheckCircle2 className="w-4 h-4" />
-              <span>Purpose-built for benchmark inspection; broader project navigation stays in SCPortal.</span>
+              <span>This site focuses on LAIOR benchmark results, while SCPortal lists related projects.</span>
             </div>
           </div>
         </div>
@@ -99,14 +99,14 @@ export default function HomePage() {
           FLAGSHIP JOURNEY CONTINUITY
           ============================================ */}
       <section className={styles.journeySection} aria-labelledby="flagship-journey-title">
-        <div className={styles.sectionEyebrow}>Flagship triad</div>
+        <div className={styles.sectionEyebrow}>Site overview</div>
         <div className={styles.journeyHeader}>
           <div>
             <h2 id="flagship-journey-title" className={styles.sectionTitle}>
-              Identity → discovery → benchmark proof
+              What this site contains
             </h2>
             <p className={styles.sectionSubtitle}>
-              This site stays intentionally narrow: verify the public identity on the homepage, explore the ecosystem in SCPortal, then use LAIOR Benchmarks for model, dataset, and metric decisions.
+              This site contains LAIOR benchmark comparisons for models, datasets, and metrics, and SCPortal provides access to the wider project collection.
             </p>
           </div>
           <a
@@ -115,7 +115,7 @@ export default function HomePage() {
             rel="noopener noreferrer"
             className={styles.journeyHubLink}
           >
-            Open discovery hub
+            Open SCPortal
             <ExternalLink className="w-4 h-4" />
           </a>
         </div>
@@ -123,26 +123,26 @@ export default function HomePage() {
         <div className={styles.journeyGrid}>
           <JourneyCard
             index="01"
-            title={`${homepageLink.name}: identity root`}
-            description="Confirm authorship, public profile context, and canonical project naming before evaluating a benchmark destination."
+            title={homepageLink.name}
+            description="Read the project overview, authorship, and naming details on the main homepage."
             href={homepageLink.href}
-            cta="Visit identity root"
+            cta="Visit homepage"
             external
           />
           <JourneyCard
             index="02"
-            title={`${scportalLink.name}: discovery hub`}
-            description="Use SCPortal when the task is still exploratory: compare public surfaces, route across projects, and preserve landing-only/local-first boundaries."
+            title={scportalLink.name}
+            description="Use SCPortal to browse related single-cell projects beyond the LAIOR benchmark pages."
             href={scportalLink.href}
-            cta="Explore routes"
+            cta="Browse in SCPortal"
             external
           />
           <JourneyCard
             index="03"
-            title="LAIOR Benchmarks: focused product"
-            description="Stay here when the task is benchmark-specific: compare model families, inspect datasets, and choose evaluation metrics."
+            title="LAIOR Benchmarks"
+            description="Use this site to compare benchmarked models, datasets, and evaluation metrics in one place."
             href="/models"
-            cta="Start benchmark review"
+            cta="Open benchmark views"
           />
         </div>
       </section>
@@ -192,12 +192,12 @@ export default function HomePage() {
           ============================================ */}
       <section className="space-y-5" aria-labelledby="workflow-title">
         <div className="space-y-2">
-          <div className={styles.sectionEyebrow}>Choose a benchmark task</div>
+          <div className={styles.sectionEyebrow}>Choose a starting point</div>
           <h2 id="workflow-title" className={styles.sectionTitle}>
-            Product-quality paths for model evaluation
+            Start with the benchmark question
           </h2>
           <p className={styles.sectionSubtitle}>
-            The homepage and SCPortal establish context; these task cards move directly into benchmark evidence.
+            Each card takes you straight to the evidence you need, whether you are comparing models, checking dataset coverage, or reviewing metrics.
           </p>
         </div>
 
@@ -205,21 +205,21 @@ export default function HomePage() {
           <WorkflowCard
             icon={Brain}
             title="Compare model families"
-            description="Review predictive, generative, trajectory, ATAC-specific, geometric, and disentanglement approaches side by side."
+            description="Review predictive, generative, trajectory, ATAC-specific, geometric, and disentanglement models side by side."
             href="/models"
             cta={`View ${modelsData.length} models`}
           />
           <WorkflowCard
             icon={Database}
             title="Audit dataset coverage"
-            description="Inspect scRNA-seq and scATAC-seq benchmark coverage before choosing an evaluation route."
+            description="Check scRNA-seq and scATAC-seq coverage before settling on an evaluation plan."
             href="/datasets"
             cta={`Browse ${datasets.length || 'curated'} datasets`}
           />
           <WorkflowCard
             icon={BarChart3}
             title="Select evaluation metrics"
-            description="Match clustering, embedding, intrinsic latent-space, and runtime metrics to the benchmark question."
+            description="Match clustering, embedding, latent-space, and runtime metrics to the question you want to answer."
             href="/metrics"
             cta={`Review ${metricsData.length} metrics`}
           />
@@ -235,7 +235,7 @@ export default function HomePage() {
             Model Categories
           </h2>
             <p className={styles.sectionSubtitle}>
-              Compare {modelCategories.length} distinct approaches in LAIOR&apos;s benchmarking suite, from contrastive learning to disentangled representations
+              Compare {modelCategories.length} distinct approaches benchmarked in LAIOR, from contrastive learning to disentangled representations.
             </p>
         </div>
 
@@ -264,7 +264,7 @@ export default function HomePage() {
             Benchmark Datasets
           </h2>
             <p className={styles.sectionSubtitle}>
-              LAIOR&apos;s curated collection of {datasets.length} single-cell datasets for rigorous model evaluation
+              Curated single-cell datasets used throughout the LAIOR benchmark comparisons.
             </p>
         </div>
 
@@ -299,7 +299,7 @@ export default function HomePage() {
             Evaluation Metrics
           </h2>
           <p className={styles.sectionSubtitle}>
-            {metricsData.length} standardized metrics across {metricCategories.length} evaluation categories for comprehensive model comparison
+            {metricsData.length} standardized metrics across {metricCategories.length} evaluation categories for model comparison.
           </p>
         </div>
 
@@ -325,27 +325,27 @@ export default function HomePage() {
       <section className="space-y-5 py-6">
         <div className="space-y-2">
           <h2 className={styles.sectionTitle}>
-            Platform Capabilities
+            What You Can Review Here
           </h2>
           <p className={styles.sectionSubtitle}>
-            Use this microsite for deep benchmark inspection, and use SCPortal for cross-project discovery.
+            This page pulls the main benchmark references into one place so you can scan the models, datasets, metrics, and the LAIOR setup behind them.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           <FeatureCard
             icon={Brain}
-            title="Architecture Analysis"
-            description="Detailed model comparisons including LAIOR's integrated architecture (ODE regularization + Lorentz geometry + information bottleneck + transformer attention) vs. LiVAE, iVAE, and classical VAE approaches"          />
+            title="How the models differ"
+            description="See how LAIOR compares with LiVAE, iVAE, and other VAE baselines, with notes on the design choices each model uses."          />
           <FeatureCard
             icon={Database}
-            title="Multi-Modal Benchmarking"
-            description={`Evaluate models across ${datasets.length} curated datasets spanning scRNA-seq (${rnaDatasets.length}) and scATAC-seq (${atacDatasets.length}) modalities`}
+            title="Which datasets are included"
+            description={`Review results across ${datasets.length} curated datasets, including scRNA-seq (${rnaDatasets.length}) and scATAC-seq (${atacDatasets.length}) collections.`}
           />
           <FeatureCard
             icon={BarChart3}
-            title="Comprehensive Metrics"
-            description={`${metricsData.length} standardized metrics across clustering (${metricCategories.find(c => c.id === 'clustering')?.count || 6}), embedding quality (${metricCategories.find(c => c.id === 'embedding')?.count || 8}), latent space (${metricCategories.find(c => c.id === 'intrinsic')?.count || 8}), and runtime (${metricCategories.find(c => c.id === 'runtime')?.count || 2})`}
+            title="Which results you can check"
+            description={`${metricsData.length} standardized metrics covering clustering (${metricCategories.find(c => c.id === 'clustering')?.count || 6}), embedding quality (${metricCategories.find(c => c.id === 'embedding')?.count || 8}), latent space (${metricCategories.find(c => c.id === 'intrinsic')?.count || 8}), and runtime (${metricCategories.find(c => c.id === 'runtime')?.count || 2}).`}
           />
         </div>
       </section>

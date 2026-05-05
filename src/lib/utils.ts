@@ -224,30 +224,30 @@ export function getMetricCategoryBgColor(category: string): string {
 export function getMetricCategoryMetadata(category: string) {
   const metadata: Record<string, { label: string; description: string; icon: string }> = {
     clustering: {
-      label: 'Clustering & Cell Type Discovery',
-      description: 'Supervised metrics comparing predicted clusters to ground truth labels',
-      icon: '🎯',
+      label: 'Clustering',
+      description: 'Agreement with reference labels',
+      icon: 'C',
     },
     embedding: {
-      label: 'Embedding Quality (UMAP & t-SNE)',
-      description: 'Visualization quality via coranking analysis',
-      icon: '📊',
+      label: 'Embedding',
+      description: 'Neighborhood preservation in 2D views',
+      icon: 'E',
     },
     intrinsic: {
-      label: 'Intrinsic Latent Space (LSE)',
-      description: 'Unsupervised geometric, spectral, and topological properties',
-      icon: '🔬',
+      label: 'Latent Space',
+      description: 'Structure of the learned representation',
+      icon: 'L',
     },
     runtime: {
-      label: 'Computational Efficiency',
-      description: 'Training and inference performance',
-      icon: '⚡',
+      label: 'Runtime',
+      description: 'Training and inference cost',
+      icon: 'R',
     },
   };
   return metadata[category] || {
     label: category,
     description: '',
-    icon: '📈',
+    icon: '•',
   };
 }
 
@@ -456,40 +456,40 @@ export function filterMetrics(
 export function getCategoryMetadata(category: ModelCategory) {
   const metadata: Record<ModelCategory, { label: string; description: string; icon: string }> = {
     predictive: {
-      label: 'Predictive Models',
-      description: 'Clustering, classification, imputation, and annotation',
-      icon: '🎯',
+      label: 'Predictive',
+      description: 'Clustering, annotation, and imputation',
+      icon: 'P',
     },
     generative: {
-      label: 'Generative Models',
-      description: 'Data synthesis, augmentation, and generation',
-      icon: '✨',
+      label: 'Generative',
+      description: 'Data generation and augmentation',
+      icon: 'G',
     },
     trajectory: {
-      label: 'Trajectory Inference',
-      description: 'Developmental trajectory and pseudo-time inference',
-      icon: '🚀',
+      label: 'Trajectory',
+      description: 'Trajectory and pseudotime modeling',
+      icon: 'T',
     },
     'atac-specific': {
-      label: 'scATAC-Specific',
-      description: 'Chromatin accessibility and peak analysis',
-      icon: '🧬',
+      label: 'scATAC',
+      description: 'Chromatin accessibility models',
+      icon: 'A',
     },
     'gaussian-geometric': {
-      label: 'Gaussian Geometric',
-      description: 'Hyperbolic, spherical, and mixture models',
-      icon: '📐',
+      label: 'Geometric',
+      description: 'Hyperbolic, spherical, and mixture latent spaces',
+      icon: 'GG',
     },
     disentanglement: {
       label: 'Disentanglement',
-      description: 'Independent factor learning and interpretability',
-      icon: '🔍',
+      description: 'Factorized latent representations',
+      icon: 'D',
     },
   };
 
   return metadata[category] || {
     label: category,
     description: '',
-    icon: '📊',
+    icon: '•',
   };
 }
