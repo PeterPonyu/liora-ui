@@ -61,7 +61,7 @@ export function Header() {
                 className="hidden sm:block text-xs font-medium"
                 style={{ color: 'rgb(var(--text-tertiary))' }}
               >
-                Models, datasets, metrics
+                Benchmark results reference
               </span>
             </div>
           </Link>

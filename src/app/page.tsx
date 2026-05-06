@@ -32,7 +32,7 @@ export default function HomePage() {
           <div className="space-y-5">
             <div className={styles.heroBadge}>
               <BarChart3 className={styles.heroBadgeIcon} />
-              <span className={styles.heroBadgeText}>LAIOR benchmark site</span>
+              <span className={styles.heroBadgeText}>Single-cell benchmark reference</span>
             </div>
             <div className="flex flex-wrap gap-2 text-xs font-medium text-[rgb(var(--text-secondary))]">
               <a
@@ -41,7 +41,7 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="rounded-full border px-3 py-1 transition-colors hover:bg-[rgb(var(--card))]"
               >
-                Open {scportalLink.name}
+                Visit {scportalLink.name}
               </a>
               <a
                 href={homepageLink.href}
@@ -49,13 +49,13 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="rounded-full border px-3 py-1 transition-colors hover:bg-[rgb(var(--card))]"
               >
-                Open {homepageLink.name}
+                Visit {homepageLink.name}
               </a>
             </div>
             <div className="space-y-3">
               <h1 className={styles.heroTitle}>LAIOR Benchmarks</h1>
               <p className={styles.heroSubtitle}>
-                LAIOR Benchmarks collects {modelsData.length} single-cell analysis models, {datasets.length || 'curated'} datasets, and {metricsData.length} evaluation metrics for comparison.
+                Review the LAIOR benchmark across {modelsData.length} single-cell analysis models, {datasets.length || 'curated'} datasets, and {metricsData.length} evaluation metrics.
               </p>
             </div>
             <div className={styles.heroActions}>
@@ -79,8 +79,8 @@ export default function HomePage() {
           </div>
 
           <div className={styles.heroPanel}>
-            <div className={styles.heroPanelTag}>Coverage</div>
-            <div className={styles.heroPanelTitle}>Included in this site</div>
+            <div className={styles.heroPanelTag}>In scope</div>
+            <div className={styles.heroPanelTitle}>Included here</div>
             <div className={styles.heroPanelGrid}>
               <StatCard icon={Brain} label="Models" value={modelsData.length} />
               <StatCard icon={Database} label="RNA" value={rnaDatasets.length} />
@@ -89,7 +89,7 @@ export default function HomePage() {
             </div>
             <div className={styles.heroPanelNote}>
               <CheckCircle2 className="w-4 h-4" />
-              <span>This site focuses on LAIOR benchmark results, while SCPortal lists related projects.</span>
+              <span>This site holds the benchmark reference; SCPortal covers the broader project index.</span>
             </div>
           </div>
         </div>
@@ -99,14 +99,14 @@ export default function HomePage() {
           FLAGSHIP JOURNEY CONTINUITY
           ============================================ */}
       <section className={styles.journeySection} aria-labelledby="flagship-journey-title">
-        <div className={styles.sectionEyebrow}>Site overview</div>
+        <div className={styles.sectionEyebrow}>Where to look</div>
         <div className={styles.journeyHeader}>
           <div>
             <h2 id="flagship-journey-title" className={styles.sectionTitle}>
-              What this site contains
+              Three places to start
             </h2>
             <p className={styles.sectionSubtitle}>
-              This site contains LAIOR benchmark comparisons for models, datasets, and metrics, and SCPortal provides access to the wider project collection.
+              Use the homepage for project context, SCPortal for the wider project map, and this site for the benchmark comparisons.
             </p>
           </div>
           <a
@@ -124,7 +124,7 @@ export default function HomePage() {
           <JourneyCard
             index="01"
             title={homepageLink.name}
-            description="Read the project overview, authorship, and naming details on the main homepage."
+            description="Read the project background and main links."
             href={homepageLink.href}
             cta="Visit homepage"
             external
@@ -132,7 +132,7 @@ export default function HomePage() {
           <JourneyCard
             index="02"
             title={scportalLink.name}
-            description="Use SCPortal to browse related single-cell projects beyond the LAIOR benchmark pages."
+            description="Browse the broader single-cell project index."
             href={scportalLink.href}
             cta="Browse in SCPortal"
             external
@@ -140,7 +140,7 @@ export default function HomePage() {
           <JourneyCard
             index="03"
             title="LAIOR Benchmarks"
-            description="Use this site to compare benchmarked models, datasets, and evaluation metrics in one place."
+            description="Inspect benchmarked models, datasets, and evaluation results."
             href="/models"
             cta="Open benchmark views"
           />
@@ -157,7 +157,7 @@ export default function HomePage() {
             <div>
               <h3 className="font-bold text-lg mb-1">Explore {modelsData.length} Models</h3>
               <p className="text-sm text-[rgb(var(--text-secondary))]">
-                Compare architectures, performance, and implementation details
+                Compare architectures, benchmark performance, and implementation details
               </p>
             </div>
             <ArrowRight className="w-5 h-5 ml-auto flex-shrink-0" />
@@ -168,7 +168,7 @@ export default function HomePage() {
             <div>
               <h3 className="font-bold text-lg mb-1">Browse {datasets.length} Datasets</h3>
               <p className="text-sm text-[rgb(var(--text-secondary))]">
-                Single-cell transcriptomics and chromatin accessibility data
+                Single-cell transcriptomic and chromatin-accessibility datasets
               </p>
             </div>
             <ArrowRight className="w-5 h-5 ml-auto flex-shrink-0" />
@@ -179,7 +179,7 @@ export default function HomePage() {
             <div>
               <h3 className="font-bold text-lg mb-1">Explore {metricsData.length} Metrics</h3>
               <p className="text-sm text-[rgb(var(--text-secondary))]">
-                Standardized evaluation across clustering, embedding, and runtime
+                Evaluation across clustering, embedding, latent space, and runtime
               </p>
             </div>
             <ArrowRight className="w-5 h-5 ml-auto flex-shrink-0" />
@@ -197,7 +197,7 @@ export default function HomePage() {
             Start with the benchmark question
           </h2>
           <p className={styles.sectionSubtitle}>
-            Each card takes you straight to the evidence you need, whether you are comparing models, checking dataset coverage, or reviewing metrics.
+            Jump straight to models, datasets, or metrics depending on what you need to compare.
           </p>
         </div>
 
@@ -212,14 +212,14 @@ export default function HomePage() {
           <WorkflowCard
             icon={Database}
             title="Audit dataset coverage"
-            description="Check scRNA-seq and scATAC-seq coverage before settling on an evaluation plan."
+            description="Check scRNA-seq and scATAC-seq coverage before choosing an evaluation setup."
             href="/datasets"
             cta={`Browse ${datasets.length || 'curated'} datasets`}
           />
           <WorkflowCard
             icon={BarChart3}
             title="Select evaluation metrics"
-            description="Match clustering, embedding, latent-space, and runtime metrics to the question you want to answer."
+            description="Match clustering, embedding, latent-space, and runtime metrics to your comparison."
             href="/metrics"
             cta={`Review ${metricsData.length} metrics`}
           />
@@ -235,7 +235,7 @@ export default function HomePage() {
             Model Categories
           </h2>
             <p className={styles.sectionSubtitle}>
-              Compare {modelCategories.length} distinct approaches benchmarked in LAIOR, from contrastive learning to disentangled representations.
+              Browse {modelCategories.length} benchmarked model groups, from contrastive learning to disentangled representations.
             </p>
         </div>
 
@@ -264,7 +264,7 @@ export default function HomePage() {
             Benchmark Datasets
           </h2>
             <p className={styles.sectionSubtitle}>
-              Curated single-cell datasets used throughout the LAIOR benchmark comparisons.
+              Curated single-cell datasets used in the LAIOR benchmark.
             </p>
         </div>
 
@@ -299,7 +299,7 @@ export default function HomePage() {
             Evaluation Metrics
           </h2>
           <p className={styles.sectionSubtitle}>
-            {metricsData.length} standardized metrics across {metricCategories.length} evaluation categories for model comparison.
+            {metricsData.length} metrics grouped into {metricCategories.length} evaluation categories.
           </p>
         </div>
 
@@ -325,10 +325,10 @@ export default function HomePage() {
       <section className="space-y-5 py-6">
         <div className="space-y-2">
           <h2 className={styles.sectionTitle}>
-            What You Can Review Here
+            What you can check
           </h2>
           <p className={styles.sectionSubtitle}>
-            This page pulls the main benchmark references into one place so you can scan the models, datasets, metrics, and the LAIOR setup behind them.
+            Use these views to inspect the benchmark setup and the reported comparisons.
           </p>
         </div>
 
@@ -336,16 +336,16 @@ export default function HomePage() {
           <FeatureCard
             icon={Brain}
             title="How the models differ"
-            description="See how LAIOR compares with LiVAE, iVAE, and other VAE baselines, with notes on the design choices each model uses."          />
+            description="See how LAIOR compares with LiVAE, iVAE, and other baselines, with short notes on each design."          />
           <FeatureCard
             icon={Database}
             title="Which datasets are included"
-            description={`Review results across ${datasets.length} curated datasets, including scRNA-seq (${rnaDatasets.length}) and scATAC-seq (${atacDatasets.length}) collections.`}
+            description={`Review ${datasets.length} curated datasets, including scRNA-seq (${rnaDatasets.length}) and scATAC-seq (${atacDatasets.length}) collections.`}
           />
           <FeatureCard
             icon={BarChart3}
             title="Which results you can check"
-            description={`${metricsData.length} standardized metrics covering clustering (${metricCategories.find(c => c.id === 'clustering')?.count || 6}), embedding quality (${metricCategories.find(c => c.id === 'embedding')?.count || 8}), latent space (${metricCategories.find(c => c.id === 'intrinsic')?.count || 8}), and runtime (${metricCategories.find(c => c.id === 'runtime')?.count || 2}).`}
+            description={`${metricsData.length} metrics for clustering (${metricCategories.find(c => c.id === 'clustering')?.count || 6}), embedding quality (${metricCategories.find(c => c.id === 'embedding')?.count || 8}), latent space (${metricCategories.find(c => c.id === 'intrinsic')?.count || 8}), and runtime (${metricCategories.find(c => c.id === 'runtime')?.count || 2}).`}
           />
         </div>
       </section>
@@ -356,14 +356,14 @@ export default function HomePage() {
       <section className={styles.finalCta}>
         <div className="space-y-2">
           <h2 className={styles.finalCtaTitle}>
-            Ready to inspect benchmark evidence?
+            Open the model comparison first
           </h2>
           <p className={styles.finalCtaDescription}>
-            Start with model families, then validate the dataset and metric assumptions behind the comparison.
+            The models view is the quickest entry into the LAIOR benchmark, with datasets and metrics one step away.
           </p>
         </div>
         <Link href="/models" className={styles.finalCtaButton}>
-          Start Benchmark Review
+          Browse Models
           <ArrowRight className="w-5 h-5" />
         </Link>
       </section>
