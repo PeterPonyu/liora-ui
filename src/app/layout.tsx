@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 const siteTitle = "LAIOR Benchmarks";
-const siteDescription = "Reference for LAIOR benchmark datasets, models, and metrics.";
+const siteDescription = "Reference site for LAIOR benchmark results, model comparisons, and dataset coverage.";
 const canonicalPath = "/liora-ui/";
 const canonicalUrl = "https://peterponyu.github.io/liora-ui/";
 const iconPath = process.env.NODE_ENV === "production" ? "/liora-ui/favicon.svg" : "/favicon.svg";

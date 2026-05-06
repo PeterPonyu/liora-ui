@@ -33,23 +33,20 @@ export function Footer() {
               className="text-sm mb-3 transition-colors leading-relaxed"
               style={{ color: 'rgb(var(--text-secondary))' }}
             >
-              LAIOR Benchmarks is a reference for benchmark datasets, model summaries, and metric definitions.
+              LAIOR Benchmarks brings together model summaries, dataset coverage, and benchmark results in one place.
             </p>
             <ul
               className="text-sm space-y-1.5 transition-colors"
               style={{ color: 'rgb(var(--text-secondary))' }}
             >
               <li>
-                <strong style={{ color: 'rgb(var(--text-primary))' }}>{homepageLink.name}</strong> — Profile and project overview
+                <strong style={{ color: 'rgb(var(--text-primary))' }}>{homepageLink.name}</strong> — Main project context
               </li>
               <li>
-                <strong style={{ color: 'rgb(var(--text-primary))' }}>{scportalLink.name}</strong> — Browse related single-cell projects
+                <strong style={{ color: 'rgb(var(--text-primary))' }}>{scportalLink.name}</strong> — Broader single-cell project index
               </li>
               <li>
-                <strong style={{ color: 'rgb(var(--text-primary))' }}>LAIOR Benchmarks</strong> — Detailed benchmark reference
-              </li>
-              <li>
-                <strong style={{ color: 'rgb(var(--primary))' }}>Related Tools</strong> — Other public tools in this project set
+                <strong style={{ color: 'rgb(var(--text-primary))' }}>LAIOR Benchmarks</strong> — Benchmark comparisons and evaluation notes
               </li>
             </ul>
 
@@ -131,7 +128,7 @@ export function Footer() {
             className="text-sm transition-colors"
             style={{ color: 'rgb(var(--text-secondary))' }}
           >
-            &copy; {new Date().getFullYear()} LAIOR. All rights reserved.
+            &copy; {new Date().getFullYear()} LAIOR Benchmarks. Public research reference for the LAIOR comparison.
           </p>
 
           {/* Social Links */}
